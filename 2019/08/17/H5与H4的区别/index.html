@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/prinklezoro.github.io/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/prinklezoro.github.io/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/prinklezoro.github.io/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/prinklezoro.github.io/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/prinklezoro.github.io/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/prinklezoro.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/prinklezoro.github.io/',
+    scheme: 'Muse',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="H5与H4的区别H5确保的兼容性可以省略标记的元素 不允许写结束标记的元素有：area br hr img input link meta param 可以省略结束标记的元素有：li dt dd p thead tbody tr td th 可以省略全部标记的元素有：html head body colgroup tbody具有boolean值的属性例如disabled readonly等，当只写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Katakuri">
+<meta property="og:url" content="https://prinklezoro.github.io/prinklezoro.github.io/2019/08/17/H5与H4的区别/index.html">
+<meta property="og:site_name" content="Katakuri">
+<meta property="og:description" content="H5与H4的区别H5确保的兼容性可以省略标记的元素 不允许写结束标记的元素有：area br hr img input link meta param 可以省略结束标记的元素有：li dt dd p thead tbody tr td th 可以省略全部标记的元素有：html head body colgroup tbody具有boolean值的属性例如disabled readonly等，当只写">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-17T11:32:28.461Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Katakuri">
+<meta name="twitter:description" content="H5与H4的区别H5确保的兼容性可以省略标记的元素 不允许写结束标记的元素有：area br hr img input link meta param 可以省略结束标记的元素有：li dt dd p thead tbody tr td th 可以省略全部标记的元素有：html head body colgroup tbody具有boolean值的属性例如disabled readonly等，当只写">
+  <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/08/17/H5与H4的区别/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title> | Katakuri</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/prinklezoro.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Katakuri</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/prinklezoro.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/prinklezoro.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/prinklezoro.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/08/17/H5与H4的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Katakuri">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-17 19:29:51 / 修改时间：19:32:28" itemprop="dateCreated datePublished" datetime="2019-08-17T19:29:51+08:00">2019-08-17</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/08/17/H5与H4的区别/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/08/17/H5与H4的区别/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="H5与H4的区别"><a href="#H5与H4的区别" class="headerlink" title="H5与H4的区别"></a>H5与H4的区别</h1><h2 id="H5确保的兼容性"><a href="#H5确保的兼容性" class="headerlink" title="H5确保的兼容性"></a>H5确保的兼容性</h2><h4 id="可以省略标记的元素"><a href="#可以省略标记的元素" class="headerlink" title="可以省略标记的元素"></a>可以省略标记的元素</h4><ul>
+<li>不允许写结束标记的元素有：area br hr img input link meta param</li>
+<li>可以省略结束标记的元素有：li dt dd p thead tbody tr td th</li>
+<li>可以省略全部标记的元素有：html head body colgroup tbody<h4 id="具有boolean值的属性"><a href="#具有boolean值的属性" class="headerlink" title="具有boolean值的属性"></a>具有boolean值的属性</h4>例如disabled readonly等，当只写属性名，表示true。也可以使用属性名或者空字符串作为属性值</li>
+</ul><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;checkbox&quot; checked&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; checked=&quot;checked&quot;&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; checked=&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="省略引号"><a href="#省略引号" class="headerlink" title="省略引号"></a>省略引号</h4><p>指定属性值的时候既可以用双引号，也可以用单引号，当属性值不包括空字符串，&gt; &lt; = 单引号和双引号时，引号也可以省略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&apos;text&apos;&gt;</span><br><span class="line">&lt;input type=&quot;text&quot;&gt;</span><br><span class="line">&lt;input type=text&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="全局属性"><a href="#全局属性" class="headerlink" title="全局属性"></a>全局属性</h2><h4 id="contentEditable"><a href="#contentEditable" class="headerlink" title="contentEditable"></a>contentEditable</h4><p>contentEditable为true时，元素可以编辑；为false，元素不可以编辑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;h2&gt;可编辑列表&lt;/h2&gt;</span><br><span class="line">&lt;ul contenteditable=&quot;true&quot;&gt;</span><br><span class="line">    &lt;li&gt;列表元素1&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;列表元素2&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;列表元素3&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;列表元素4&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="designMode"><a href="#designMode" class="headerlink" title="designMode"></a>designMode</h4><p>designMode为on 页面中的元素可以编辑；designMode为off 页面中的元素不可以编辑</p>
+<blockquote>
+<p>只能用在script脚本中，作为document的属性使用，document.designMode = on</p>
+</blockquote>
+<h4 id="tabindex属性"><a href="#tabindex属性" class="headerlink" title="tabindex属性"></a>tabindex属性</h4><p>不断敲击tab键让窗口或页面中的元素获得焦点，每一个控件的tabindex表示该控件是第几个被访问到的</p>
+<blockquote>
+<p>有些元素可以通过设置tabindex属性，从而可以利用focus()方法获取焦点，但是tab也能获取焦点，这时可以使用tabindex = -1</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;p tabindex=&quot;2&quot;&gt;第一段获取焦点&lt;/p&gt;</span><br><span class="line">&lt;p tabindex=&quot;1&quot;&gt;第二段获取焦点&lt;/p&gt;</span><br><span class="line">&lt;p tabindex=&quot;3&quot;&gt;第三段获取焦点&lt;/p&gt;</span><br><span class="line">&lt;!--使用tab不能获取--&gt;</span><br><span class="line">&lt;p tabindex=&quot;-1&quot; id=&quot;p1&quot;&gt;第三段获取焦点&lt;/p&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; id=&quot;btn&quot; value=&quot;获取焦点&quot; onclick=&quot;fun1();&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function fun1() &#123;</span><br><span class="line">        document.getElementById(&apos;p1&apos;).focus()</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="新增事件"><a href="#新增事件" class="headerlink" title="新增事件"></a>新增事件</h2><blockquote>
+<p><strong>window或者body对象:</strong><br>beforeprint: 即将开始打印之前触发<br>afterprint: 打印完毕触发<br>resize: 浏览器窗口发生改变时触发<br>error: 页面加载出错时触发<br>offline 页面变为离线状态时触发<br>online 页面变为在线状态时触发<br>pageshow 页面加载时触发 load时间只在第一次加载触发，缓存中加载只触发pageshow<br>beforeunload 页面被关闭时触发<br>hashchange 页面#后面的值改变时触发<br><strong>任何元素:</strong><br>mousewheel 鼠标指针悬停在元素上并且滚动鼠标滚轮时触发<br><strong>任何容器元素:</strong><br>scroll 元素滚动条被滚动时触发<br><strong>input元素或者textarea元素:</strong><br>input: 用户修改文本框内容触发，change用户失去焦点才触发，input不需要失去焦点<br><strong>input元素或者textarea元素:</strong><br>reset 当用户按下reset按钮或者触发reset方法时触发</p>
+</blockquote>
+<h2 id="只触发一次事件"><a href="#只触发一次事件" class="headerlink" title="只触发一次事件"></a>只触发一次事件</h2><p>addEventListener: 第三个参数 {once: true}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; id=&quot;btn&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    document.getElementById(&apos;btn&apos;).addEventListener(&apos;click&apos;,function () &#123;</span><br><span class="line">        alert(&apos;222&apos;)</span><br><span class="line">    &#125;,&#123; once: true &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/prinklezoro.github.io/2019/08/04/Hexo搭建个人博客网站/" rel="next" title="Hexo搭建个人博客网站">
+                  <i class="fa fa-chevron-left"></i> Hexo搭建个人博客网站
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/prinklezoro.github.io/images/avatar.gif"
+      alt="Katakuri">
+  <p class="site-author-name" itemprop="name">Katakuri</p>
+  <div class="site-description motion-element" itemprop="description">自律即自由</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/prinklezoro.github.io/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+        
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:prinklezoro@gmail.com" title="E-Mail &rarr; mailto:prinklezoro@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#H5与H4的区别"><span class="nav-number">1.</span> <span class="nav-text">H5与H4的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#H5确保的兼容性"><span class="nav-number">1.1.</span> <span class="nav-text">H5确保的兼容性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可以省略标记的元素"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">可以省略标记的元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具有boolean值的属性"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">具有boolean值的属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#省略引号"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">省略引号</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局属性"><span class="nav-number">1.2.</span> <span class="nav-text">全局属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#contentEditable"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">contentEditable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#designMode"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">designMode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tabindex属性"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">tabindex属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新增事件"><span class="nav-number">1.3.</span> <span class="nav-text">新增事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只触发一次事件"><span class="nav-number">1.4.</span> <span class="nav-text">只触发一次事件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Katakuri</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/prinklezoro.github.io/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/prinklezoro.github.io/js/utils.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/motion.js?v=7.3.0"></script>
+
+<script src="/prinklezoro.github.io/js/schemes/muse.js?v=7.3.0"></script>
+
+
+<script src="/prinklezoro.github.io/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/prinklezoro.github.io/js/scrollspy.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Q6pYWSENGYw0Jy6d4DqtudBA-gzGzoHsz',
+    appKey: 'n4tLHHKWGVWs5vhSFBCtqQim',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
