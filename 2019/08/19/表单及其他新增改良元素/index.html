@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/prinklezoro.github.io/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/prinklezoro.github.io/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/prinklezoro.github.io/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/prinklezoro.github.io/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/prinklezoro.github.io/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/prinklezoro.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/prinklezoro.github.io/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="新增元素和属性表单内元素的form属性表单元素可以写在任何位置，只要为其定义一个form属性，那么他就属于某个表单12&amp;lt;form action=&amp;quot;#&amp;quot; id=&amp;quot;form1&amp;quot;&amp;gt;&amp;lt;/form&amp;gt;&amp;lt;input type=&amp;quot;text&amp;quot; form=&amp;quot;form1&amp;quot;&amp;gt;">
+<meta name="keywords" content="HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="表单及其他新增改良元素">
+<meta property="og:url" content="https://prinklezoro.github.io/prinklezoro.github.io/2019/08/19/表单及其他新增改良元素/index.html">
+<meta property="og:site_name" content="Katakuri">
+<meta property="og:description" content="新增元素和属性表单内元素的form属性表单元素可以写在任何位置，只要为其定义一个form属性，那么他就属于某个表单12&amp;lt;form action=&amp;quot;#&amp;quot; id=&amp;quot;form1&amp;quot;&amp;gt;&amp;lt;/form&amp;gt;&amp;lt;input type=&amp;quot;text&amp;quot; form=&amp;quot;form1&amp;quot;&amp;gt;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/bd6.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/bd5.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/bd4.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/bd3.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/bd2.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/bd1.png">
+<meta property="og:updated_time" content="2019-08-19T14:21:49.675Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="表单及其他新增改良元素">
+<meta name="twitter:description" content="新增元素和属性表单内元素的form属性表单元素可以写在任何位置，只要为其定义一个form属性，那么他就属于某个表单12&amp;lt;form action=&amp;quot;#&amp;quot; id=&amp;quot;form1&amp;quot;&amp;gt;&amp;lt;/form&amp;gt;&amp;lt;input type=&amp;quot;text&amp;quot; form=&amp;quot;form1&amp;quot;&amp;gt;">
+<meta name="twitter:image" content="https://prinklezoro.github.io/assets/bd6.png">
+  <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/08/19/表单及其他新增改良元素/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>表单及其他新增改良元素 | Katakuri</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/prinklezoro.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Katakuri</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/prinklezoro.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/prinklezoro.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/prinklezoro.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/prinklezoro.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/prinklezoro.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/08/19/表单及其他新增改良元素/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Katakuri">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">表单及其他新增改良元素
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-19 22:16:11 / 修改时间：22:21:49" itemprop="dateCreated datePublished" datetime="2019-08-19T22:16:11+08:00">2019-08-19</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/08/19/表单及其他新增改良元素/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/08/19/表单及其他新增改良元素/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="新增元素和属性"><a href="#新增元素和属性" class="headerlink" title="新增元素和属性"></a>新增元素和属性</h2><h4 id="表单内元素的form属性"><a href="#表单内元素的form属性" class="headerlink" title="表单内元素的form属性"></a>表单内元素的form属性</h4><p>表单元素可以写在任何位置，只要为其定义一个form属性，那么他就属于某个表单</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;#&quot; id=&quot;form1&quot;&gt;&lt;/form&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; form=&quot;form1&quot;&gt;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+<h4 id="formaction属性"><a href="#formaction属性" class="headerlink" title="formaction属性"></a>formaction属性</h4><p>为不同的提交按钮增加不同的formaction属性,跳转到不同的页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;http://www.jd.com&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交到百度&quot; formaction=&quot;http://www.baidu.com&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交到谷歌&quot; formaction=&quot;http://www.google.com&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交到淘宝&quot; formaction=&quot;http://www.taobao.com&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="formmethod属性"><a href="#formmethod属性" class="headerlink" title="formmethod属性"></a>formmethod属性</h4><p>为不同的提交按钮设定不同的提交方式</p>
+<h4 id="formenctype属性"><a href="#formenctype属性" class="headerlink" title="formenctype属性"></a>formenctype属性</h4><p>为不同的提交按钮设定不同的数据编码方式</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>application/x-www-form-urlencoded</td>
+<td>默认提交编码</td>
+</tr>
+<tr>
+<td>multipart/form-data</td>
+<td>不对字符编码；使用包含文件上传的表单，必须使用该值</td>
+</tr>
+<tr>
+<td>text/plain</td>
+<td>表单数据中的空格被转换为+号，不对特殊字符进行编码</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;#&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;&quot; id=&quot;&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交&quot; formenctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="formtarget属性"><a href="#formtarget属性" class="headerlink" title="formtarget属性"></a>formtarget属性</h4><p>为不同的按钮指定在何处打开加载的页面</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>_blank</td>
+<td>在新的浏览器窗口打开</td>
+</tr>
+<tr>
+<td>_self</td>
+<td>默认值，在当前框架打开</td>
+</tr>
+<tr>
+<td>_top</td>
+<td>在当前浏览器窗口打开</td>
+</tr>
+<tr>
+<td>_parent</td>
+<td>在当前框架的父框架中打开</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;http://www.baidu.com&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;_blank&quot; formtarget=&quot;_blank&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;_self&quot; formtarget=&quot;_self&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;_top&quot; formtarget=&quot;_top&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;_parent&quot; formtarget=&quot;_parent&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">在另一个页面的iframe元素中引入</span><br></pre></td></tr></table></figure>
+
+<h4 id="autofocus属性"><a href="#autofocus属性" class="headerlink" title="autofocus属性"></a>autofocus属性</h4><p>当前页面打开时，自动获取焦点</p>
+<h4 id="required属性"><a href="#required属性" class="headerlink" title="required属性"></a>required属性</h4><p>指定该属性后，如果元素内容为空（<strong>空格可以</strong>），不允许提交，同时浏览器现实提示文字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;#&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; autofocus required&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="labels属性"><a href="#labels属性" class="headerlink" title="labels属性"></a>labels属性</h4><p>为所有可使用labe标签的元素指定一个labels属性(script脚本中调用)，代表该元素所绑定的所有nodelist元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;#&quot; id=&quot;form&quot;&gt;</span><br><span class="line">    &lt;label for=&quot;text1&quot;&gt;用户名：&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; id=&quot;text1&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; id=&quot;btn&quot; value=&quot;添加或者减少&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var text = document.getElementById(&apos;text1&apos;)</span><br><span class="line">    var btn = document.getElementById(&apos;btn&apos;)</span><br><span class="line">    var form = document.getElementById(&apos;form&apos;)</span><br><span class="line"></span><br><span class="line">    btn.onclick = function () &#123;</span><br><span class="line">        if(text.labels.length === 1) &#123;</span><br><span class="line">            var label = document.createElement(&apos;label&apos;)</span><br><span class="line">            label.setAttribute(&apos;for&apos;,&apos;text1&apos;)</span><br><span class="line">            label.innerHTML = &apos;请输入&apos;</span><br><span class="line">            form.insertBefore(label, btn)</span><br><span class="line">        &#125;else if(text.labels.length &gt; 1) &#123;</span><br><span class="line">            form.removeChild(text.labels[1])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="control属性"><a href="#control属性" class="headerlink" title="control属性"></a>control属性</h4><p>通过该标签的dom元素的control元素来访问该标签所绑定的dom表单元素</p>
+<h4 id="placeholder属性"><a href="#placeholder属性" class="headerlink" title="placeholder属性"></a>placeholder属性</h4><p>未输入状态的提示</p>
+<blockquote>
+<p>设定提示文字的样式</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/*火狐浏览器*/</span><br><span class="line"> input:-moz-placeholder &#123;</span><br><span class="line">     color: blue;</span><br><span class="line"> &#125;</span><br><span class="line"> /*webkit内核浏览器*/</span><br><span class="line"> input::-webkit-input-placeholder &#123;</span><br><span class="line">     color: blue;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="list属性"><a href="#list属性" class="headerlink" title="list属性"></a>list属性</h4><p>单行文本框定义的属性，与datalist元素一起使用 值为datalist元素的id.</p>
+<blockquote>
+<p>为了避免在没有支持该元素的浏览器上出现错误，通常将datalist元素设置display: none</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; list=&quot;datalist1&quot;&gt;</span><br><span class="line">&lt;datalist id=&quot;datalist1&quot;&gt;</span><br><span class="line">    &lt;option value=&quot;111&quot;&gt;111&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;good&quot;&gt;good&lt;/option&gt;</span><br><span class="line">&lt;/datalist&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="autocomplete属性"><a href="#autocomplete属性" class="headerlink" title="autocomplete属性"></a>autocomplete属性</h4><p>自动完成 on和off属性</p>
+<h4 id="pattern属性"><a href="#pattern属性" class="headerlink" title="pattern属性"></a>pattern属性</h4><p>属性值为正则表达式，用于表单验证。模式不匹配，会提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;#&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; pattern=&quot;^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="selectionDirection属性"><a href="#selectionDirection属性" class="headerlink" title="selectionDirection属性"></a>selectionDirection属性</h4><p>针对input元素和textarea元素新增的属性（js调用）,当用户在这两个元素中选取部分文字时，可以使用该属性获取选取方向。正向选取，该属性为forward；反向选取，该属性为backward。默认是forward</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;#&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; name=&quot;text&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;点击&quot; onclick=&quot;fun()&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function fun() &#123;</span><br><span class="line">        console.log(document.forms[0])</span><br><span class="line">        var text = document.forms[0][&apos;text&apos;]</span><br><span class="line">        alert(text.selectionDirection)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>document.forms</td>
+<td>获取当前页面的所有表单</td>
+</tr>
+<tr>
+<td>docume.forms[0]</td>
+<td>获取当前页面的第一个表单</td>
+</tr>
+<tr>
+<td>document.forms[‘exportServlet’]</td>
+<td>获取当前页面name为exportServlet的表单</td>
+</tr>
+<tr>
+<td>document.forms[0].submit</td>
+<td>提交当前页面的第一个表单</td>
+</tr>
+<tr>
+<td>#### 复选框的indeterminate属性</td>
+<td></td>
+</tr>
+<tr>
+<td>checkbox中设置indeterminate属性，表示复选框处于”尚未明确是否选取”状态（js使用）</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt; indeterminate与checked属性是两种不同的属性 \</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt; 应该先判断indeterminate 然后再判断checked属性</td>
+<td></td>
+</tr>
+<tr>
+<td>#### textarea元素的maxlength与wrap属性</td>
+<td></td>
+</tr>
+<tr>
+<td>- <strong>maxlength属性</strong> 限定textarea元素可输入文字的最大个数</td>
+<td></td>
+</tr>
+<tr>
+<td>- <strong>wrap属性</strong> 指定属性值为soft或者hard。hard在提交表单的时候，会显示换行符（必须加上cols属性）；soft在提交表单的时候，不会显示换行符</td>
+<td></td>
+</tr>
+<tr>
+<td>#### 其他新增input元素</td>
+<td></td>
+</tr>
+<tr>
+<td>- url类型：专门用来输入url地址的文本框</td>
+<td></td>
+</tr>
+<tr>
+<td>- email类型：专门用来输入email地址的文本框</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt; 该类型具有一个multiple属性，允许在该文本框输入一段以逗号分隔的email地址</td>
+<td></td>
+</tr>
+<tr>
+<td>- date类型：专门用来表示日期</td>
+<td></td>
+</tr>
+<tr>
+<td>- time类型：专门用来表示时间</td>
+<td></td>
+</tr>
+<tr>
+<td>- datetime-local类型：专门用来表示时间日期</td>
+<td></td>
+</tr>
+<tr>
+<td>- month类型：专门用来输入月份的</td>
+<td></td>
+</tr>
+<tr>
+<td>- week类型：专门用来输入周号的</td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;date&quot; value=&quot;2019-08-25&quot;&gt;</span><br><span class="line">&lt;input type=&quot;time&quot; value=&quot;10:00&quot;&gt;</span><br><span class="line">&lt;input type=&quot;datetime-local&quot; value=&quot;2019-08-25T10:00&quot;&gt;</span><br><span class="line">&lt;input type=&quot;month&quot; value=&quot;2019-08&quot;&gt;</span><br><span class="line">&lt;input type=&quot;week&quot; value=&quot;2019-W40&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>step属性 用户从日历中选择日期时对选择值的限定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;date&quot; step=&quot;3&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/bd6.png" alt="QQ截图20190814205616"></p>
+<ul>
+<li>setpUp 表示向上变更 step表示向下变更</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;#&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;date&quot; name=&quot;date&quot; step=&quot;3&quot; value=&quot;2019-08-25&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    document.forms[0][&apos;date&apos;].stepUp(1)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/bd5.png" alt="image"></p>
+<ul>
+<li>min和max属性  表示输入限定值的范围</li>
+<li>valueAsDate 用来设置或获取UTC日期和时间 valueAsNumber用来设置或获取时间毫秒数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;#&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;date&quot; name=&quot;date&quot; value=&quot;2019-08-25&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    console.log(document.forms[0].date.valueAsNumber)</span><br><span class="line">    document.forms[0].date.valueAsDate = new Date()</span><br><span class="line">    console.log(document.forms[0].date.valueAsNumber)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>number类型：一种专门用来输入数字的文本框 也有min max step属性<blockquote>
+<p>valueAsNumber 也可以用来设置获取值</p>
+</blockquote>
+</li>
+<li>range类型：滑动条，也具有min max step属性</li>
+<li>search类型：搜索关键词的文本框</li>
+<li>tel类型：输入电话号码的文本框</li>
+<li>color类型：选取颜色的文本框<h2 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h2><h4 id="自动验证"><a href="#自动验证" class="headerlink" title="自动验证"></a>自动验证</h4>pattern require属性<h4 id="取消验证"><a href="#取消验证" class="headerlink" title="取消验证"></a>取消验证</h4>问题：一个非常大的表单分为两部分，现在有个需求，先提交第一部分，然后在提交第二部分。<br>解决1：form元素有个novalidate属性用来关闭整个表单验证，先把novalidate设置为true，关闭表单验证，提交第一部分内容。然后把novalidate设置为false，打开表单验证，提交第二部分内容。<br>解决2：input元素有一个formvalidate属性，为true表示关闭此元素的验证。（第二部分的表单元素数量很少时可以使用这个方法）<blockquote>
+<p>submit也有formvalidate属性，单击该按钮时，整个表单验证都失效了</p>
+</blockquote>
+<h4 id="validity属性"><a href="#validity属性" class="headerlink" title="validity属性"></a>validity属性</h4>form元素和input元素的属性，返回一个ValidityState对象，其中有一个valid属性，表示表单内所有内容是否有效或单个input元素内容是否有效<h2 id="增强的页面元素"><a href="#增强的页面元素" class="headerlink" title="增强的页面元素"></a>增强的页面元素</h2><h4 id="figure元素和figcaption元素"><a href="#figure元素和figcaption元素" class="headerlink" title="figure元素和figcaption元素"></a>figure元素和figcaption元素</h4>figure一种元素的组合，表示网页中一块独立的内容，将其从网页中移除后不会对其他内容产生任何影响。可以是图片、统计图或者代码示例<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure&gt;</span><br><span class="line">    &lt;img src=&quot;../images/QQ图片20190118182958.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;figcaption&gt;头像&lt;/figcaption&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="details和summary元素"><a href="#details和summary元素" class="headerlink" title="details和summary元素"></a>details和summary元素</h4><p>details元素用于标志该元素内部可以展开收缩的元素。该元素具有一个open属性，当该属性为true时，子元素应该展开；为false，子元素收缩。summary元素表示details单击时的说明文字（如果没有summary元素，details会提供默认文字），每次收缩或者展开，details都将触发toggle事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">    &lt;summary&gt;海贼王&lt;/summary&gt;</span><br><span class="line">    &lt;p&gt;16世纪最伟大的大航海时代&lt;/p&gt;</span><br><span class="line">&lt;/details&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/bd4.png" alt="image"></p>
+<h4 id="mark元素"><a href="#mark元素" class="headerlink" title="mark元素"></a>mark元素</h4><p>表示页面中需要突出显示的文字，目的是为了吸引用户的注意力</p>
+<blockquote>
+<p>mark元素的标识与原文作者无关，只是为了吸引用户的注意力 <br>strong元素是原文作者用来强调一段文字的重要性，比如警示消息、错误信息。<br>em是为了突出文章重点</p>
+</blockquote>
+<h4 id="progress元素"><a href="#progress元素" class="headerlink" title="progress元素"></a>progress元素</h4><p>代表一个任务的完成进度 有value和max属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;progress元素的使用示例&lt;/h1&gt;</span><br><span class="line">&lt;p id=&quot;pro&quot;&gt;完成百分比：&lt;progress id=&quot;p&quot; value=&quot;0&quot; max=&quot;100&quot;&gt;&lt;span&gt;0&lt;/span&gt;%&lt;/progress&gt;&lt;/p&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; value=&quot;请点击&quot; onclick=&quot;add()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var progress = document.getElementById(&apos;p&apos;)</span><br><span class="line">    var i = 1</span><br><span class="line">    function add() &#123;</span><br><span class="line">       update(i)</span><br><span class="line">        i++</span><br><span class="line">    &#125;</span><br><span class="line">    function update(i) &#123;</span><br><span class="line">        progress.value = i</span><br><span class="line">        progress.getElementsByTagName(&apos;span&apos;)[0].innerHTML = i</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/bd3.png" alt="image"></p>
+<h4 id="meter元素"><a href="#meter元素" class="headerlink" title="meter元素"></a>meter元素</h4><p>表示规定范围内的数量值</p>
+<ul>
+<li>value属性</li>
+<li>min属性</li>
+<li>max属性</li>
+<li>low属性：表示范围的下限值</li>
+<li>high属性：表示范围的上限值</li>
+<li>optimum：最佳值<h4 id="dialog元素"><a href="#dialog元素" class="headerlink" title="dialog元素"></a>dialog元素</h4>代表一个对话框：默认出于隐藏状态，调用show方法显示；close方法隐藏</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;打开对话框&quot; onclick=&quot;javascript:document.getElementById(&apos;log&apos;).show();&quot;&gt;</span><br><span class="line">&lt;dialog id=&quot;log&quot;&gt;</span><br><span class="line">    &lt;h1&gt;用户登录&lt;/h1&gt;</span><br><span class="line">    &lt;form action=&quot;#&quot;&gt;</span><br><span class="line">        &lt;label&gt;</span><br><span class="line">            用户名：&lt;input type=&quot;text&quot;&gt;</span><br><span class="line">        &lt;/label&gt;</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;label&gt;</span><br><span class="line">            密码：&lt;input type=&quot;password&quot;&gt;</span><br><span class="line">        &lt;/label&gt;</span><br><span class="line">        &lt;br&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;button&quot; value=&quot;关闭对话框&quot; onclick=&quot;javascript:document.getElementById(&apos;log&apos;).close();&quot;&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">&lt;/dialog&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>showModal方法以模式对话框显示 <br>returnValue属性可以为对话框设置或者返回一个返回值<br><img src="/assets/bd2.png" alt="image"></p>
+</blockquote>
+<h4 id="改良的a元素"><a href="#改良的a元素" class="headerlink" title="改良的a元素"></a>改良的a元素</h4><p>download属性 点击即下载 属性值可以是路径，也可以是文件名，代表下载之后的文件的文件名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;../images/QQ图片20190118182958.jpg&quot; download=&quot;../images/QQ图片20190118182958&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;../images/QQ图片20190118182958.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="改良的ol属性"><a href="#改良的ol属性" class="headerlink" title="改良的ol属性"></a>改良的ol属性</h4><ul>
+<li>start属性：表示ol里面的li元素标号从哪开始</li>
+<li>reversed属性：表示反向排列</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol start=&quot;4&quot; reversed&gt;</span><br><span class="line">    &lt;li&gt;海贼王&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;火影&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;死神&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/bd1.png" alt="image"></p>
+<h4 id="加以严格限制的cite元素"><a href="#加以严格限制的cite元素" class="headerlink" title="加以严格限制的cite元素"></a>加以严格限制的cite元素</h4><p>cite表示作品的标题（不能包括作者以及任何人名）</p>
+<h4 id="安全性增强的iframe元素"><a href="#安全性增强的iframe元素" class="headerlink" title="安全性增强的iframe元素"></a>安全性增强的iframe元素</h4><p>为iframe中新增一个sandbox属性,有如下限制</p>
+<ul>
+<li>该页面中的插件被禁用</li>
+<li>该页面中的表单被禁止提交</li>
+<li>该页面的js代码被禁止执行</li>
+<li>该页面的超链接被禁用</li>
+<li>该页面被视为一个单独的源（没有该属性，被视为同一个源，虽然可以是不同源），禁止加载来自服务器端的内容，禁止获取cookie或者webstorage的内容<br>判断浏览器是否支持iframe的sandbox属性</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(&quot;sandbox&quot; in document.createElement(&quot;iframe&quot;))&#123;</span><br><span class="line">    </span><br><span class="line">&#125;else &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以给sandbox指定多个属性（多个属性之间用空格隔开）</p>
+<ol>
+<li>allow_forms：允许表单提交</li>
+<li>allow-scripts：允许执行js脚本</li>
+<li>allow-same-origin：允许加载服务器内容，允许获取cookie或者webstorage内容</li>
+<li>allow-top-navigation：允许超链接跳转<h4 id="增强的script元素"><a href="#增强的script元素" class="headerlink" title="增强的script元素"></a>增强的script元素</h4>script元素新增async属性和defer属性</li>
+</ol>
+<ul>
+<li>async：异步加载js文件并执行（加载完立即执行）</li>
+<li>defer：异步加载js文件，js执行放在dom元素解析完成和所有js文件加载完毕后才按照顺序依次执行。<strong>defer执行速度较快</strong><blockquote>
+<p>DOMContentLoaded时间，jQuery中的入口函数执行的事件就是这个</p>
+</blockquote>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/prinklezoro.github.io/tags/HTML/" rel="tag"># HTML</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/prinklezoro.github.io/2019/08/18/认知迭代，自由切换大脑的思考方式/" rel="next" title="认知迭代，自由切换大脑的思考方式">
+                  <i class="fa fa-chevron-left"></i> 认知迭代，自由切换大脑的思考方式
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/prinklezoro.github.io/images/avatar.gif"
+      alt="Katakuri">
+  <p class="site-author-name" itemprop="name">Katakuri</p>
+  <div class="site-description motion-element" itemprop="description">自律即自由</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/prinklezoro.github.io/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/prinklezoro.github.io/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/prinklezoro.github.io/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:prinklezoro@gmail.com" title="E-Mail &rarr; mailto:prinklezoro@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#新增元素和属性"><span class="nav-number">1.</span> <span class="nav-text">新增元素和属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#表单内元素的form属性"><span class="nav-number">1.0.1.</span> <span class="nav-text">表单内元素的form属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#formaction属性"><span class="nav-number">1.0.2.</span> <span class="nav-text">formaction属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#formmethod属性"><span class="nav-number">1.0.3.</span> <span class="nav-text">formmethod属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#formenctype属性"><span class="nav-number">1.0.4.</span> <span class="nav-text">formenctype属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#formtarget属性"><span class="nav-number">1.0.5.</span> <span class="nav-text">formtarget属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#autofocus属性"><span class="nav-number">1.0.6.</span> <span class="nav-text">autofocus属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#required属性"><span class="nav-number">1.0.7.</span> <span class="nav-text">required属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#labels属性"><span class="nav-number">1.0.8.</span> <span class="nav-text">labels属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#control属性"><span class="nav-number">1.0.9.</span> <span class="nav-text">control属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#placeholder属性"><span class="nav-number">1.0.10.</span> <span class="nav-text">placeholder属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list属性"><span class="nav-number">1.0.11.</span> <span class="nav-text">list属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#autocomplete属性"><span class="nav-number">1.0.12.</span> <span class="nav-text">autocomplete属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pattern属性"><span class="nav-number">1.0.13.</span> <span class="nav-text">pattern属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#selectionDirection属性"><span class="nav-number">1.0.14.</span> <span class="nav-text">selectionDirection属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单验证"><span class="nav-number">2.</span> <span class="nav-text">表单验证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自动验证"><span class="nav-number">2.0.1.</span> <span class="nav-text">自动验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取消验证"><span class="nav-number">2.0.2.</span> <span class="nav-text">取消验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#validity属性"><span class="nav-number">2.0.3.</span> <span class="nav-text">validity属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增强的页面元素"><span class="nav-number">3.</span> <span class="nav-text">增强的页面元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#figure元素和figcaption元素"><span class="nav-number">3.0.1.</span> <span class="nav-text">figure元素和figcaption元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#details和summary元素"><span class="nav-number">3.0.2.</span> <span class="nav-text">details和summary元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mark元素"><span class="nav-number">3.0.3.</span> <span class="nav-text">mark元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#progress元素"><span class="nav-number">3.0.4.</span> <span class="nav-text">progress元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#meter元素"><span class="nav-number">3.0.5.</span> <span class="nav-text">meter元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dialog元素"><span class="nav-number">3.0.6.</span> <span class="nav-text">dialog元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改良的a元素"><span class="nav-number">3.0.7.</span> <span class="nav-text">改良的a元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改良的ol属性"><span class="nav-number">3.0.8.</span> <span class="nav-text">改良的ol属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加以严格限制的cite元素"><span class="nav-number">3.0.9.</span> <span class="nav-text">加以严格限制的cite元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安全性增强的iframe元素"><span class="nav-number">3.0.10.</span> <span class="nav-text">安全性增强的iframe元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增强的script元素"><span class="nav-number">3.0.11.</span> <span class="nav-text">增强的script元素</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Katakuri</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.7' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js"></script>
+  <script src="/prinklezoro.github.io/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/prinklezoro.github.io/js/utils.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/motion.js?v=7.3.0"></script>
+
+<script src="/prinklezoro.github.io/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/prinklezoro.github.io/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/prinklezoro.github.io/js/scrollspy.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Q6pYWSENGYw0Jy6d4DqtudBA-gzGzoHsz',
+    appKey: 'n4tLHHKWGVWs5vhSFBCtqQim',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
