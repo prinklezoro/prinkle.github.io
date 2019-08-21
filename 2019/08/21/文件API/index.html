@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/prinklezoro.github.io/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/prinklezoro.github.io/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/prinklezoro.github.io/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/prinklezoro.github.io/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/prinklezoro.github.io/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/prinklezoro.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/prinklezoro.github.io/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="FileList对象与File对象 FileList对象表示用户选择的文件列表 file表单元素可以上传多个文件，每一个文件都是一个file对象，FileList就是这多个文件的列表 file有两个属性：name表示文件名字，lastModifiedDate表示文件的最后修改日期 12345678910&amp;lt;input type=&amp;quot;file&amp;quot; multiple size=&amp;q">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件API">
+<meta property="og:url" content="https://prinklezoro.github.io/prinklezoro.github.io/2019/08/21/文件API/index.html">
+<meta property="og:site_name" content="Katakuri">
+<meta property="og:description" content="FileList对象与File对象 FileList对象表示用户选择的文件列表 file表单元素可以上传多个文件，每一个文件都是一个file对象，FileList就是这多个文件的列表 file有两个属性：name表示文件名字，lastModifiedDate表示文件的最后修改日期 12345678910&amp;lt;input type=&amp;quot;file&amp;quot; multiple size=&amp;q">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wj1.png">
+<meta property="og:updated_time" content="2019-08-21T14:50:17.341Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文件API">
+<meta name="twitter:description" content="FileList对象与File对象 FileList对象表示用户选择的文件列表 file表单元素可以上传多个文件，每一个文件都是一个file对象，FileList就是这多个文件的列表 file有两个属性：name表示文件名字，lastModifiedDate表示文件的最后修改日期 12345678910&amp;lt;input type=&amp;quot;file&amp;quot; multiple size=&amp;q">
+<meta name="twitter:image" content="https://prinklezoro.github.io/assets/wj1.png">
+  <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/08/21/文件API/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>文件API | Katakuri</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/prinklezoro.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Katakuri</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/prinklezoro.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/prinklezoro.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/prinklezoro.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/prinklezoro.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/prinklezoro.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/08/21/文件API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Katakuri">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">文件API
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-21 22:45:25 / 修改时间：22:50:17" itemprop="dateCreated datePublished" datetime="2019-08-21T22:45:25+08:00">2019-08-21</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/08/21/文件API/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/08/21/文件API/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="FileList对象与File对象"><a href="#FileList对象与File对象" class="headerlink" title="FileList对象与File对象"></a>FileList对象与File对象</h2><ul>
+<li>FileList对象表示用户选择的文件列表</li>
+<li>file表单元素可以上传多个文件，每一个文件都是一个file对象，FileList就是这多个文件的列表</li>
+<li>file有两个属性：name表示文件名字，lastModifiedDate表示文件的最后修改日期</li>
+</ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; multiple size=&quot;80&quot;&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; onclick=&quot;upload()&quot; value=&quot;上传&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function upload() &#123;</span><br><span class="line">        let files = document.querySelector(&apos;input[type=file]&apos;).files</span><br><span class="line">        for(let i = 0; i &lt; files.length; i++)&#123;</span><br><span class="line">            console.log(files[i].name,files[i].lastModifiedDate)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+<p><img src="/assets/wj1.png" alt="image"></p>
+<h2 id="ArrayBuffer对象与ArrayBufferView对象"><a href="#ArrayBuffer对象与ArrayBufferView对象" class="headerlink" title="ArrayBuffer对象与ArrayBufferView对象"></a>ArrayBuffer对象与ArrayBufferView对象</h2><ul>
+<li>ArrayBuffer对象代表一个存储固定长度的二进制数据的缓存区</li>
+<li>但是不能直接存取，必须通过ArrayBufferView对象来读写ArrayBuffer缓存区中的内容</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//创建32个字节的内存</span><br><span class="line">let arrayBuffer = new ArrayBuffer(32)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过ArrayBufferView对象以一种准确的格式来表示ArrayBuffer缓存区中的内容</li>
+<li>一般不适用ArrayBufferView对象，而是使用继承ArrayBufferView的子类的实例对象来存取ArrayBuffer中的数据</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>字节长度</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Int8Array</td>
+<td>1</td>
+<td>8位的整数数组</td>
+</tr>
+<tr>
+<td>Uint8Array</td>
+<td>1</td>
+<td>8位无符号整数数组</td>
+</tr>
+<tr>
+<td>Int16Array</td>
+<td>2</td>
+<td>16位无符号整数数组</td>
+</tr>
+<tr>
+<td>Uint16Array</td>
+<td>2</td>
+<td>16位无符号整数数组</td>
+</tr>
+<tr>
+<td>Int32Array</td>
+<td>4</td>
+<td>32位的整数数组</td>
+</tr>
+<tr>
+<td>Uint32Array</td>
+<td>4</td>
+<td>32位无符号整数数组</td>
+</tr>
+<tr>
+<td>Float32Array</td>
+<td>4</td>
+<td>32位浮点数数组</td>
+</tr>
+<tr>
+<td>Float64Array</td>
+<td>8</td>
+<td>64位浮点数数组</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//用32位的类型来绑定该内存</span><br><span class="line">let int32 = new Int32Array(arrayBuffer)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>1个字节8位 一个int32有4个字节，arrayBuffer共有32个字节 所以int32长度为8 <br>ArrayBufferView还有两个参数可选，第二个参数表示从哪个位置开始读取（默认是第一个字节)</p>
+</blockquote>
+<h3 id="DateView对象"><a href="#DateView对象" class="headerlink" title="DateView对象"></a>DateView对象</h3><h2 id="Blob对象"><a href="#Blob对象" class="headerlink" title="Blob对象"></a>Blob对象</h2><h3 id="Blob对象概述"><a href="#Blob对象概述" class="headerlink" title="Blob对象概述"></a>Blob对象概述</h3><ul>
+<li>File对象继承至Blob对象</li>
+<li>Blob对象有两个属性：一个是size属性，表示此对象的字节长度；第二个是type属性，表示此Blob对象的MIME类型，如果是未知类型，返回空字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; multiple id=&quot;file&quot;&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; onclick=&quot;upload()&quot;&gt;</span><br><span class="line">&lt;span id=&quot;type&quot;&gt;&lt;/span&gt;</span><br><span class="line">&lt;span id=&quot;size&quot;&gt;&lt;/span&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function upload() &#123;</span><br><span class="line">        let files = document.getElementById(&apos;file&apos;).files</span><br><span class="line">        document.getElementById(&apos;type&apos;).innerHTML = files[0].  //  image/jpeg</span><br><span class="line">        document.getElementById(&apos;size&apos;).innerHTML = files[0].size // 14286</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>file控件有一个accept属性 意图让file控件只接受某种类型的文件（并不是真正的强制选择，如果选其他文件，也可以接收）</li>
+<li>文件表单验证</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; multiple id=&quot;file&quot; accept=&quot;image/*&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    let file = document.getElementById(&apos;file&apos;)</span><br><span class="line">    file.onchange = function () &#123;</span><br><span class="line">        let files = this.files</span><br><span class="line">        for(let i = 0; i &lt; files.length; i++)&#123;</span><br><span class="line">            if(!files[i].type.startsWith(&apos;image/&apos;))&#123;</span><br><span class="line">                alert(&apos;上传文件有错&apos;)</span><br><span class="line">                this.value = &apos;&apos;</span><br><span class="line">                return</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建Blob对象"><a href="#创建Blob对象" class="headerlink" title="创建Blob对象"></a>创建Blob对象</h4><ul>
+<li>创建的Blob有两个参数</li>
+<li>第一个参数为一个数组，其中可以存放任意数量个对象追加到Blob对象中（ArrayBuffer,ArrayBufferView,Blob,String）</li>
+<li>第二个参数是一个对象，指定MIME类型 { type: “text/plain” }</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let blob = new Blob([&quot;one&quot;,&quot;piece&quot;], &#123; type: &apos;text/plain;charset=utf-8&apos; &#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>浏览器对象window有一个属性URL对象 通过该对象的createObjectURL方法可以根据一个Blob对象的二进制数据来创建一个URL地址并返回该地址</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;textarea id=&quot;text&quot; cols=&quot;30&quot; rows=&quot;10&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; onclick=&quot;create()&quot; value=&quot;创建地址&quot;&gt;</span><br><span class="line">&lt;div id=&quot;dv&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    let text = document.getElementById(&apos;text&apos;)</span><br><span class="line">    let dv = document.getElementById(&apos;dv&apos;)</span><br><span class="line">    function create() &#123;</span><br><span class="line">        if(!window.Blob)&#123;</span><br><span class="line">            alert(&apos;该浏览器不支持Blob对象&apos;)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            let blob = new Blob([text.value], &#123; type: &apos;text/plain;charset=UTF-8&apos; &#125;)</span><br><span class="line">            dv.innerHTML = `</span><br><span class="line">                &lt;a download=&quot;blob&quot; href=&quot;$&#123;window.URL.createObjectURL(blob)&#125;&quot;&gt;下载文件&lt;/a&gt;</span><br><span class="line">            `</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Blob的slice对象"><a href="#Blob的slice对象" class="headerlink" title="Blob的slice对象"></a>Blob的slice对象</h4><ul>
+<li>用于从Blob对象所代表的原始二进制数据中抽离一部分数据，然后将这些数据创建为一个新的Blob对象。一个有三个参数</li>
+<li>第一个参数：起始位置，默认为0。如果为负数，则表现为Blob.size + 该负数为起始位置；如果大于size值，则起始复制位置为size</li>
+<li>第二个参数：终止位置，默认为blob.size。如果为负数，表现为Blob.size + 该负数为终止位置；如果大于size，则终止位置为size</li>
+<li>第三个参数：指定新生成的Blob对象的MIME类型</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//复制file对象的后半段</span><br><span class="line">var newFile = file.slice(-Math.round(-file.size/2))</span><br><span class="line">//复制file对象到离结束150个字节位置</span><br><span class="line">var newFile1 = file.slice(0, -150, &apos;text/plain&apos;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="FileReader对象"><a href="#FileReader对象" class="headerlink" title="FileReader对象"></a>FileReader对象</h2><h4 id="FileReader对象的方法"><a href="#FileReader对象的方法" class="headerlink" title="FileReader对象的方法"></a>FileReader对象的方法</h4><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>参数</th>
+<th>概述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>readAsBinaryString</td>
+<td>Blob对象或者继承了Blob对象的file对象</td>
+<td>将数据读取为二进制字符串</td>
+</tr>
+<tr>
+<td>readAsText</td>
+<td>Blob对象或者继承了Blob对象的file对象(第二个参数encoding)</td>
+<td>将数据读取为文本数据</td>
+</tr>
+<tr>
+<td>readAsDataUL</td>
+<td>Blob对象或者继承了Blob对象的file对象</td>
+<td>读取为DataURL对象</td>
+</tr>
+<tr>
+<td>readAsArrayBuffer</td>
+<td>Blob对象或继承了Blob对象的file对象</td>
+<td>读取为ArrayBuffer对象</td>
+</tr>
+<tr>
+<td>abort</td>
+<td>none</td>
+<td>中断读取操作</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>无论读取成功还是失败，方法名都不会返回读取结果，这一结果存储在result属性中</p>
+</blockquote>
+<h4 id="FileReader事件"><a href="#FileReader事件" class="headerlink" title="FileReader事件"></a>FileReader事件</h4><table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onabort</td>
+<td>读取数据中断时触发</td>
+</tr>
+<tr>
+<td>onerror</td>
+<td>读取数据出错时触发</td>
+</tr>
+<tr>
+<td>onloadstart</td>
+<td>读取数据开始时触发</td>
+</tr>
+<tr>
+<td>onprogress</td>
+<td>数据读取中</td>
+</tr>
+<tr>
+<td>onload</td>
+<td>数据读取成功完成时触发</td>
+</tr>
+<tr>
+<td>onloadend</td>
+<td>数据读取完成时触发（不管成功失败）</td>
+</tr>
+</tbody></table>
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><ul>
+<li>读取图片到浏览器上</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; accept=&quot;image/*&quot; id=&quot;file1&quot;&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; value=&quot;读取文件&quot; onclick=&quot;read1()&quot;&gt;</span><br><span class="line">&lt;div id=&quot;box1&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    let file1 = document.getElementById(&apos;file1&apos;)</span><br><span class="line">    let box1 = document.getElementById(&apos;box1&apos;)</span><br><span class="line">    function read1() &#123;</span><br><span class="line">        let file = file1.files[0]</span><br><span class="line">        if(!file.type.startsWith(&apos;image/&apos;))&#123;</span><br><span class="line">            alert(&apos;请确认文件格式&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        if(typeof FileReader == &quot;undefined&quot;)&#123;</span><br><span class="line">            alert(&apos;本浏览器不支持文件读取&apos;)</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            let read = new FileReader()</span><br><span class="line">            read.readAsDataURL(file)</span><br><span class="line">            read.onload = function () &#123;</span><br><span class="line">                box1.innerHTML = `</span><br><span class="line">                    &lt;img src=&quot;$&#123; this.result &#125;&quot;&gt;</span><br><span class="line">                `</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>读取文本文件（二进制形式和文本形式）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; id=&quot;file&quot;&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; value=&quot;二进制读取&quot; onclick=&quot;readBinary()&quot;&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; value=&quot;文本读取&quot; onclick=&quot;readText()&quot;&gt;</span><br><span class="line">&lt;div id=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    let fileBox = document.getElementById(&apos;file&apos;)</span><br><span class="line">    let box = document.getElementById(&apos;box&apos;)</span><br><span class="line">    function readBinary() &#123;</span><br><span class="line">        let file = fileBox.files[0]</span><br><span class="line">        let read = new FileReader()</span><br><span class="line">        read.readAsBinaryString(file)</span><br><span class="line">        read.onload = function () &#123;</span><br><span class="line">            box.innerHTML = this.result.toString()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    function readText() &#123;</span><br><span class="line">        let file = fileBox.files[0]</span><br><span class="line">        let read = new FileReader()</span><br><span class="line">        read.readAsText(file, &apos;utf-8&apos;)</span><br><span class="line">        read.onload = function () &#123;</span><br><span class="line">            box.innerHTML = this.result.toString()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>读取文件进度条</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; id=&quot;file&quot;&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; onclick=&quot;upload()&quot; value=&quot;上传&quot;&gt;</span><br><span class="line">&lt;progress id=&quot;p&quot; value=&quot;0&quot; max=&quot;100&quot; onchange=&quot;range()&quot;&gt;&lt;/progress&gt;</span><br><span class="line">&lt;div id=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    let fileBox = document.getElementById(&apos;file&apos;)</span><br><span class="line">    let box = document.getElementById(&apos;box&apos;)</span><br><span class="line">    let progress = document.getElementById(&apos;p&apos;)</span><br><span class="line">    function upload() &#123;</span><br><span class="line">        let read = new FileReader()</span><br><span class="line">        read.readAsDataURL(fileBox.files[0])</span><br><span class="line">        read.onprogress = function (e) &#123;</span><br><span class="line">            progress.value = e.loaded / e.total * 100</span><br><span class="line">        &#125;</span><br><span class="line">        read.onload = function () &#123;</span><br><span class="line">            box.innerHTML = `</span><br><span class="line">                &lt;video src=&quot;$&#123; this.result &#125;&quot; controls&gt;&lt;/video&gt;</span><br><span class="line">            `</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>onprogress接受一个event事件，里面有三个属性：</p>
+<ol>
+<li>lengthComputable 表示进度信息是否可用</li>
+<li>total 表示文件的总字节数</li>
+<li>loaded 表示已读取的字节数</li>
+</ol>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/prinklezoro.github.io/tags/JS/" rel="tag"># JS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/prinklezoro.github.io/2019/08/20/ES6新增功能/" rel="next" title="ES6新增功能">
+                  <i class="fa fa-chevron-left"></i> ES6新增功能
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/prinklezoro.github.io/images/avatar.gif"
+      alt="Katakuri">
+  <p class="site-author-name" itemprop="name">Katakuri</p>
+  <div class="site-description motion-element" itemprop="description">自律即自由</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/prinklezoro.github.io/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/prinklezoro.github.io/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/prinklezoro.github.io/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:prinklezoro@gmail.com" title="E-Mail &rarr; mailto:prinklezoro@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#FileList对象与File对象"><span class="nav-number">1.</span> <span class="nav-text">FileList对象与File对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayBuffer对象与ArrayBufferView对象"><span class="nav-number">2.</span> <span class="nav-text">ArrayBuffer对象与ArrayBufferView对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DateView对象"><span class="nav-number">2.1.</span> <span class="nav-text">DateView对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blob对象"><span class="nav-number">3.</span> <span class="nav-text">Blob对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Blob对象概述"><span class="nav-number">3.1.</span> <span class="nav-text">Blob对象概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Blob对象"><span class="nav-number">3.1.1.</span> <span class="nav-text">创建Blob对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Blob的slice对象"><span class="nav-number">3.1.2.</span> <span class="nav-text">Blob的slice对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FileReader对象"><span class="nav-number">4.</span> <span class="nav-text">FileReader对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FileReader对象的方法"><span class="nav-number">4.0.1.</span> <span class="nav-text">FileReader对象的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FileReader事件"><span class="nav-number">4.0.2.</span> <span class="nav-text">FileReader事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例"><span class="nav-number">4.0.3.</span> <span class="nav-text">案例</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Katakuri</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.7' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js"></script>
+  <script src="/prinklezoro.github.io/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/prinklezoro.github.io/js/utils.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/motion.js?v=7.3.0"></script>
+
+<script src="/prinklezoro.github.io/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/prinklezoro.github.io/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/prinklezoro.github.io/js/scrollspy.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Q6pYWSENGYw0Jy6d4DqtudBA-gzGzoHsz',
+    appKey: 'n4tLHHKWGVWs5vhSFBCtqQim',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
