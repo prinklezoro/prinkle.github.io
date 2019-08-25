@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/prinklezoro.github.io/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/prinklezoro.github.io/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/prinklezoro.github.io/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/prinklezoro.github.io/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/prinklezoro.github.io/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/prinklezoro.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/prinklezoro.github.io/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="Web StorageWeb Storage的概念 cookie的缺点  cookie的大小被限制在4K  cookie是岁HTTP事务一起被发送的。因此会浪费一部分发送cookie时使用的带宽 操作cookie很复杂   sessionStorage：将数据保存到session中。session的生命周期是指用户从进入网站到关闭浏览器这一段时间。  localStorage：将数据保存到客户端本">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="本地存储">
+<meta property="og:url" content="https://prinklezoro.github.io/prinklezoro.github.io/2019/08/25/本地存储/index.html">
+<meta property="og:site_name" content="Katakuri">
+<meta property="og:description" content="Web StorageWeb Storage的概念 cookie的缺点  cookie的大小被限制在4K  cookie是岁HTTP事务一起被发送的。因此会浪费一部分发送cookie时使用的带宽 操作cookie很复杂   sessionStorage：将数据保存到session中。session的生命周期是指用户从进入网站到关闭浏览器这一段时间。  localStorage：将数据保存到客户端本">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cc1.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cc2.png">
+<meta property="og:updated_time" content="2019-08-25T14:07:43.598Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="本地存储">
+<meta name="twitter:description" content="Web StorageWeb Storage的概念 cookie的缺点  cookie的大小被限制在4K  cookie是岁HTTP事务一起被发送的。因此会浪费一部分发送cookie时使用的带宽 操作cookie很复杂   sessionStorage：将数据保存到session中。session的生命周期是指用户从进入网站到关闭浏览器这一段时间。  localStorage：将数据保存到客户端本">
+<meta name="twitter:image" content="https://prinklezoro.github.io/assets/cc1.png">
+  <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/08/25/本地存储/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>本地存储 | Katakuri</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/prinklezoro.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Katakuri</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/prinklezoro.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/prinklezoro.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/prinklezoro.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/prinklezoro.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/prinklezoro.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-music">
+      
+    
+
+    <a href="/prinklezoro.github.io/music/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>音乐</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/08/25/本地存储/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿文">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">本地存储
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-25 22:03:55 / 修改时间：22:07:43" itemprop="dateCreated datePublished" datetime="2019-08-25T22:03:55+08:00">2019-08-25</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/08/25/本地存储/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/08/25/本地存储/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Web-Storage"><a href="#Web-Storage" class="headerlink" title="Web Storage"></a>Web Storage</h2><h3 id="Web-Storage的概念"><a href="#Web-Storage的概念" class="headerlink" title="Web Storage的概念"></a>Web Storage的概念</h3><ul>
+<li><p>cookie的缺点</p>
+<ul>
+<li>cookie的大小被限制在4K </li>
+<li>cookie是岁HTTP事务一起被发送的。因此会浪费一部分发送cookie时使用的带宽</li>
+<li>操作cookie很复杂</li>
+</ul>
+</li>
+<li><p>sessionStorage：将数据保存到session中。session的生命周期是指用户从进入网站到关闭浏览器这一段时间。</p>
+</li>
+<li><p>localStorage：将数据保存到客户端本地的硬件设备，浏览器关闭了还是会存在</p>
+</li>
+</ul><a id="more"></a>
+<blockquote>
+<p>localStrorage是分浏览器的，在这个浏览器存储的数据不会在另一个浏览器中存在</p>
+</blockquote>
+<ul>
+<li>保存数据：sessionStorage/localStorage.setItem(‘key’,’value’);或者sessionStorage/localStorage.key=’value’</li>
+<li>读取数据：sessionStorage/localStorage.getItem(‘key’);或者sessionStorage/localStorage.key</li>
+<li>清除数据：sessionStorage/localStorage.removeItem(‘key’)(清除一条数据)；sessionStorage/localStorage.clear()(清除所有数据)</li>
+<li>获取数据的多少：sessionStorage/localStorage.length</li>
+<li>获取第n条数据的key值：sessionStorage/localStorage.key(n)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;textarea id=&quot;text&quot; cols=&quot;30&quot; rows=&quot;10&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; onclick=&quot;addItem()&quot; value=&quot;追加数据&quot;&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; onclick=&quot;clearItem()&quot; value=&quot;清除数据&quot;&gt;</span><br><span class="line">&lt;div id=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    let text = document.getElementById(&apos;text&apos;)</span><br><span class="line">    let box = document.getElementById(&apos;box&apos;)</span><br><span class="line"></span><br><span class="line">    function addItem() &#123;</span><br><span class="line">        localStorage.setItem(new Date().getTime().toString(), text.value)</span><br><span class="line">        loadItem()</span><br><span class="line">    &#125;</span><br><span class="line">    function loadItem() &#123;</span><br><span class="line">        let str = `</span><br><span class="line">             &lt;table border=&quot;1&quot;&gt;</span><br><span class="line">                &lt;thead&gt;</span><br><span class="line">                    &lt;th&gt;数据&lt;/th&gt;</span><br><span class="line">                    &lt;th&gt;日期&lt;/th&gt;</span><br><span class="line">                &lt;/thead&gt;</span><br><span class="line">                &lt;tbody&gt;</span><br><span class="line">        `</span><br><span class="line">        for(let i = 0; i &lt; localStorage.length; i++)&#123;</span><br><span class="line">            let date = new Date()</span><br><span class="line">            date.setTime(parseInt(localStorage.key(i)))</span><br><span class="line">            str += `</span><br><span class="line">                 &lt;tr&gt;</span><br><span class="line">                        &lt;td&gt;$&#123; localStorage.getItem(localStorage.key(i)) &#125;&lt;/td&gt;</span><br><span class="line">                        &lt;td&gt;$&#123; date.toUTCString() &#125;&lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">            `</span><br><span class="line">        &#125;</span><br><span class="line">        str += `</span><br><span class="line">             &lt;/tbody&gt;</span><br><span class="line">            &lt;/table&gt;</span><br><span class="line">        `</span><br><span class="line">        box.innerHTML = str</span><br><span class="line">    &#125;</span><br><span class="line">    function clearItem() &#123;</span><br><span class="line">        localStorage.clear()</span><br><span class="line">        loadItem()</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/cc1.png" alt="image"></p>
+<h3 id="作为简易数据库来使用"><a href="#作为简易数据库来使用" class="headerlink" title="作为简易数据库来使用"></a>作为简易数据库来使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;使用web storage作为简易数据库来使用&lt;/h1&gt;</span><br><span class="line">&lt;table&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;姓名：&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;name&quot;&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;邮箱：&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;email&quot;&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;电话号码：&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;tel&quot;&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;备注：&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;description&quot;&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;&lt;input type=&quot;button&quot; value=&quot;保存&quot; onclick=&quot;save()&quot;&gt;&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;p&gt;检索：&lt;input type=&quot;text&quot; id=&quot;find&quot;&gt;</span><br><span class="line">         &lt;input type=&quot;button&quot; value=&quot;检索&quot; onclick=&quot;find()&quot;&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;p id=&quot;msg&quot;&gt;&lt;/p&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    let name = document.getElementById(&apos;name&apos;)</span><br><span class="line">    let email = document.getElementById(&apos;email&apos;)</span><br><span class="line">    let tel = document.getElementById(&apos;email&apos;)</span><br><span class="line">    let des = document.getElementById(&apos;description&apos;)</span><br><span class="line">    let find1 = document.getElementById(&apos;find&apos;)</span><br><span class="line">    let msg = document.getElementById(&apos;msg&apos;)</span><br><span class="line"></span><br><span class="line">    function save() &#123;</span><br><span class="line">        for(var i = 0; i &lt; localStorage.length; i++)&#123;</span><br><span class="line">            if(localStorage.key(i) == name.value)&#123;</span><br><span class="line">                alert(&apos;此用户已经存在&apos;)</span><br><span class="line">                return</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        let obj = &#123;</span><br><span class="line">            name: name.value,</span><br><span class="line">            email: email.value,</span><br><span class="line">            tel: tel.value,</span><br><span class="line">            des: des.value</span><br><span class="line">        &#125;</span><br><span class="line">        let jsonObj = JSON.stringify(obj)</span><br><span class="line">        localStorage.setItem(name.value, jsonObj)</span><br><span class="line">    &#125;</span><br><span class="line">    function find() &#123;</span><br><span class="line">        let result = &apos;&apos;</span><br><span class="line">        for(var j = 0; j &lt; localStorage.length; j++)&#123;</span><br><span class="line">            if(find1.value == localStorage.key(j))&#123;</span><br><span class="line">                let obj = JSON.parse(localStorage.getItem(localStorage.key(j)))</span><br><span class="line">                console.log(obj)</span><br><span class="line">                for(var key in obj) &#123;</span><br><span class="line">                    result += `</span><br><span class="line">                        $&#123; key &#125;：$&#123; obj[key] &#125;</span><br><span class="line">                    `</span><br><span class="line">                &#125;</span><br><span class="line">                msg.innerHTML = result</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="storage事件实时监听web-storage中的数据"><a href="#storage事件实时监听web-storage中的数据" class="headerlink" title="storage事件实时监听web storage中的数据"></a>storage事件实时监听web storage中的数据</h3><ul>
+<li>window对象的storage事件，当sessionStorage或者localStorage中的数据被修改时触发该事件</li>
+<li>事件对象属性：</li>
+<li>event.key：属性值为sessionStorage或localStorage中被修改的数据键值</li>
+<li>event.oldValue：属性值为sessionStorage或localStorage中被修改前的值</li>
+<li>event.newValue：属性值为sessionStorage或localStorage中被修改后的值</li>
+<li>event.url：修改此值的页面的URL地址</li>
+<li>event.storageArea：对应的sessionStorage或者localStorage</li>
+</ul>
+<h2 id="indexedDB数据库"><a href="#indexedDB数据库" class="headerlink" title="indexedDB数据库"></a>indexedDB数据库</h2><h3 id="indexedDB的基本概念"><a href="#indexedDB的基本概念" class="headerlink" title="indexedDB的基本概念"></a>indexedDB的基本概念</h3><p>该数据库是一种存储在客户端本地的NoSQL数据库</p>
+<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><ul>
+<li>indexDB.open(dbName, dbVersion) 打开数据库连接，第一个参数为数据库名字，第二个参数为数据库版本号；返回值为数据库连接对象</li>
+<li>e.target.result 返回一个数据库对象</li>
+<li>connectDB.onsuccess  数据库连接成功事件</li>
+<li>connectDB.onerror 数据库连接失败事件</li>
+<li>数据库对象.close() 关闭数据库</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;链接数据库&quot; onclick=&quot;connectDB()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function connectDB() &#123;</span><br><span class="line">        var dbName = &apos;indexedDBTest&apos; //数据库名字</span><br><span class="line">        var dbVersion = 20190825  //数据库版本号</span><br><span class="line">        var idb</span><br><span class="line"></span><br><span class="line">        var dbConnect = indexedDB.open(dbName, dbVersion) //连接数据库  返回一个IDBOpenDBRequest对象</span><br><span class="line">        dbConnect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result  //IDBdatabase对象  代表连接成功的数据库对象</span><br><span class="line">            alert(&apos;数据库连接成功&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        dbConnect.onerror = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库版本更新"><a href="#数据库版本更新" class="headerlink" title="数据库版本更新"></a>数据库版本更新</h3><ul>
+<li>对于数据的操作都在一个事务内部执行。事务分为三种：只读事务、读写事务和版本更新事务</li>
+<li>创建对象仓库和索引 只能在版本更新事务中执行</li>
+<li>onupgradeneeded事件，当该事件被触发时，一个数据库的版本更新事务已经开启，同时数据库的版本号已经自动更新完毕</li>
+<li>如果数据库版本更新了，onupgradeneeded事件比onsuccess事件先执行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;数据库更新&quot; onclick=&quot;update()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function update() &#123;</span><br><span class="line">        var connectDB = indexedDB.open(&apos;indexedDBTest&apos;, 20190826)</span><br><span class="line">        var idb</span><br><span class="line">        connectDB.onsuccess = function (e) &#123;</span><br><span class="line">            alert(&apos;数据库连接成功&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        connectDB.onerror = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        connectDB.onupgradeneeded = function (e) &#123;  </span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var tx =e.target.transaction  // 事务对象 此处代表版本更新事务</span><br><span class="line">            var oldVersion = e.oldVersion</span><br><span class="line">            var newVersion = e.newVersion</span><br><span class="line">            alert(`</span><br><span class="line">                数据库连接成功...旧版本号：$&#123; oldVersion &#125;，新版本号：$&#123; newVersion &#125;</span><br><span class="line">            `)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建数据仓库和索引"><a href="#创建数据仓库和索引" class="headerlink" title="创建数据仓库和索引"></a>创建数据仓库和索引</h3><ul>
+<li>创建对象仓库和索引必须在版本更新事务中进行，也就是onupgradeneeded事件中执行</li>
+<li>对象仓库相当于关系数据库中的数据库表</li>
+<li>e.target.result.createObjectStore(name, optionParameters) 创建对象仓库。第一个参数表示要创建的数据库表名；第二个参数表示一个对象{keyPath, autoIncrement}。其中keyPath表示指定主键值，如果不指定或者指定为null，则每条记录的主键由其他途径另行指定，称为外部主键（指定了就是内联主键）；autoIncrement表示添加数据是否递增，如果为true，则添加数据不需要显示的指定主键值</li>
+<li>createObjectStore方法返回一个IDBObjectStore对象，代表被创建成功的数据仓库对象</li>
+<li>indexedDB中的索引相当于关系数据库中的索引</li>
+<li>关系型数据库可以针对非索引字段进行检索，而在indexedDB中，只能针对被设置为索引的属性进行检索</li>
+<li>数据仓库.createIndex(name, keyPath, { unique, multiEntry }) 创建索引，其中第一个参数表示一个字符串，代表索引名字；第二个参数代表要作为索引的属性（第一个参数和第二个参数可以相同）；第三个参数是一个对象（可选），unique表明索引值是否唯一，true代表唯一、</li>
+<li>第二个参数也可以是一个包含属性名字符串的数组，代表创建复合索引</li>
+<li>multiEntry为true代表当数据记录的索引属性值为一个数组时，可以将数组中的每一个元素添加到索引中；为false时，代表只能将该数组整体添加到索引中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    id: 12345,</span><br><span class="line">    title: &apos;文章标题&apos;,</span><br><span class="line">    body: &apos;文章正文&apos;,</span><br><span class="line">    tags: [&apos;HTML&apos;, &apos;Javascript&apos;, &apos;PHP&apos;]</span><br><span class="line">&#125;</span><br><span class="line">//如果将tags设置为一个索引，multiEntry设置为true，那么无论使用&quot;HTML&quot;&quot;JavaScript&quot;&quot;PHP&quot;对tags属性进行检索，都能检索出该记录；如果为false，那么必须使用&quot;[&apos;HTML&apos;, &apos;JavaScript&apos;, &apos;PHP&apos;]&quot;这种数组的形式才能检索出该记录</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>tx.objectStore(数据仓库名字) 返回对应的数据仓库 store.index(索引名字)</li>
+</ul>
+<p><strong>创建数据仓库和索引</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;创建数据仓库&quot; onclick=&quot;create()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function create() &#123;</span><br><span class="line">        var connectDB = indexedDB.open(&apos;indexedDBTest&apos;, 20190827)</span><br><span class="line">        var idb</span><br><span class="line">        connectDB.onsuccess = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接成功&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        connectDB.onerror = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        connectDB.onupgradeneeded = function (e) &#123;</span><br><span class="line">            idb = e.target.result //数据库对象</span><br><span class="line">            var transaction = e.target.transaction //事务对象</span><br><span class="line">            //创建数据仓库</span><br><span class="line">            var store = transaction.createObjectStore(&apos;user&apos;, &#123; keyPath: &apos;id&apos;, autoIncrement: true&#125;)</span><br><span class="line">            //创建索引值</span><br><span class="line">            var index = store.createIndex(&apos;newName&apos;, &apos;name&apos;, &#123; unique: true, multiEntry: true &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//创建复合索引</span><br></pre></td></tr></table></figure>
+
+<p>修改数据仓库和索引名字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; onclick=&quot;update()&quot; value=&quot;修改数据仓库名字&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function update() &#123;</span><br><span class="line">        var connectDB = indexedDB.open(&apos;indexedDBTest&apos;, 20190829)</span><br><span class="line">        var idb</span><br><span class="line">        connectDB.onsuccess = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接成功&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        connectDB.onerror = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        connectDB.onupgradeneeded = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var tx = e.target.transaction</span><br><span class="line">            var store = tx.objectStore(&apos;person&apos;)</span><br><span class="line">            console.log(store.name)</span><br><span class="line">            store.name = &apos;newPerson&apos;</span><br><span class="line">            var index = store.index(&apos;personName&apos;)</span><br><span class="line">            index.name = &apos;newPersonName&apos;</span><br><span class="line">            console.log(index)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>objectStore方法是事务对象调用的；objectStoreNames方法返回一个数组，是数据库对象调用的，也可以是事务对象调用；createObjectStore方法是数据库对象调用的</p>
+</blockquote>
+<h3 id="使用事务"><a href="#使用事务" class="headerlink" title="使用事务"></a>使用事务</h3><ul>
+<li>事务分为三类：版本更新事务；只读事务；读写事务</li>
+<li>版本更新事务在onupgradeneeded事件中通过e.target.transaction获取</li>
+<li>开启只读事务和读写事务：idb.transaction(storeNames, mode) 第一个参数表示数据仓库名组成的一个字符串数组；第二个参数表示是读写操作还是只读操作，’readwrite’代表读写操作，’readonly’代表只读操作，默认为只读。返回一个事务对象</li>
+<li>idb.objectStoreNames方法返回该数据库所有的数据仓库名字的字符串数组</li>
+<li>用于开启事务的transaction()方法必须在一个函数中被调用；函数结束后将自动执行事务对象的commit()方法；abort()方法表示中止事务</li>
+<li>事务的事件：oncomplete事件：当事务结束时被触发；onabort事件：当事务中止时被触发</li>
+</ul>
+<h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><ul>
+<li>tx.objectStore(仓库名)返回一个在该事务对象范围内的数据仓库对象</li>
+<li>put方法向数据仓库中添加数据，参数是一个对象。返回一个IDBRequest对象，代表一个像数据库发出的请求</li>
+<li>put方法返回的request对象有两个事件：onsuccess事件和onerror事件</li>
+<li>根据对象仓库的主键是内联主键还是外部主键，主键是否自动递增。对象仓库的put方法的第一个参数的指定方法也各不相同</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//主键为自增、内联主键时不需要指定主键名</span><br><span class="line">store.put(&#123; userName: &apos;张三&apos;, address: &apos;住址1&apos; &#125;)</span><br><span class="line">//主键为内联、不自增主键时需要指定主键名</span><br><span class="line">store.put(&#123; userId: 1, userName: &apos;张三&apos;, address: &apos;住址1&apos; &#125;)</span><br><span class="line">//主键为外部主键时</span><br><span class="line">store.put(&#123; userName: &apos;张三&apos;, address: &apos;住址1&apos; &#125;, 1)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>add()方法也可以添加数据，区别在于add()在添加仓库中主键值相同的数据时会保存失败；而put()方法会覆盖</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;保存数据&quot; onclick=&quot;save()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function save() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;,20190829)</span><br><span class="line">        var idb</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var tx = idb.transaction([&apos;newPerson&apos;], &apos;readwrite&apos;)</span><br><span class="line">            tx.oncomplete = function () &#123;</span><br><span class="line">                alert(&apos;添加数据成功&apos;)</span><br><span class="line">            &#125;</span><br><span class="line">            tx.onabort = function () &#123;</span><br><span class="line">                alert(&apos;添加数据失败&apos;)</span><br><span class="line">            &#125;</span><br><span class="line">            var store = tx.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            store.put(&#123;</span><br><span class="line">                personName: &apos;张三&apos;,</span><br><span class="line">                personDes: &apos;自律即自由&apos;</span><br><span class="line">            &#125;)</span><br><span class="line">            store.put(&#123;</span><br><span class="line">                personName: &apos;李四&apos;,</span><br><span class="line">                personDes: &apos;自律即自由11&apos;</span><br><span class="line">            &#125;)</span><br><span class="line">            store.put(&#123;</span><br><span class="line">                personName: &apos;王五&apos;,</span><br><span class="line">                personDes: &apos;自律即自由22&apos;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        connect.onerror = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h3><ul>
+<li>store.get()获取数据。参数为所需要获取数据的主键值。返回值为一个IDBRequest对象。该对象有onsuccess事件和onerror事件</li>
+<li>在onsuccess事件中，request.result表示所获取的数据。如果不存在该数据，则值为undefined</li>
+<li>如果数据仓库中有索引，则可以利用该索引对应的属性值来获取数据 index.get(属性值)</li>
+<li>如果定义索引值没有利用unique属性将该索引定义为唯一索引，可能存在符合条件的很多数据，get()方法只返回第一条</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;检索数据&quot; onclick=&quot;search()&quot;&gt;</span><br><span class="line">&lt;p id=&quot;msg&quot;&gt;&lt;/p&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var msg = document.getElementById(&apos;msg&apos;)</span><br><span class="line">    function search() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;,20190829)</span><br><span class="line">        var idb</span><br><span class="line">        var str = &apos;&apos;</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var tx = idb.transaction([&apos;newPerson&apos;], &apos;readonly&apos;)</span><br><span class="line">            var store = tx.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            var req = store.get(2)</span><br><span class="line">            req.onsuccess = function () &#123;</span><br><span class="line">                if(this.result == undefined)&#123;</span><br><span class="line">                    alert(&apos;该数据不存在&apos;)</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    for(var key in this.result) &#123;</span><br><span class="line">                        str += `</span><br><span class="line">                            $&#123; key &#125;：$&#123; this.result[key] &#125; &lt;br&gt;</span><br><span class="line">                        `</span><br><span class="line">                    &#125;</span><br><span class="line">                    msg.innerHTML = str</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        connect.onerror = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>根据索引值检索数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; onclick=&quot;search1()&quot; value=&quot;根据索引检索数据&quot;&gt;</span><br><span class="line">&lt;p id=&quot;msg&quot;&gt;&lt;/p&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var msg = document.getElementById(&apos;msg&apos;)</span><br><span class="line">    var str = &apos;&apos;</span><br><span class="line">    function search1() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;,20190829)</span><br><span class="line">        var idb</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var tx = idb.transaction([&apos;newPerson&apos;], &apos;readonly&apos;)</span><br><span class="line">            var store = tx.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            var index = store.index(&apos;newPersonName&apos;)</span><br><span class="line">            var req = index.get(&apos;王五&apos;)</span><br><span class="line">            req.onsuccess = function () &#123;</span><br><span class="line">                if(this.result == undefined)&#123;</span><br><span class="line">                    alert(&apos;该数据不存在&apos;)</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    for(var key in this.result) &#123;</span><br><span class="line">                        str += `</span><br><span class="line">                            $&#123; key &#125;：$&#123; this.result[key] &#125; &lt;br&gt;</span><br><span class="line">                        `</span><br><span class="line">                    &#125;</span><br><span class="line">                    msg.innerHTML = str</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        connect.onerror = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="游标检索多条数据"><a href="#游标检索多条数据" class="headerlink" title="游标检索多条数据"></a>游标检索多条数据</h3><ul>
+<li>store.openCursor(range, direction) 创建并打开一个游标。第一个参数是一个IDBKeyRange对象；第二个参数用于指定游标的读取方向；返回值为一个IDBRequest对象</li>
+<li>IDBKeyRange.bound(lower, upper, lowerOpen, upperOpen) 返回一个IDBKeyRange集合对象，第一个参数代表最小主键值，第二个参数代表最大主键值，第三个参数（可选）代表是否包含最小主键值（false代表包含，true代表不包含，默认是false），第四个参数（可选）代表是否包含最大主键值（false代表包含，true代表不包含，默认是false）</li>
+<li>IDBKeyRange.only(value)返回一个由一条数据组成的range集合。参数就是要检索的主键值</li>
+<li>IDBKeyRange.lowerBound(lower, lowerOpen) 返回一个均大于参数主键值的range集合。第一个参数表示最小主键值，第二个参数表示是否包含最小主键值</li>
+<li>IDBKeyRange.upperBound(upper, upperOpen)返回一个均小于参数主键值的range集合。第一个参数表示最大主键值，第二个参数表示是否包含最大主键值</li>
+<li>direction参数：’next’ 表示游标中数据按主键值升序排列，主键值相等的数据均被读取到游标中；’nextunique’数据按主键值升序排列，主键值相等的数据只取第一条数据；’prev’主键值降序排列，包含主键值相等的元素；’prevunique’主键值降序排列，主键值相等只取第一条数据</li>
+<li>返回值是一个IDBRequest对象，有onsuccess事件和onerror事件，this.result返回一个IDBCursorWithValue对象，该对象的key值保存了当前指向的数据记录的主键值；value属性代表这个被检索的数据</li>
+<li>this.result.update(对象) 可以把事务改成读写，更新当前的数据</li>
+<li>cursor.delete() 删除该条数据</li>
+<li>cursor.continue() 读取游标的下一条数据</li>
+</ul>
+<blockquote>
+<p>浏览器F12 application窗口 可以看到indexeddb数据库的可视化</p>
+</blockquote>
+<p><img src="/assets/cc2.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;游标获取多条数据&quot; onclick=&quot;cursor()&quot;&gt;</span><br><span class="line">&lt;div id=&quot;msg&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var msg = document.getElementById(&apos;msg&apos;)</span><br><span class="line"></span><br><span class="line">    function cursor() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;,20190829)</span><br><span class="line">        var idb</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var str = &apos;&apos;</span><br><span class="line">            var transaction = idb.transaction([&apos;newPerson&apos;], &apos;readonly&apos;)</span><br><span class="line">            var store = transaction.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            //打开游标</span><br><span class="line">            var req = store.openCursor(IDBKeyRange.bound(1, 3), &apos;next&apos;)</span><br><span class="line">            req.onsuccess = function () &#123;</span><br><span class="line">                var cursor = this.result</span><br><span class="line">                if(cursor)&#123;</span><br><span class="line">                    console.log(cursor.key)</span><br><span class="line">                    for(var key in cursor.value)&#123;</span><br><span class="line">                        str += `</span><br><span class="line">                            $&#123; key &#125;：$&#123; cursor.value[key] &#125;</span><br><span class="line">                        `</span><br><span class="line">                    &#125;</span><br><span class="line">                    cursor.continue()</span><br><span class="line">                &#125;</span><br><span class="line">                msg.innerHTML = str</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        connect.onerror = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="根据搜索范围获取数据的主键值"><a href="#根据搜索范围获取数据的主键值" class="headerlink" title="根据搜索范围获取数据的主键值"></a>根据搜索范围获取数据的主键值</h3><ul>
+<li>对象仓库的getKey(range)方法获取对象仓库中第一条处于搜索范围中的数据的主键值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;获取第一条数据&quot; onclick=&quot;getFirst()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function getFirst() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;,20190829)</span><br><span class="line">        var idb</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var transaction = idb.transaction([&apos;newPerson&apos;], &apos;readonly&apos;)</span><br><span class="line">            var store = transaction.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            var req = store.getKey(IDBKeyRange.bound(1, 3, true))</span><br><span class="line">            req.onsuccess = function () &#123;</span><br><span class="line">                console.log(this.result)  //获取主键值2</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        connect.onerror = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="根据索引值获取数据"><a href="#根据索引值获取数据" class="headerlink" title="根据索引值获取数据"></a>根据索引值获取数据</h3><ul>
+<li>store.index(索引名)获取对应的索引值</li>
+<li>index.openCursor(range, direction)打开游标，返回request对象，方法同上</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;根据索引值获取数据&quot; onclick=&quot;getIndex()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function getIndex() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;, 20190829)</span><br><span class="line">        var idb</span><br><span class="line">        var str = &apos;&apos;</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var transaction = idb.transaction([&apos;newPerson&apos;], &apos;readonly&apos;)</span><br><span class="line">            var store = transaction.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            var index = store.index(&apos;newPersonName&apos;)</span><br><span class="line">            var req = index.openCursor(IDBKeyRange.bound(&apos;张三&apos;, &apos;王五&apos;, true, true))</span><br><span class="line">            req.onsuccess = function () &#123;</span><br><span class="line">                var cursor = this.result</span><br><span class="line">                if(cursor)&#123;</span><br><span class="line">                    console.log(cursor.key)</span><br><span class="line">                    for(var key in cursor.value)&#123;</span><br><span class="line">                        str += `</span><br><span class="line">                            $&#123; key &#125;:$&#123; cursor.value[key] &#125;</span><br><span class="line">                        `</span><br><span class="line">                    &#125;</span><br><span class="line">                    cursor.continue()</span><br><span class="line">                &#125;</span><br><span class="line">                if(!cursor)&#123;</span><br><span class="line">                    console.log(str)</span><br><span class="line">                &#125;</span><br><span class="line">                //这条语句会执行两次</span><br><span class="line">                // console.log(str)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        connect.onerror = function () &#123;</span><br><span class="line">            alert(&apos;数据库连接失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>onsuccess事件函数中，如果游标数据有多条，那么使用continue方法，函数会执行多次（只有一条数据也会执行两次） 所以应该用这个语句只执行一次  if(!cursor){console.log(str)}</p>
+</blockquote>
+<h3 id="获取所有数据"><a href="#获取所有数据" class="headerlink" title="获取所有数据"></a>获取所有数据</h3><ul>
+<li>store.getAll() 获取该数据仓库中的所有数据，返回一个request对象，在onsuccess事件中，用this.result返回获得的所有数据的数组</li>
+<li>getAll(range, count)也可以指定参数，第一个参数表示range对象，第二个参数表示获取的条数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;获取全部数据&quot; onclick=&quot;getAllData()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function getAllData() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;,20190829)</span><br><span class="line">        var idb</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var transaction = idb.transaction([&apos;newPerson&apos;], &apos;readonly&apos;)</span><br><span class="line">            var store = transaction.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            // var req = store.getAll()  三条数据</span><br><span class="line">            var req = store.getAll(IDBKeyRange.bound(1, 3), 2) //两条数据</span><br><span class="line">            req.onsuccess = function () &#123;</span><br><span class="line">                for(let value of this.result)&#123;</span><br><span class="line">                    console.log(`一条数据：$&#123; value.personDes &#125;`)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>getAll同样适用于索引检索</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function getAllData() &#123;</span><br><span class="line">    var connect = indexedDB.open(&apos;indexedDBTest&apos;,20190829)</span><br><span class="line">    var idb</span><br><span class="line">    connect.onsuccess = function (e) &#123;</span><br><span class="line">        idb = e.target.result</span><br><span class="line">        var transaction = idb.transaction([&apos;newPerson&apos;], &apos;readonly&apos;)</span><br><span class="line">        var store = transaction.objectStore(&apos;newPerson&apos;)</span><br><span class="line">        var index= store.index(&apos;newPersonName&apos;)</span><br><span class="line">        var req = index.getAll(IDBKeyRange.bound(&apos;李四&apos;, &apos;王五&apos;), 1) //1条数据</span><br><span class="line">        req.onsuccess = function () &#123;</span><br><span class="line">            for(let value of this.result)&#123;</span><br><span class="line">                console.log(`一条数据：$&#123; value.personDes &#125;`)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建复合索引和根据复合索引检索数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;连接数据库&quot; onclick=&quot;connectDatabase()&quot;&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; value=&quot;获取数据&quot; onclick=&quot;getData()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var idb</span><br><span class="line">    function connectDatabase() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;, 20190831)</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            console.log(&apos;数据库连接成功&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        connect.onerror = function () &#123;</span><br><span class="line">            console.log(&apos;数据库连接失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        connect.onupgradeneeded = function (e) &#123;</span><br><span class="line">            var transaction = e.target.transaction</span><br><span class="line">            var store = transaction.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            var multipyIndex = store.createIndex(&apos;personNameDes&apos;, [&apos;personName&apos;, &apos;personDes&apos;], &#123; unique: false, multiEntry: false &#125;)</span><br><span class="line">            console.log(&apos;创建索引成功&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    function getData() &#123;</span><br><span class="line">        var itx = idb.transaction([&apos;newPerson&apos;], &apos;readonly&apos;)</span><br><span class="line">        var store = itx.objectStore(&apos;newPerson&apos;)</span><br><span class="line">        var idx = store.index(&apos;personNameDes&apos;)</span><br><span class="line">        var req = idx.get([</span><br><span class="line">            &apos;张三&apos;,</span><br><span class="line">            &apos;自律即自由&apos;</span><br><span class="line">        ])</span><br><span class="line">        req.onsuccess = function () &#123;</span><br><span class="line">            console.log(this.result.personName, this.result.personDes)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="统计对象仓库里面的数据数量"><a href="#统计对象仓库里面的数据数量" class="headerlink" title="统计对象仓库里面的数据数量"></a>统计对象仓库里面的数据数量</h3><ul>
+<li>store.count() 返回一个req对象，在onsuccess事件中利用this.result获取数量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;获取数据的数量&quot; onclick=&quot;getCount()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function getCount() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;, 20190831)</span><br><span class="line">        var idb</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var tx = idb.transaction([&apos;newPerson&apos;], &apos;readonly&apos;)</span><br><span class="line">            var store = tx.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            var req = store.count()</span><br><span class="line">            req.onsuccess = function () &#123;</span><br><span class="line">                console.log(this.result)  //3</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="列出数据库中所有对象仓库的名称"><a href="#列出数据库中所有对象仓库的名称" class="headerlink" title="列出数据库中所有对象仓库的名称"></a>列出数据库中所有对象仓库的名称</h3><ul>
+<li>数据库对象的objectStoreNames属性获取该数据库中所有对象仓库的名称，该属性值为一个字符串列表，每一项代表对象仓库的名称</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;获取列表&quot; onclick=&quot;getStoreList()&quot;&gt;</span><br><span class="line">&lt;div id=&quot;msg&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var msg = document.getElementById(&apos;msg&apos;)</span><br><span class="line">    var str = &apos;&apos;</span><br><span class="line">    function getStoreList() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;, 20190831)</span><br><span class="line">        var idb</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            for(let value of idb.objectStoreNames)&#123;</span><br><span class="line">                str += `</span><br><span class="line">                    &lt;li&gt;$&#123; value &#125;&lt;/li&gt;</span><br><span class="line">                `</span><br><span class="line">            &#125;</span><br><span class="line">            msg.innerHTML = str</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>事务对象的objectStoreNames属性获取该事务中可访问的对象仓库的名称</li>
+</ul>
+<h3 id="删除对象仓库"><a href="#删除对象仓库" class="headerlink" title="删除对象仓库"></a>删除对象仓库</h3><ul>
+<li>数据库对象的deleteObjectStore(objectStoreName)可以删除对象仓库，参数是一个字符串，代表要删除的对象仓库的名字</li>
+<li>这个方法必须运行在版本更新事务中，否则会删除失败，运行在onupgradeneeded事件中</li>
+</ul>
+<h3 id="根据主键删除单条数据"><a href="#根据主键删除单条数据" class="headerlink" title="根据主键删除单条数据"></a>根据主键删除单条数据</h3><ul>
+<li>对象仓库的deleteKey(key) 删除数据，参数是要删除数据的主键值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;链接数据库&quot; onclick=&quot;connectDatabase()&quot;&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; value=&quot;删除单条数据&quot; onclick=&quot;deleteData()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var idb</span><br><span class="line">    function connectDatabase() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;, 20190831)</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            alert(&apos;数据库连接成功&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    function deleteData() &#123;</span><br><span class="line">        var tx = idb.transaction([&apos;newPerson&apos;], &apos;readwrite&apos;)</span><br><span class="line">        tx.oncomplete = function () &#123;</span><br><span class="line">            alert(&apos;删除数据成功&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        tx.onabort = function () &#123;</span><br><span class="line">            alert(&apos;删除数据失败&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        var store = tx.objectStore(&apos;newPerson&apos;)</span><br><span class="line">        store.delete(2)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="列举对象仓库里面的所有索引名称"><a href="#列举对象仓库里面的所有索引名称" class="headerlink" title="列举对象仓库里面的所有索引名称"></a>列举对象仓库里面的所有索引名称</h3><ul>
+<li>对象仓库的indexNames() 返回所有索引名称的数组</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;获取所有索引&quot; onclick=&quot;getAllIndex()&quot;&gt;</span><br><span class="line">&lt;div id=&quot;msg&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function getAllIndex() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;, 20190831)</span><br><span class="line">        var idb</span><br><span class="line">        var str = &apos;&apos;</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var tx = idb.transaction([&apos;newPerson&apos;], &apos;readwrite&apos;)</span><br><span class="line">            var store = tx.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            for(let index of store.indexNames)&#123;</span><br><span class="line">                str += `</span><br><span class="line">                    &lt;li&gt;$&#123; index &#125;&lt;/li&gt;</span><br><span class="line">                `</span><br><span class="line">            &#125;</span><br><span class="line">            document.getElementById(&apos;msg&apos;).innerHTML = str</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除对象索引"><a href="#删除对象索引" class="headerlink" title="删除对象索引"></a>删除对象索引</h3><ul>
+<li>store.deleteIndex(indexName)删除对应的索引</li>
+<li>必须在版本更新事件中进行，否则删除索引失败</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;删除对应的索引&quot; onclick=&quot;deleteIndex()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function deleteIndex() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;, 20190833 )</span><br><span class="line">        var idb</span><br><span class="line">        connect.onsuccess = function () &#123;</span><br><span class="line">            console.log(&apos;数据库连接成功&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">        connect.onupgradeneeded = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var tx = e.target.transaction</span><br><span class="line">            tx.oncomplete = function () &#123;</span><br><span class="line">                alert(&apos;删除索引成功&apos;)</span><br><span class="line">            &#125;</span><br><span class="line">            tx.onabort = function () &#123;</span><br><span class="line">                alert(&apos;删除索引失败&apos;)</span><br><span class="line">            &#125;</span><br><span class="line">            var store = tx.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            store.deleteIndex(&apos;personNameDes&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取索引对象的方法"><a href="#获取索引对象的方法" class="headerlink" title="获取索引对象的方法"></a>获取索引对象的方法</h3><ul>
+<li>index.getKey(indexName)根据索引值获取对应数据的主键值，参数为索引值。返回一个request对象，在onsuccess事件中通过this.result获取对应的主键值，如果不存在，则为undefined</li>
+<li>index.getAllKeys()获取所有数据的主键值并按照指定的索引值进行排序，通过this.result获取到的是一个存放了所有数据主键值的数组</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;根据索引值获取主键&quot; onclick=&quot;getKeyByIndex()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function getKeyByIndex() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;, 20190833)</span><br><span class="line">        var idb</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var transaction = idb.transaction([&apos;newPerson&apos;], &apos;readonly&apos;)</span><br><span class="line">            var store = transaction.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            var index = store.index(&apos;newPersonName&apos;)</span><br><span class="line">            var req = index.getKey(&apos;张三&apos;)</span><br><span class="line">            var req1 = index.getAllKeys()</span><br><span class="line">            req.onsuccess = function () &#123;</span><br><span class="line">                console.log(this.result)</span><br><span class="line">            &#125;</span><br><span class="line">            req1.onsuccess = function () &#123;</span><br><span class="line">                for(let key of this.result)&#123;</span><br><span class="line">                    console.log(`检索到一条数据：$&#123; key &#125;`)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>getAllKeys(range, count)也可以指定参数，第一个参数是一个IDBKeyRange对象；第二个参数是要获取的数量</li>
+<li>index.openKeyCursor(range, direction)方法是对索引进行检索与store.openCursor(range, direction)类似。通过onsuccess事件，this.result包含了所有被检索数据的索引属性值，可以通过this.result.key来获取（没有value属性）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;打开游标获取对应的索引属性值&quot; onclick=&quot;getKeyByCursor()&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function getKeyByCursor() &#123;</span><br><span class="line">        var connect = indexedDB.open(&apos;indexedDBTest&apos;, 20190833)</span><br><span class="line">        var idb</span><br><span class="line">        connect.onsuccess = function (e) &#123;</span><br><span class="line">            idb = e.target.result</span><br><span class="line">            var tx = idb.transaction([&apos;newPerson&apos;], &apos;readonly&apos;)</span><br><span class="line">            var store = tx.objectStore(&apos;newPerson&apos;)</span><br><span class="line">            var index = store.index(&apos;newPersonName&apos;)</span><br><span class="line">            var req = index.openKeyCursor(IDBKeyRange.lowerBound(&apos;张三&apos;), &apos;next&apos;)</span><br><span class="line">            req.onsuccess = function () &#123;</span><br><span class="line">                let cursor = this.result</span><br><span class="line">                if(cursor)&#123;</span><br><span class="line">                    console.log(`索引值为：$&#123; cursor.key &#125;`)</span><br><span class="line">                    cursor.continue()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>index.count(key)获取指定索引值对应的数据的条数</li>
+</ul>
+<h3 id="在指定范围内抽取数据主键"><a href="#在指定范围内抽取数据主键" class="headerlink" title="在指定范围内抽取数据主键"></a>在指定范围内抽取数据主键</h3><ul>
+<li>store.openKeyCursor(range, direction) 同上，this.result.key返回的是主键值（没有value属性）</li>
+</ul>
+<h3 id="使用游标对象的方法"><a href="#使用游标对象的方法" class="headerlink" title="使用游标对象的方法"></a>使用游标对象的方法</h3><ul>
+<li>continue方法的执行将重用创建该游标对象时所调用的IDBRequest对象，再次向数据库发出符合检索条件的数据请求，也就是说重新执行一遍成功事件里面的函数或者失败事件里面的函数</li>
+<li>连续两次调用continue将会报错</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cursor.continue()</span><br><span class="line">cursor.continue() //报错</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>continue也可以指定一个参数，参数值为在当前游标对象所指向的数据后面的一条数据的主键值，如果设为不存在的主键值，则会报错</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cursor.continue(3) //将游标指向为主键值为3的那条数据</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>advance(number) advance方法大致和continue方法一样，参数number代表一个整数值，代表在检索到的所有数据中需要获取的下一条数据与当前数据相隔多少条数据，如果number过大，超过的检索的数据条数也不会报错</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="IDBFactory"><a href="#IDBFactory" class="headerlink" title="IDBFactory"></a>IDBFactory</h3><ul>
+<li>提供了对数据库的访问。这是由全局对象 indexedDB实现的接口，因而也是该 API 的入口。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性／方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>indexedDB.open(name, [version])</td>
+<td>请求连接到指定name和version的数据库，如果指定name的数据库不存在，则利用name和version创建一个数据库。</td>
+</tr>
+<tr>
+<td>indexedDB.deleteDatabase(name)</td>
+<td>请求删除指定name的数据库。</td>
+</tr>
+</tbody></table>
+<h3 id="IDBCursor"><a href="#IDBCursor" class="headerlink" title="IDBCursor"></a>IDBCursor</h3><ul>
+<li>遍历对象存储空间和索引。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性／方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cursor.delete()</td>
+<td>返回一个IDBRequest对象。在一个独立线程内删除游标所在位置处的记录（不移动游标）（删除数据库里面的数据），随后将游标设置为null。</td>
+</tr>
+<tr>
+<td>cursor.continue(optionalKey)</td>
+<td>继续沿着当前游标遍历方向，找到下一个能够匹配key参数的键。如果没有指定参数，则根据游标当前遍历方向，移动到下一个位置。</td>
+</tr>
+<tr>
+<td>cursor.update(newValue)</td>
+<td>返回一个IDBRequest对象。在一个独立线程内，使用newValue来更新对象存储内游标当前位置处的值（更新了数据库里面的值）。如果游标指向的记录已被删除，则利用指定的newValue值创建一个新的记录。</td>
+</tr>
+<tr>
+<td>cursor.source（只读）</td>
+<td>返回游标遍历的IDBObjectStore或IDBIndex。</td>
+</tr>
+<tr>
+<td>cursor.direction（只读）</td>
+<td>游标遍历的方向。</td>
+</tr>
+<tr>
+<td>cursor.key（只读）</td>
+<td>返回游标所在位置处记录的键。如果游标超出范围，则返回undefined。</td>
+</tr>
+<tr>
+<td>cursor.primaryKey（只读）</td>
+<td>返回游标当前位置的主键。如果游标当前正在迭代或超出迭代范围，则设置为undefined。游标的主键可以是任何数据类型。</td>
+</tr>
+</tbody></table>
+<h3 id="IDBCursorWithValue"><a href="#IDBCursorWithValue" class="headerlink" title="IDBCursorWithValue"></a>IDBCursorWithValue</h3><ul>
+<li>遍历对象存储空间和索引并返回游标的当前值。 </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性／方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cursor.value</td>
+<td>返回游标当前位置的值。</td>
+</tr>
+</tbody></table>
+<h3 id="IDBDatabase"><a href="#IDBDatabase" class="headerlink" title="IDBDatabase"></a>IDBDatabase</h3><ul>
+<li>表示到数据库的连接。只能通过这个连接来拿到一个数据库事务。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性／方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IDBDatabase.close()</td>
+<td>关闭数据库。</td>
+</tr>
+<tr>
+<td>IDBDatabase.createObjectStore(name, [parameters])</td>
+<td>构建一个存储空间。parameters是个可选对象，有以下两个属性：{keyPath: “id”} 设置一个keyPath键，被存储在对象存储空间中的所有对象都必须存在“id”。{autoIncrement: true} 自动生成数字键。</td>
+</tr>
+<tr>
+<td>IDBDatabase.deleteObjectStore(“toDoList”)</td>
+<td>删除指定name的数据存储空间。</td>
+</tr>
+<tr>
+<td>IDBDatabase.transaction(storeName, [mode])</td>
+<td>[mode])    立即返回一个IDBTransaction对象，然后在一个独立线程内开启一个事务</td>
+</tr>
+<tr>
+<td>IDBDatabase.name （只读）</td>
+<td>数据库的名称。</td>
+</tr>
+<tr>
+<td>IDBDatabase.version（只读）</td>
+<td>数据库的版本号。</td>
+</tr>
+<tr>
+<td>DBDatabase.objectStoreNames（只读）</td>
+<td>当前存储在连接的数据库中的对象名称的列表.。</td>
+</tr>
+</tbody></table>
+<h3 id="IDBIndex"><a href="#IDBIndex" class="headerlink" title="IDBIndex"></a>IDBIndex</h3><ul>
+<li>提供了到索引元数据的访问。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性／方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IDBIndex.count()</td>
+<td>返回一个IDBRequest对象,并在一个单独的线程内返回范围内键的数目。</td>
+</tr>
+<tr>
+<td>IDBIndex.get(key)</td>
+<td>返回一个IDBRequest对象，并且在一个单独的线程，返回与键相关联的记录。</td>
+</tr>
+<tr>
+<td>IDBIndex.getAll([query], [count])</td>
+<td>返回一个IDBRequest对象，并且在一个单独的线程，返回在索引中的所有对象。</td>
+</tr>
+<tr>
+<td>IDBIndex.getKey(key)</td>
+<td>返回一个IDBRequest对象，并且在一个单独的线程，返回主键的值。</td>
+</tr>
+<tr>
+<td>IDBIndex.getAllKeys([query], [count])</td>
+<td>指定索引值对应的主键名集合</td>
+</tr>
+<tr>
+<td>IDBIndex.openCursor([range], [direction])</td>
+<td>返回一个IDBRequest对象，然后在一个独立线程内，在指定键范围内创建一个游标。</td>
+</tr>
+<tr>
+<td>IDBIndex.openKeyCursor()</td>
+<td>返回一个IDBRequest对象，然后在一个独立线程内，在指定键范围内创建一个游标,返回的记录基于索引排序而非主键。this.result.key取到索引值</td>
+</tr>
+<tr>
+<td>IDBIndex.name（只读）</td>
+<td>返回该索引的名称</td>
+</tr>
+<tr>
+<td>IDBIndex.objectStore（只读）</td>
+<td>此索引引用对象存储的名称</td>
+</tr>
+<tr>
+<td>IDBIndex.keyPath（只读）</td>
+<td>返回keyPath的值。</td>
+</tr>
+<tr>
+<td>DBIndex.multiEntry（只读）</td>
+<td>返回IDBObjectStore.createIndex方法设置的multiEntry属性</td>
+</tr>
+<tr>
+<td>IDBIndex.unique（只读）</td>
+<td>返回IDBObjectStore.createIndex方法设置的unqie属性</td>
+</tr>
+</tbody></table>
+<h3 id="IDBKeyRange"><a href="#IDBKeyRange" class="headerlink" title="IDBKeyRange"></a>IDBKeyRange</h3><ul>
+<li>定义键的范围。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性／方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IDBKeyRange.bound(lower, upper, [lowerOpen], [upperOpen])</td>
+<td>创建并返回一个带有lower和upper界限的键范围。如果lowerOpen或upperOpen为ture，则这个范围不包含界限本身（默认为false）。</td>
+</tr>
+<tr>
+<td>IDBKeyRange.includes(key)</td>
+<td>返回一个布尔值，指示指定的键是否键范围内。</td>
+</tr>
+<tr>
+<td>IDBKeyRange.only(key)</td>
+<td>创建一个包含单个值的新的键范围。</td>
+</tr>
+<tr>
+<td>IDBKeyRange.lowerBound(lower, [lowerOpen])</td>
+<td>创建一个下限键范围。lowerOpen如果为true，表示范围不包括界限本身。</td>
+</tr>
+<tr>
+<td>IDBKeyRange.upperBound(upper, [upperOpen] )</td>
+<td>创建一个新的上限键范围。lowerOpen如果为true，表示范围不包括界限本身。</td>
+</tr>
+</tbody></table>
+<h3 id="IDBObjectStore"><a href="#IDBObjectStore" class="headerlink" title="IDBObjectStore"></a>IDBObjectStore</h3><ul>
+<li>表示一个对象存储空间。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性／方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IDBObjectStore.add(value)</td>
+<td>新增存储对象。</td>
+</tr>
+<tr>
+<td>IDBObjectStore.clear( )</td>
+<td>创建并立即返回一个IDBRequest对象，并在一个单独的线程清除该对象存储。该方法会清除掉存储索引中的所有记录</td>
+</tr>
+<tr>
+<td>IDBObjectStore.get(key)</td>
+<td>返回一个IDBRequest对象，并在一个单独的线程，返回指定主键所对应的存储空间</td>
+</tr>
+<tr>
+<td>IDBObjectStore.delete(key)</td>
+<td>返回一个IDBRequest对象，并且在一个单独的线程删除指定的记录。</td>
+</tr>
+<tr>
+<td>IDBObjectStore.getKey(key)</td>
+<td>返回一个IDBRequest对象，并且在一个单独的线程，返回指定的查询中选择的主键</td>
+</tr>
+<tr>
+<td>IDBObjectStore.getAll([query], [count])</td>
+<td>返回一个IDBRequest包含在对象存储的所有对象指定的参数或在商店中的所有对象的匹配</td>
+</tr>
+<tr>
+<td>IDBObjectStore.getAllKeys([query], [count])</td>
+<td>立即检索IDBObjectStore内的所有对象的键,设置为result请求的对象。</td>
+</tr>
+<tr>
+<td>IDBObjectStore.createIndex(name, keyPath, [parameters])</td>
+<td>利用指定的name和keyPath参数，创建并返回一个新的IDBIndex对象。</td>
+</tr>
+<tr>
+<td>IDBObjectStore.deleteIndex(indexName)</td>
+<td>删除一个索引项。</td>
+</tr>
+<tr>
+<td>IDBObjectStore.index(indexName)</td>
+<td>返回对象索引中名为indexName的索引。</td>
+</tr>
+<tr>
+<td>IDBObjectStore.put(value)</td>
+<td>返回IDBRequest对象。更新和插入对象。</td>
+</tr>
+<tr>
+<td>IDBObjectStore.openCursor([range], [direction])</td>
+<td>返回IDBRequest对象。然后在一个独立的线程内，在对象存储的记录上创建一个游标。</td>
+</tr>
+<tr>
+<td>IDBObjectStore.openKeyCursor([range], [direction])</td>
+<td>返回一个IDBRequest对象，其结果将被设置为IDBCursor可用于通过匹配结果进行迭代。this.result.key返回主键</td>
+</tr>
+<tr>
+<td>IDBObjectStore.count(range)</td>
+<td>返回一个IDBRequest对象,并且在一个单独的线程,返回匹配提供的key或者range的记录的总数。如果没有提供参数,它将返回记录的总数。</td>
+</tr>
+<tr>
+<td>IDBObjectStore.indexNames（只读）</td>
+<td>回存储空间上的索引名。</td>
+</tr>
+</tbody></table>
+<h3 id="IDBOpenDBRequest"><a href="#IDBOpenDBRequest" class="headerlink" title="IDBOpenDBRequest"></a>IDBOpenDBRequest</h3><ul>
+<li>表示一个打开数据库的请求。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性／方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onsuccess事件</td>
+<td>成功事件</td>
+</tr>
+<tr>
+<td>onerror事件</td>
+<td>失败事件</td>
+</tr>
+<tr>
+<td>onupgradeneeded事件</td>
+<td>版本更新事件</td>
+</tr>
+</tbody></table>
+<h3 id="IDBTransaction"><a href="#IDBTransaction" class="headerlink" title="IDBTransaction"></a>IDBTransaction</h3><ul>
+<li>表示一个事务。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性／方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IDBTransaction.abort</td>
+<td>放弃本次连接的transaction的所有修改，如果当前的transaction处于回滚完毕或完成状态，则会抛出一个错误事件。</td>
+</tr>
+<tr>
+<td>IDBTransaction.objectStore(name)</td>
+<td>获取对象存储空间</td>
+</tr>
+<tr>
+<td>IDBTransaction.db（只读）</td>
+<td>返回与此事务对象相关联的数据库连接。</td>
+</tr>
+<tr>
+<td>IDBTransaction.mode（只读）</td>
+<td>返回数据模式。readonly／readwrite</td>
+</tr>
+<tr>
+<td>IDBTransaction.oncomplete = function() { … };</td>
+<td>IDBTransaction接口处理完成时触发。</td>
+</tr>
+<tr>
+<td>IDBTransaction.onabort = function() { … }</td>
+<td>中止事件。</td>
+</tr>
+<tr>
+<td>IDBTransaction.onerror = function() { … };</td>
+<td>IDBTransaction接口处理错误事件。</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/prinklezoro.github.io/tags/JS/" rel="tag"># JS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/prinklezoro.github.io/2019/08/23/工作前五年，决定你一生的财富/" rel="next" title="工作前五年，决定你一生的财富">
+                  <i class="fa fa-chevron-left"></i> 工作前五年，决定你一生的财富
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/prinklezoro.github.io/images/avatar.gif"
+      alt="阿文">
+  <p class="site-author-name" itemprop="name">阿文</p>
+  <div class="site-description motion-element" itemprop="description">自律即自由</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/prinklezoro.github.io/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/prinklezoro.github.io/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/prinklezoro.github.io/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:prinklezoro@gmail.com" title="E-Mail &rarr; mailto:prinklezoro@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Storage"><span class="nav-number">1.</span> <span class="nav-text">Web Storage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-Storage的概念"><span class="nav-number">1.1.</span> <span class="nav-text">Web Storage的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作为简易数据库来使用"><span class="nav-number">1.2.</span> <span class="nav-text">作为简易数据库来使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#storage事件实时监听web-storage中的数据"><span class="nav-number">1.3.</span> <span class="nav-text">storage事件实时监听web storage中的数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#indexedDB数据库"><span class="nav-number">2.</span> <span class="nav-text">indexedDB数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#indexedDB的基本概念"><span class="nav-number">2.1.</span> <span class="nav-text">indexedDB的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接数据库"><span class="nav-number">2.2.</span> <span class="nav-text">连接数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库版本更新"><span class="nav-number">2.3.</span> <span class="nav-text">数据库版本更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据仓库和索引"><span class="nav-number">2.4.</span> <span class="nav-text">创建数据仓库和索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用事务"><span class="nav-number">2.5.</span> <span class="nav-text">使用事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加数据"><span class="nav-number">2.6.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取数据"><span class="nav-number">2.7.</span> <span class="nav-text">获取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#游标检索多条数据"><span class="nav-number">2.8.</span> <span class="nav-text">游标检索多条数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据搜索范围获取数据的主键值"><span class="nav-number">2.9.</span> <span class="nav-text">根据搜索范围获取数据的主键值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据索引值获取数据"><span class="nav-number">2.10.</span> <span class="nav-text">根据索引值获取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取所有数据"><span class="nav-number">2.11.</span> <span class="nav-text">获取所有数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计对象仓库里面的数据数量"><span class="nav-number">2.12.</span> <span class="nav-text">统计对象仓库里面的数据数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出数据库中所有对象仓库的名称"><span class="nav-number">2.13.</span> <span class="nav-text">列出数据库中所有对象仓库的名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除对象仓库"><span class="nav-number">2.14.</span> <span class="nav-text">删除对象仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#根据主键删除单条数据"><span class="nav-number">2.15.</span> <span class="nav-text">根据主键删除单条数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列举对象仓库里面的所有索引名称"><span class="nav-number">2.16.</span> <span class="nav-text">列举对象仓库里面的所有索引名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除对象索引"><span class="nav-number">2.17.</span> <span class="nav-text">删除对象索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取索引对象的方法"><span class="nav-number">2.18.</span> <span class="nav-text">获取索引对象的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在指定范围内抽取数据主键"><span class="nav-number">2.19.</span> <span class="nav-text">在指定范围内抽取数据主键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用游标对象的方法"><span class="nav-number">2.20.</span> <span class="nav-text">使用游标对象的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IDBFactory"><span class="nav-number">3.1.</span> <span class="nav-text">IDBFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDBCursor"><span class="nav-number">3.2.</span> <span class="nav-text">IDBCursor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDBCursorWithValue"><span class="nav-number">3.3.</span> <span class="nav-text">IDBCursorWithValue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDBDatabase"><span class="nav-number">3.4.</span> <span class="nav-text">IDBDatabase</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDBIndex"><span class="nav-number">3.5.</span> <span class="nav-text">IDBIndex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDBKeyRange"><span class="nav-number">3.6.</span> <span class="nav-text">IDBKeyRange</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDBObjectStore"><span class="nav-number">3.7.</span> <span class="nav-text">IDBObjectStore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDBOpenDBRequest"><span class="nav-number">3.8.</span> <span class="nav-text">IDBOpenDBRequest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDBTransaction"><span class="nav-number">3.9.</span> <span class="nav-text">IDBTransaction</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿文</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.7' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js"></script>
+  <script src="/prinklezoro.github.io/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/prinklezoro.github.io/js/utils.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/motion.js?v=7.3.0"></script>
+
+<script src="/prinklezoro.github.io/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/prinklezoro.github.io/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/prinklezoro.github.io/js/scrollspy.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Q6pYWSENGYw0Jy6d4DqtudBA-gzGzoHsz',
+    appKey: 'n4tLHHKWGVWs5vhSFBCtqQim',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
