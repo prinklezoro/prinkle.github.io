@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/prinklezoro.github.io/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/prinklezoro.github.io/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/prinklezoro.github.io/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/prinklezoro.github.io/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/prinklezoro.github.io/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/prinklezoro.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/prinklezoro.github.io/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="原生AJAX回顾创建XHR对象 现在浏览器都支持XMLHttpRequest对象 IE5 IE6支持ActiveXObject 123456var xhrif(window.XMLHttpRequest)&amp;#123;    xhr = new XMLHttpRequest()&amp;#125;else &amp;#123;    xhr = new ActiveXObject(&amp;quot;Microsoft.X">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XHR API和Fetch API">
+<meta property="og:url" content="https://prinklezoro.github.io/prinklezoro.github.io/2019/08/28/XHR-API和Fetch-API/index.html">
+<meta property="og:site_name" content="Katakuri">
+<meta property="og:description" content="原生AJAX回顾创建XHR对象 现在浏览器都支持XMLHttpRequest对象 IE5 IE6支持ActiveXObject 123456var xhrif(window.XMLHttpRequest)&amp;#123;    xhr = new XMLHttpRequest()&amp;#125;else &amp;#123;    xhr = new ActiveXObject(&amp;quot;Microsoft.X">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/xf1.png">
+<meta property="og:updated_time" content="2019-08-28T15:00:28.710Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XHR API和Fetch API">
+<meta name="twitter:description" content="原生AJAX回顾创建XHR对象 现在浏览器都支持XMLHttpRequest对象 IE5 IE6支持ActiveXObject 123456var xhrif(window.XMLHttpRequest)&amp;#123;    xhr = new XMLHttpRequest()&amp;#125;else &amp;#123;    xhr = new ActiveXObject(&amp;quot;Microsoft.X">
+<meta name="twitter:image" content="https://prinklezoro.github.io/assets/xf1.png">
+  <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/08/28/XHR-API和Fetch-API/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>XHR API和Fetch API | Katakuri</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/prinklezoro.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Katakuri</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/prinklezoro.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/prinklezoro.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/prinklezoro.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/prinklezoro.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/prinklezoro.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-music">
+      
+    
+
+    <a href="/prinklezoro.github.io/music/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>音乐</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/08/28/XHR-API和Fetch-API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿文">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">XHR API和Fetch API
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-28 22:58:12 / 修改时间：23:00:28" itemprop="dateCreated datePublished" datetime="2019-08-28T22:58:12+08:00">2019-08-28</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/08/28/XHR-API和Fetch-API/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/08/28/XHR-API和Fetch-API/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="原生AJAX回顾"><a href="#原生AJAX回顾" class="headerlink" title="原生AJAX回顾"></a>原生AJAX回顾</h2><h3 id="创建XHR对象"><a href="#创建XHR对象" class="headerlink" title="创建XHR对象"></a>创建XHR对象</h3><ul>
+<li>现在浏览器都支持XMLHttpRequest对象</li>
+<li>IE5 IE6支持ActiveXObject</li>
+</ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var xhr</span><br><span class="line">if(window.XMLHttpRequest)&#123;</span><br><span class="line">    xhr = new XMLHttpRequest()</span><br><span class="line">&#125;else &#123;</span><br><span class="line">    xhr = new ActiveXObject(&quot;Microsoft.XMLHttp&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+<h3 id="向服务器发送请求，传递参数"><a href="#向服务器发送请求，传递参数" class="headerlink" title="向服务器发送请求，传递参数"></a>向服务器发送请求，传递参数</h3><ul>
+<li>open函数连接到服务器URL，设置回调函数监听返回结果，send()传参</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>open(method,url,async)</td>
+<td>请求类型、URL 以及是否异步处理请求。method：请求的类型；GET 或 POST；url：处理请求的文件在服务器上的位置；async：true（异步）或 false（同步）</td>
+</tr>
+<tr>
+<td>send(string)</td>
+<td>将请求发送到服务器。string：仅用于 POST 请求。如果上面open中设置请求方法为GET,则此处send(null)，若上面为Post，则send（”para1=val1 &amp; para2=val2…”）传递参数</td>
+</tr>
+</tbody></table>
+<ul>
+<li>设置回调函数通过onreadystatechange</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>onreadystatechange</td>
+<td>值是一个函数，每当 readyState 属性改变时，就会调用该函数</td>
+</tr>
+<tr>
+<td>readyState</td>
+<td>存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。0: 请求未初始化；1: 服务器连接已建立；2: 请求已接收；3: 请求处理中；4: 请求已完成，且响应已就绪</td>
+</tr>
+<tr>
+<td>status</td>
+<td>200: 请求处理成功；404: 未找到页面</td>
+</tr>
+</tbody></table>
+<h2 id="从服务器端获取二进制属性"><a href="#从服务器端获取二进制属性" class="headerlink" title="从服务器端获取二进制属性"></a>从服务器端获取二进制属性</h2><ul>
+<li>responseType属性，指定服务器端返回数据的数据类型，可指定属性名为text、arraybuffer、blob、json、document</li>
+<li>response属性,返回服务器端响应的数据<ul>
+<li>responseType为text时，response为一个字符串</li>
+<li>responseType为arrayBuffer时，response为一个ArrayBuffer对象</li>
+<li>responseType为blob时，response为一个blob对象</li>
+<li>responseType为json时，response为一个json对象</li>
+<li>responseType为document时，response为一个document对象</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;下载图片&quot; onclick=&quot;download()&quot;&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; value=&quot;显示图片&quot; onclick=&quot;show()&quot;&gt;</span><br><span class="line">&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function download() &#123;</span><br><span class="line">        var xhr = new XMLHttpRequest()</span><br><span class="line">        xhr.open(&apos;GET&apos;,&apos;../images/1.jpeg&apos;)</span><br><span class="line">        xhr.responseType = &apos;arraybuffer&apos;</span><br><span class="line">        xhr.onreadystatechange = function () &#123;</span><br><span class="line">            if(xhr.readyState == 4 &amp;&amp; xhr.status == 200)&#123;</span><br><span class="line">                var blob = new Blob([this.response])</span><br><span class="line">                var fileReader = new FileReader()</span><br><span class="line">                fileReader.readAsDataURL(blob)</span><br><span class="line">                fileReader.onload = function () &#123;</span><br><span class="line">                    localStorage.setItem(&apos;image&apos;, String(this.result))</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        xhr.send()</span><br><span class="line">    &#125;</span><br><span class="line">    function show() &#123;</span><br><span class="line">        var result = localStorage.getItem(&apos;image&apos;)</span><br><span class="line">        document.getElementById(&apos;app&apos;).innerHTML = `</span><br><span class="line">            &lt;img src=&quot;$&#123; result &#125;&quot;&gt;</span><br><span class="line">        `</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="发送数据"><a href="#发送数据" class="headerlink" title="发送数据"></a>发送数据</h2><ul>
+<li>send的参数可以发送字符串、DOM对象、表单数据、Blob对象、文件以及ArrayBuffer对象</li>
+</ul>
+<h3 id="发送字符串"><a href="#发送字符串" class="headerlink" title="发送字符串"></a>发送字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest()</span><br><span class="line">xhr.open(&apos;POST&apos;, &apos;test.php&apos;, true)</span><br><span class="line">xhr.responseType = &apos;text&apos;</span><br><span class="line">xhr.onload = function()&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">xhr.send(字符串)</span><br></pre></td></tr></table></figure>
+
+<h3 id="发送表单数据"><a href="#发送表单数据" class="headerlink" title="发送表单数据"></a>发送表单数据</h3><ul>
+<li>创建一个FormData对象，代表需要发送的表单数据</li>
+<li>FormData的构造函数中，使用一个参数，代表页面的一个表单元素</li>
+<li>send的参数可以是一个FormData对象</li>
+<li>FormData对象有一个append方法，有两个参数，一个键名，一个键值。代表向FormData对象中追加额外的数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//document.forms 获取表单元素数组</span><br><span class="line">var formData = new FormData(document.forms[0])</span><br><span class="line">formData.append(&apos;&apos;,&apos;&apos;)</span><br><span class="line">var xhr = new XMLHttpRequest()</span><br><span class="line">xhr.open(&apos;POST&apos;, &apos;test.php&apos;)</span><br><span class="line">xhr.responseType = &apos;text&apos;</span><br><span class="line">xhr.setRequestHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;);</span><br><span class="line">xhr.onload = funcion()&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">xhr.send(formData)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用FormData对象，不仅可以向服务器端发送表单数据，而且可以向服务器上传文件</p>
+</blockquote>
+<h3 id="发送Blob对象"><a href="#发送Blob对象" class="headerlink" title="发送Blob对象"></a>发送Blob对象</h3><ul>
+<li>xhr.upload.onprogress事件代表上传中事件</li>
+<li>e.lengthComputable代表是否还有剩余没上传的</li>
+<li>e.loaded已经上传了的；e.total代表总字节数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest()</span><br><span class="line">xhr.open(&apos;POST&apos;, &apos;url&apos;, true)</span><br><span class="line">xhr.upload.onprogress = function(e)&#123;</span><br><span class="line">    if(e.lengthComputable)&#123;</span><br><span class="line">        e.loaded/e.total</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="跨域数据请求"><a href="#跨域数据请求" class="headerlink" title="跨域数据请求"></a>跨域数据请求</h2><ul>
+<li>HTML5支持跨域数据通信，需要在被请求域中提供一个用于响应请求的服务器端脚本文件，并且将参数值指定为允许向该页面请求数据的域名+端口号即可</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&apos;Access-Control-Allow-Origin:http://localhost/test&apos;) </span><br><span class="line">echo &apos;nihao&apos;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果允许所有域向本页面请求数据，将参数指定为*</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">header(&apos;Access-Control-Allow-Origin:*&apos;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Fetch-API"><a href="#Fetch-API" class="headerlink" title="Fetch API"></a>Fetch API</h2><ul>
+<li>代替XHR的新一代AJAX请求，Fetch API使用了Promise，比XHR更简单易用</li>
+</ul>
+<h3 id="使用Fetch-API发出请求"><a href="#使用Fetch-API发出请求" class="headerlink" title="使用Fetch API发出请求"></a>使用Fetch API发出请求</h3><ul>
+<li>fetch(url).then() 用一个参数来指定需要获取的资源路径，服务器端将返回一个响应结果，即一个response对象，此对象也是用Promise封装了的。为了获取json内容，需要调用response.json()方法</li>
+</ul>
+<blockquote>
+<p>在使用response.json()之前，先判断响应状态码是否为200，是否获取了正确的响应</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;发送Fetch请求&quot; onclick=&quot;fetchAjax()&quot;&gt;</span><br><span class="line">&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var str = &apos;&apos;</span><br><span class="line">    function fetchAjax() &#123;</span><br><span class="line">        fetch(&apos;./test.json&apos;).then((response) =&gt; response.json()).then((response) =&gt; &#123;</span><br><span class="line">            str += `</span><br><span class="line">                &lt;table border=&quot;1&quot;&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;th&gt;名字&lt;/th&gt;</span><br><span class="line">                        &lt;th&gt;职业&lt;/th&gt;</span><br><span class="line">                        &lt;th&gt;梦想&lt;/th&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">            `</span><br><span class="line">            for(let value of response)&#123;</span><br><span class="line">                str += `</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td&gt;$&#123; value.name &#125;&lt;/td&gt;</span><br><span class="line">                        &lt;td&gt;$&#123; value.job &#125;&lt;/td&gt;</span><br><span class="line">                        &lt;td&gt;$&#123; value.dream &#125;&lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                `</span><br><span class="line">            &#125;</span><br><span class="line">            str += `</span><br><span class="line">                &lt;/table&gt;</span><br><span class="line">            `</span><br><span class="line">            document.getElementById(&apos;app&apos;).innerHTML = str</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/xf1.png" alt="image"></p>
+<h3 id="向服务器发送post请求"><a href="#向服务器发送post请求" class="headerlink" title="向服务器发送post请求"></a>向服务器发送post请求</h3><ul>
+<li>response.text() 相应结果转换成字符串</li>
+<li>提交表单数据需要设置’Content-Type’: ‘application/x-www-form-urlencoded’</li>
+<li>提交json数据需要设置’Content-Type’: ‘application/json’</li>
+<li>也可以提交一个formData对象或者blob对象</li>
+<li>返回的response对象有如下方法<ul>
+<li>arrayBuffer()：将服务器端响应数据解析为ArrayBuffer对象</li>
+<li>blob()：将服务器端响应数据解析为Blob对象</li>
+<li>json()：将服务器端响应数据解析为json对象</li>
+<li>text()：将服务器端相应数据解析为字符串</li>
+<li>formData()：解析为FormData对象<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(&apos;test.php&apos;,&#123;</span><br><span class="line">    method: &apos;post&apos;, //请求方式</span><br><span class="line">    headers: &#123;</span><br><span class="line">        &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos;</span><br><span class="line">    &#125;, //请求响应头</span><br><span class="line">    body: &apos;name=luffy&amp;age=19&apos; //请求参数</span><br><span class="line">&#125;).then()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;上传图片&quot; onclick=&quot;upload()&quot;&gt;</span><br><span class="line">&lt;div id=&quot;image&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function upload() &#123;</span><br><span class="line">        fetch(&apos;../images/1.jpeg&apos;).then((response) =&gt; response.arrayBuffer()).then((response) =&gt; &#123;</span><br><span class="line">            var blob = new Blob([response])</span><br><span class="line">            var reader = new FileReader()</span><br><span class="line">            reader.readAsDataURL(blob)</span><br><span class="line">            reader.onload = function () &#123;</span><br><span class="line">                document.getElementById(&apos;image&apos;).innerHTML = `</span><br><span class="line">                    &lt;img src=&quot;$&#123; this.result &#125;&quot;&gt;</span><br><span class="line">                `</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).catch((error) =&gt; &#123;</span><br><span class="line">            console.log(error)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/prinklezoro.github.io/tags/JS/" rel="tag"># JS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/prinklezoro.github.io/2019/08/25/本地存储/" rel="next" title="本地存储">
+                  <i class="fa fa-chevron-left"></i> 本地存储
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/prinklezoro.github.io/images/avatar.gif"
+      alt="阿文">
+  <p class="site-author-name" itemprop="name">阿文</p>
+  <div class="site-description motion-element" itemprop="description">自律即自由</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/prinklezoro.github.io/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/prinklezoro.github.io/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/prinklezoro.github.io/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:prinklezoro@gmail.com" title="E-Mail &rarr; mailto:prinklezoro@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原生AJAX回顾"><span class="nav-number">1.</span> <span class="nav-text">原生AJAX回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建XHR对象"><span class="nav-number">1.1.</span> <span class="nav-text">创建XHR对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向服务器发送请求，传递参数"><span class="nav-number">1.2.</span> <span class="nav-text">向服务器发送请求，传递参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从服务器端获取二进制属性"><span class="nav-number">2.</span> <span class="nav-text">从服务器端获取二进制属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送数据"><span class="nav-number">3.</span> <span class="nav-text">发送数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发送字符串"><span class="nav-number">3.1.</span> <span class="nav-text">发送字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送表单数据"><span class="nav-number">3.2.</span> <span class="nav-text">发送表单数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送Blob对象"><span class="nav-number">3.3.</span> <span class="nav-text">发送Blob对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域数据请求"><span class="nav-number">4.</span> <span class="nav-text">跨域数据请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fetch-API"><span class="nav-number">5.</span> <span class="nav-text">Fetch API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Fetch-API发出请求"><span class="nav-number">5.1.</span> <span class="nav-text">使用Fetch API发出请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向服务器发送post请求"><span class="nav-number">5.2.</span> <span class="nav-text">向服务器发送post请求</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿文</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.7' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js"></script>
+  <script src="/prinklezoro.github.io/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/prinklezoro.github.io/js/utils.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/motion.js?v=7.3.0"></script>
+
+<script src="/prinklezoro.github.io/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/prinklezoro.github.io/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/prinklezoro.github.io/js/scrollspy.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Q6pYWSENGYw0Jy6d4DqtudBA-gzGzoHsz',
+    appKey: 'n4tLHHKWGVWs5vhSFBCtqQim',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
