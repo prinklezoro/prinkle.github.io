@@ -64,7 +64,7 @@
 <meta property="og:description" content="原生AJAX回顾创建XHR对象 现在浏览器都支持XMLHttpRequest对象 IE5 IE6支持ActiveXObject 123456var xhrif(window.XMLHttpRequest)&amp;#123;    xhr = new XMLHttpRequest()&amp;#125;else &amp;#123;    xhr = new ActiveXObject(&amp;quot;Microsoft.X">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://prinklezoro.github.io/assets/xf1.png">
-<meta property="og:updated_time" content="2019-08-28T15:00:28.710Z">
+<meta property="og:updated_time" content="2019-08-28T15:03:51.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XHR API和Fetch API">
 <meta name="twitter:description" content="原生AJAX回顾创建XHR对象 现在浏览器都支持XMLHttpRequest对象 IE5 IE6支持ActiveXObject 123456var xhrif(window.XMLHttpRequest)&amp;#123;    xhr = new XMLHttpRequest()&amp;#125;else &amp;#123;    xhr = new ActiveXObject(&amp;quot;Microsoft.X">
@@ -270,7 +270,7 @@
                 
               
 
-              <time title="创建时间：2019-08-28 22:58:12 / 修改时间：23:00:28" itemprop="dateCreated datePublished" datetime="2019-08-28T22:58:12+08:00">2019-08-28</time>
+              <time title="创建时间：2019-08-28 22:58:12 / 修改时间：23:03:51" itemprop="dateCreated datePublished" datetime="2019-08-28T22:58:12+08:00">2019-08-28</time>
             </span>
           
             
@@ -439,12 +439,12 @@
 <li>blob()：将服务器端响应数据解析为Blob对象</li>
 <li>json()：将服务器端响应数据解析为json对象</li>
 <li>text()：将服务器端相应数据解析为字符串</li>
-<li>formData()：解析为FormData对象<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(&apos;test.php&apos;,&#123;</span><br><span class="line">    method: &apos;post&apos;, //请求方式</span><br><span class="line">    headers: &#123;</span><br><span class="line">        &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos;</span><br><span class="line">    &#125;, //请求响应头</span><br><span class="line">    body: &apos;name=luffy&amp;age=19&apos; //请求参数</span><br><span class="line">&#125;).then()</span><br></pre></td></tr></table></figure>
+<li>formData()：解析为FormData对象</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(&apos;test.php&apos;,&#123;</span><br><span class="line">    method: &apos;post&apos;, //请求方式</span><br><span class="line">    headers: &#123;</span><br><span class="line">        &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos;</span><br><span class="line">    &#125;, //请求响应头</span><br><span class="line">    body: &apos;name=luffy&amp;age=19&apos; //请求参数</span><br><span class="line">&#125;).then()</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-</li>
-</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;button&quot; value=&quot;上传图片&quot; onclick=&quot;upload()&quot;&gt;</span><br><span class="line">&lt;div id=&quot;image&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function upload() &#123;</span><br><span class="line">        fetch(&apos;../images/1.jpeg&apos;).then((response) =&gt; response.arrayBuffer()).then((response) =&gt; &#123;</span><br><span class="line">            var blob = new Blob([response])</span><br><span class="line">            var reader = new FileReader()</span><br><span class="line">            reader.readAsDataURL(blob)</span><br><span class="line">            reader.onload = function () &#123;</span><br><span class="line">                document.getElementById(&apos;image&apos;).innerHTML = `</span><br><span class="line">                    &lt;img src=&quot;$&#123; this.result &#125;&quot;&gt;</span><br><span class="line">                `</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).catch((error) =&gt; &#123;</span><br><span class="line">            console.log(error)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 
