@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/prinklezoro.github.io/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/prinklezoro.github.io/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/prinklezoro.github.io/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/prinklezoro.github.io/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/prinklezoro.github.io/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/prinklezoro.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/prinklezoro.github.io/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="canvas元素的基础属性 页面中放置canvas标签，并指定高度宽度 获取canvas上下文：canvas.getContext(‘2D’),参数也可以是webGL绘制3D 填充和绘制边框 fill 和 stroke 设定绘图样式：fillStyle属性——填充的样式；strokeStyle属性——边框的样式 绘制矩形：fillRect填充矩形 strokeRect绘制矩形边框 参数：起始横坐标">
+<meta name="keywords" content="HTML,JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canvas">
+<meta property="og:url" content="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/05/Canvas/index.html">
+<meta property="og:site_name" content="Katakuri">
+<meta property="og:description" content="canvas元素的基础属性 页面中放置canvas标签，并指定高度宽度 获取canvas上下文：canvas.getContext(‘2D’),参数也可以是webGL绘制3D 填充和绘制边框 fill 和 stroke 设定绘图样式：fillStyle属性——填充的样式；strokeStyle属性——边框的样式 绘制矩形：fillRect填充矩形 strokeRect绘制矩形边框 参数：起始横坐标">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv13.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv12.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv11.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv10.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv9.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv8.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv7.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv6.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv5.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv4.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv3.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv2.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/cv1.png">
+<meta property="og:updated_time" content="2019-09-05T14:51:40.884Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Canvas">
+<meta name="twitter:description" content="canvas元素的基础属性 页面中放置canvas标签，并指定高度宽度 获取canvas上下文：canvas.getContext(‘2D’),参数也可以是webGL绘制3D 填充和绘制边框 fill 和 stroke 设定绘图样式：fillStyle属性——填充的样式；strokeStyle属性——边框的样式 绘制矩形：fillRect填充矩形 strokeRect绘制矩形边框 参数：起始横坐标">
+<meta name="twitter:image" content="https://prinklezoro.github.io/assets/cv13.png">
+  <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/05/Canvas/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Canvas | Katakuri</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/prinklezoro.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Katakuri</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/prinklezoro.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/prinklezoro.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/prinklezoro.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/prinklezoro.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/prinklezoro.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-music">
+      
+    
+
+    <a href="/prinklezoro.github.io/music/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>音乐</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/09/05/Canvas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿文">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Canvas
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-05 22:44:36 / 修改时间：22:51:40" itemprop="dateCreated datePublished" datetime="2019-09-05T22:44:36+08:00">2019-09-05</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/09/05/Canvas/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/09/05/Canvas/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="canvas元素的基础属性"><a href="#canvas元素的基础属性" class="headerlink" title="canvas元素的基础属性"></a>canvas元素的基础属性</h2><ul>
+<li>页面中放置canvas标签，并指定高度宽度</li>
+<li>获取canvas上下文：canvas.getContext(‘2D’),参数也可以是webGL绘制3D</li>
+<li>填充和绘制边框 fill 和 stroke</li>
+<li>设定绘图样式：fillStyle属性——填充的样式；strokeStyle属性——边框的样式</li>
+<li>绘制矩形：fillRect填充矩形 strokeRect绘制矩形边框 参数：起始横坐标；起始纵坐标；宽度；高度</li>
+<li>clearRect 将指定矩形区域内的绘图擦除 参数同上</li>
+</ul><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var context = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    context.fillStyle = &apos;#a43b47&apos;</span><br><span class="line">    context.fillRect(10, 10, 100, 100)</span><br><span class="line">    context.strokeStyle = &apos;#aa1d10&apos;</span><br><span class="line">    context.lineWidth = 2</span><br><span class="line">    context.strokeRect(10, 10, 100, 100)</span><br><span class="line">    context.clearRect(60, 60, 100, 100)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/cv13.png" alt="image"></p>
+<h2 id="使用路径"><a href="#使用路径" class="headerlink" title="使用路径"></a>使用路径</h2><h3 id="绘制圆形"><a href="#绘制圆形" class="headerlink" title="绘制圆形"></a>绘制圆形</h3><ul>
+<li>开始创建路径 beginPath()</li>
+<li>创建圆形路径 arc(x, y, radius, startAngle, endAngle, anticlockwise)，六个参数：起点横坐标；起点纵坐标；开始角度；结束角度（弧度）；顺时针（false）or逆时针（true）</li>
+<li>闭合路径 closePath()</li>
+<li>fillstyle  fill 填充 或者strokestyle  stroke边框</li>
+<li>绘制椭圆 ellipse(x, y, radiusX, radiusY, tation, startAngle, endAngle, anticlockwise) 八个参数：起点横坐标；起点纵坐标；椭圆的横向半径；椭圆的纵向半径；椭圆的顺时针方向旋转角度(度数)；开始绘制角度；结束绘制角度；逆时针or顺时针</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var context = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    for(var i = 0; i &lt; 10; i++)&#123;</span><br><span class="line">        context.beginPath()</span><br><span class="line">        context.arc(i * 25, i * 25, i * 10, 0, Math.PI * 2, true)</span><br><span class="line">        context.closePath()</span><br><span class="line">        context.fillStyle = `rgba(10, 20, 30, $&#123; i / 10 &#125;)`</span><br><span class="line">        context.fill()</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/cv12.png" alt="image"></p>
+<blockquote>
+<p>如果不关闭路径，在上一次绘制的路径会接着下一次的绘制不会中断，也就是说上一次绘制的图形会接着后面的绘制路径接着绘制</p>
+</blockquote>
+<h3 id="绘制直线"><a href="#绘制直线" class="headerlink" title="绘制直线"></a>绘制直线</h3><ul>
+<li>moveTo 将光标移到指定坐标点 参数：x坐标；y坐标</li>
+<li>lineTo 将绘制一条直线 参数：x坐标；y坐标</li>
+<li>lineCap 为直线添加线帽<ul>
+<li>butt：默认属性值</li>
+<li>round：直线圆角帽</li>
+<li>square：为直线添加正方形线帽</li>
+</ul>
+</li>
+<li>lineJoin：指定两条直线交汇时的拐角形状<ul>
+<li>miter：默认属性值，创建尖角拐角</li>
+<li>round：创建圆角拐角</li>
+<li>bevel：创建斜角拐角</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;cv&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var context = document.getElementById(&apos;cv&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    context.beginPath()</span><br><span class="line">    context.moveTo(50, 50)</span><br><span class="line">    context.lineTo(100, 80)</span><br><span class="line">    context.lineTo(60, 120)</span><br><span class="line">    context.closePath()</span><br><span class="line">    context.lineWidth = 10</span><br><span class="line">    context.lineCap = &apos;round&apos;</span><br><span class="line">    context.lineJoin = &apos;round&apos;</span><br><span class="line">    context.strokeStyle = &apos;#aa2735&apos;</span><br><span class="line">    context.stroke()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>setLineDash：绘制虚线，使用一个参数值为数组，里面存放线段长度和线段与线段之间的距离<ul>
+<li>数组里面只有一个值时：表示线段长度和线段与线段之间的距离都是这个值</li>
+<li>数组里面有两个值时：第一个数值表示线段长度；第二个数值表示线段之间的距离</li>
+<li>数组里面有偶数个值时：第奇数个值表示线段长度；第偶数个值表示距离（无线循环）</li>
+<li>数组里面有奇数个值时：自动复制数组中数值为偶数倍。例如setLineDash([6, 10, 15])相当于setLineDash([6, 10, 15, 6, 10, 15])</li>
+<li>方法返回值为该虚线数组</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;cv&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var context = document.getElementById(&apos;cv&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    context.beginPath()</span><br><span class="line">    context.moveTo(50, 50)</span><br><span class="line">    context.lineTo(300, 80)</span><br><span class="line">    context.closePath()</span><br><span class="line">    context.setLineDash([10, 15])</span><br><span class="line">    context.lineWidth = 5</span><br><span class="line">    context.strokeStyle = &apos;#aa2016&apos;</span><br><span class="line">    context.stroke()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="绘制曲线"><a href="#绘制曲线" class="headerlink" title="绘制曲线"></a>绘制曲线</h3><ul>
+<li>artTo(x1, y1, x2, y2, radiusX, [radiusY, rotation])使用七个参数，后两个参数可选：起点横坐标；起点纵坐标；终点横坐标；终点纵坐标；圆弧横向半径；圆弧纵向半径；椭圆顺时针方向旋转角度</li>
+</ul>
+<p><img src="/assets/cv11.png" alt="image"></p>
+<h3 id="绘制贝塞尔曲线"><a href="#绘制贝塞尔曲线" class="headerlink" title="绘制贝塞尔曲线"></a>绘制贝塞尔曲线</h3><h3 id="绘制二次样条曲线"><a href="#绘制二次样条曲线" class="headerlink" title="绘制二次样条曲线"></a>绘制二次样条曲线</h3><h3 id="使用Path2D对象绘制路径"><a href="#使用Path2D对象绘制路径" class="headerlink" title="使用Path2D对象绘制路径"></a>使用Path2D对象绘制路径</h3><ul>
+<li>可以使用该对象的各种方法绘制直线、矩形、圆形、椭圆以及曲线</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>moveTo(x,y)</td>
+<td>将光标移动到指定坐标点</td>
+</tr>
+<tr>
+<td>lineTo(x,y)</td>
+<td>在当前坐标点与参数中指定的直线终点之间绘制一条直线</td>
+</tr>
+<tr>
+<td>rect(x,y,w,h)</td>
+<td>绘制矩形</td>
+</tr>
+<tr>
+<td>arc(x,y,radius,startAngle,endAngle,anticlockwise)</td>
+<td>绘制圆形或圆弧</td>
+</tr>
+<tr>
+<td>ellipse(x,y,radiusX,radiusY,rotation,startAngle,endAngle)</td>
+<td>绘制椭圆或椭圆弧</td>
+</tr>
+<tr>
+<td>artTo(x1,y1,x2,y2,radiusX,radiusY,rotation)</td>
+<td>绘制圆形曲线</td>
+</tr>
+<tr>
+<td>bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y)</td>
+<td>绘制贝塞尔曲线</td>
+</tr>
+<tr>
+<td>quadraticCurveTo(cpx,cpy,x,y)</td>
+<td>绘制二次样条曲线</td>
+</tr>
+<tr>
+<td>closePath</td>
+<td>闭合路径</td>
+</tr>
+</tbody></table>
+<ul>
+<li>使用context.fill(path)或者context.stroke(path)绘制图形</li>
+</ul>
+<blockquote>
+<p>closePath方法只是闭合路径，与起点闭合；而不是关闭路径。beginPath方法已经有重新开始路径（断开之前路径）的意思</p>
+</blockquote>
+<ul>
+<li>path2 = new Path2D(path1) 将path1绘制的路径复制到path2中</li>
+<li>path2.addPath(path1) 将path1所代表的路径添加到path2对象中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var context = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    var path1 = new Path2D()</span><br><span class="line">    path1.rect(10,10,50,50)</span><br><span class="line">    var path2 = new Path2D(path1)</span><br><span class="line">    path2.moveTo(100,100)</span><br><span class="line">    path2.lineTo(200,120)</span><br><span class="line">    context.lineWidth = &apos;1&apos;</span><br><span class="line">    context.stroke(path2)</span><br></pre></td></tr></table></figure>
+
+<h2 id="绘制渐变图形"><a href="#绘制渐变图形" class="headerlink" title="绘制渐变图形"></a>绘制渐变图形</h2><h3 id="绘制线性渐变"><a href="#绘制线性渐变" class="headerlink" title="绘制线性渐变"></a>绘制线性渐变</h3><ul>
+<li>context.createLinearGradient(startX,startY,endX,endY),四个参数：起始横坐标；起始纵坐标；终点横坐标；终点纵坐标。返回一个LinearGradient对象。</li>
+<li>设定颜色，g.addColorStop(offset, color) 第一个参数：离开渐变起始点的偏移量（0-1之间）；第二个参数：这个点的颜色。如果要渐变的话，一般需要至少两个此函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var context = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    var g1 = context.createLinearGradient(0,0,0,300)</span><br><span class="line">    g1.addColorStop(0, &apos;rgba(171,26,41,0.16)&apos;)</span><br><span class="line">    g1.addColorStop(1, &apos;rgba(255,25,141,0.21)&apos;)</span><br><span class="line">    context.fillStyle = g1</span><br><span class="line">    context.fillRect(10,10,400,300)</span><br><span class="line">    for(var i = 0; i &lt; 10; i++)&#123;</span><br><span class="line">        context.beginPath()</span><br><span class="line">        context.arc(i * 25, i * 25, i * 10, 0, Math.PI * 2, true)</span><br><span class="line">        context.fillStyle = g1</span><br><span class="line">        context.fill()</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/cv10.png" alt="image"></p>
+<h3 id="绘制径向渐变"><a href="#绘制径向渐变" class="headerlink" title="绘制径向渐变"></a>绘制径向渐变</h3><ul>
+<li>context.createRadialGradient(stratX, startY, startRadius, endX, endY, endRadius) 六个参数：起始圆的横坐标；起始圆的纵坐标；起始圆的半径；结束圆的横坐标；结束圆的纵坐标；结束圆的半径</li>
+<li>同样需要设定addColorStop方法</li>
+<li>左图为小圆向大圆渐变，中图为大院向小圆渐变，右图为相离两个圆的渐变，从图中可以很清楚的看到圆相离或相交时的渐变方式，渐变总是从起始圆开始（包括起始圆内部），朝着结束圆方向，直到遇到结束圆（不包括结束圆内部）。</li>
+</ul>
+<p><img src="/assets/cv9.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var context = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    var g1 = context.createRadialGradient(250,250,20,250,250,100)</span><br><span class="line">    g1.addColorStop(0,&apos;rgba(41,171,91,0.16)&apos;)</span><br><span class="line">    g1.addColorStop(1,&apos;rgba(255,25,141,0.21)&apos;)</span><br><span class="line">    context.beginPath()</span><br><span class="line">    context.arc(250,250,200,0,Math.PI*2,true)</span><br><span class="line">    context.fillStyle = g1</span><br><span class="line">    context.fill()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="绘制变形图片"><a href="#绘制变形图片" class="headerlink" title="绘制变形图片"></a>绘制变形图片</h2><h3 id="坐标变换"><a href="#坐标变换" class="headerlink" title="坐标变换"></a>坐标变换</h3><ul>
+<li>canvas画布的最左上角为坐标轴原点，如果要对这个原点使用变换处理，就可以实现图形的变形处理，需要用到以下方法</li>
+<li>context.translate(x, y) 移动坐标轴原点 x表示向右移，y表示向下移</li>
+<li>context.scale(x, y) x是水平放大倍数；y是垂直放大倍数，缩放中心点是画布原点</li>
+<li>context.rotate(angle) 旋转角度，旋转轴为坐标原点，旋转中心点是画布原点</li>
+</ul>
+<h3 id="坐标变换研究"><a href="#坐标变换研究" class="headerlink" title="坐标变换研究"></a>坐标变换研究</h3><ol>
+<li>translate移动是在原来的基础上移动的</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var context = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    context.translate(200,50)</span><br><span class="line">    context.fillStyle = &apos;rgba(255,0,0,0.25)&apos;</span><br><span class="line">    context.translate(25,25)</span><br><span class="line">    // context.rotate(Math.PI / 10)</span><br><span class="line">    context.fillRect(0,0,100,50)</span><br><span class="line"></span><br><span class="line">    context.translate(25,25)</span><br><span class="line">    // context.rotate(Math.PI / 10)</span><br><span class="line">    context.fillRect(0,0,100,50)</span><br><span class="line"></span><br><span class="line">    context.translate(25 ,25)</span><br><span class="line">    // context.rotate(Math.PI / 10)</span><br><span class="line">    context.fillRect(0,0,100,50)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/cv8.png" alt="image"></p>
+<ol start="2">
+<li>rotate旋转是根据translate之后的坐标原点旋转的，并且也是在原来的基础上加角度（原来设置的旋转角度会影响后面所有的绘制图形）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var context = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">context.translate(200,50)</span><br><span class="line">context.fillStyle = &apos;rgba(255,0,0,0.25)&apos;</span><br><span class="line">context.translate(25,25)</span><br><span class="line">context.rotate(Math.PI / 10)</span><br><span class="line">context.fillRect(0,0,100,50)</span><br><span class="line"></span><br><span class="line">context.translate(25,25)</span><br><span class="line">// context.rotate(Math.PI / 10)</span><br><span class="line">context.fillRect(0,0,100,50)</span><br><span class="line"></span><br><span class="line">context.translate(25 ,25)</span><br><span class="line">// context.rotate(Math.PI / 10)</span><br><span class="line">context.fillRect(0,0,100,50)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/cv7.png" alt="image"></p>
+<ol start="3">
+<li>rotate旋转之后，translate移动的方向也会跟着旋转，并不是按照坐标轴方向，或者说<strong>rotate旋转的是坐标轴</strong></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var context = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    context.translate(200,50)</span><br><span class="line">    context.fillStyle = &apos;rgba(255,0,0,0.25)&apos;</span><br><span class="line">    context.translate(25,25)</span><br><span class="line">    context.rotate(Math.PI / 10)</span><br><span class="line">    context.fillRect(0,0,100,50)</span><br><span class="line"></span><br><span class="line">    context.translate(0,25)</span><br><span class="line">    // context.rotate(Math.PI / 10)</span><br><span class="line">    context.fillRect(0,0,100,50)</span><br><span class="line"></span><br><span class="line">    context.translate(25 ,25)</span><br><span class="line">    // context.rotate(Math.PI / 10)</span><br><span class="line">    context.fillRect(0,0,100,50)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/cv6.png" alt="image"></p>
+<h3 id="给图形绘制阴影"><a href="#给图形绘制阴影" class="headerlink" title="给图形绘制阴影"></a>给图形绘制阴影</h3><ul>
+<li>shadowOffsetX: 阴影的横向位移量</li>
+<li>shadowOffsetY：阴影的纵向位移量</li>
+<li>shadowColor：阴影的颜色</li>
+<li>shadowBlur：阴影的模糊范围</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var context = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    context.fillStyle = &apos;#aa2d4b&apos;</span><br><span class="line">    context.shadowOffsetX = 1</span><br><span class="line">    context.shadowOffsetY = 1</span><br><span class="line">    context.shadowColor = &apos;#333&apos;</span><br><span class="line">    context.shadowBlur = 10</span><br><span class="line">    context.fillRect(10, 10, 100, 100)</span><br><span class="line">    context.shadowColor = &apos;red&apos;</span><br><span class="line">    context.shadowBlur = 20</span><br><span class="line">    context.fillRect(120, 120, 100, 100)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用图片"><a href="#使用图片" class="headerlink" title="使用图片"></a>使用图片</h2><h3 id="绘制图片"><a href="#绘制图片" class="headerlink" title="绘制图片"></a>绘制图片</h3><ul>
+<li>context.drawImage(image, x, y)  参数：要绘制的Image对象；在画布中的起始横坐标；在画布中起始纵坐标</li>
+<li>context.drawImage(image, x, y, w, h) 参数：要绘制的Image对象；在画布中的起始横坐标；在画布中的起始纵坐标；在画布中的宽；在画布中的高</li>
+<li>context.drawImage(image, x1, y1, w1, h1, x2, y2, w2, h2) 参数：要绘制的Image对象；在源图片上的起始横坐标；在源图片上的起始纵坐标；源图片截取的宽；源图片截取的高；在画布中的起始横坐标；在画布中的起始纵坐标；在画布中的宽度；在画布中的高度</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var context = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    var image = new Image()</span><br><span class="line">    image.src = &apos;1.jpg&apos;</span><br><span class="line">    image.onload = function () &#123;</span><br><span class="line">        context.drawImage(image, 0, 0, 100, 100)</span><br><span class="line">        context.drawImage(image, 200, 0, 100, 100, 120, 0, 100, 100)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/cv5.png" alt="image"></p>
+<h3 id="图像平铺"><a href="#图像平铺" class="headerlink" title="图像平铺"></a>图像平铺</h3><ul>
+<li>context.createPattern(image, type) 参数：要平铺的Image对象；type：no-repeat(不平铺)；repeat-x(横方向平铺)；repeat-y（纵方向平铺）；repeat（全方向平铺）。返回值是一个样式对象，赋值给fillStyle</li>
+<li>图像平铺相当于背景图片，要绘制图形才能平铺背景图片</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;1000&quot; height=&quot;1000&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var ctx = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    var image = new Image()</span><br><span class="line">    image.src = &apos;1.jpg&apos;</span><br><span class="line">    var pat = ctx.createPattern(image, &apos;repeat&apos;)</span><br><span class="line">    ctx.fillStyle = pat</span><br><span class="line">    ctx.fillRect(0, 0, 1000, 1000)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="图像裁剪"><a href="#图像裁剪" class="headerlink" title="图像裁剪"></a>图像裁剪</h3><ul>
+<li>先设置好裁剪区域，创建好路径。路径创建完成后，调用clip()方法裁剪区域</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var ctx = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    var img = new Image()</span><br><span class="line">    img.src = &apos;1.jpg&apos;</span><br><span class="line">    img.onload = function () &#123;</span><br><span class="line">        ctx.beginPath()</span><br><span class="line">        ctx.moveTo(50, 50)</span><br><span class="line">        ctx.lineTo(300, 50)</span><br><span class="line">        ctx.lineTo(150, 300)</span><br><span class="line">        ctx.closePath()</span><br><span class="line">        ctx.clip()</span><br><span class="line">        ctx.drawImage(img, 0, 0, 400, 400)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="像素处理"><a href="#像素处理" class="headerlink" title="像素处理"></a>像素处理</h3><ul>
+<li>context.getImageData(sx, sy, sw, sh) 参数：获取区域的起点横坐标；获取区域的起点纵坐标；获取区域的宽度；获取区域的高度</li>
+<li>返回值是一个CanvasPixelArray对象，具有height, width, data属性。data是一个保存像素数据的数组，内容类似于[r1, g1, b1, a1, r2, g2, b2, a2…] 代表第一个像素的红色值、绿色值、蓝色值与透明值。</li>
+<li>putImageData(imagedata, dx, dy [, dirtyX, dirtyY, dirtyWidth, dirtyHeight])，七个参数：imagedata对象，偏移量x，偏移量y，原图像的偏移量x和y，原图像的宽度和高度。将imagedata对象绘制到画布上</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var ctx = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    var img = new Image()</span><br><span class="line">    img.src = &apos;1.jpg&apos;</span><br><span class="line">    img.onload = function () &#123;</span><br><span class="line">        ctx.drawImage(img, 0, 0, 200, 200)</span><br><span class="line">        console.log(ctx.getImageData(0, 0, 200, 200))</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/cv4.png" alt="image"></p>
+<h2 id="图形-图像的组合和混合"><a href="#图形-图像的组合和混合" class="headerlink" title="图形 图像的组合和混合"></a>图形 图像的组合和混合</h2><h3 id="组合图形"><a href="#组合图形" class="headerlink" title="组合图形"></a>组合图形</h3><ul>
+<li>context.globalCompositeOperation 设置组合方式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>source-over</td>
+<td>默认值，表示新图形覆盖在原图形之上</td>
+</tr>
+<tr>
+<td>destination-over</td>
+<td>在原有图形之下绘制新图形</td>
+</tr>
+<tr>
+<td>source-in</td>
+<td>新图形与原有图形做in运算，只显示新图形与原有图形相重叠的部分，其他部分都变成透明</td>
+</tr>
+<tr>
+<td>destination-in</td>
+<td>只显示原有图形与新图形相重叠的部分，其他都变成透明</td>
+</tr>
+<tr>
+<td>source-out</td>
+<td>新图形与原有图形做out运算，只显示新图形中与原有图形不重叠的部分，其他部分均变成透明</td>
+</tr>
+<tr>
+<td>destination-out</td>
+<td>原有图形与新图形做out运算，只显示原有图形与新图形不重叠的部分，其他部分透明化</td>
+</tr>
+<tr>
+<td>source-atop</td>
+<td>只绘制新图形中与原有图形相重叠的部分以及未被重叠覆盖的原有图形，新图形的其他部分透明化</td>
+</tr>
+<tr>
+<td>destination-atop</td>
+<td>只绘制原有图形中被新图形覆盖的部分与新图形的其他部分</td>
+</tr>
+<tr>
+<td>lighter</td>
+<td>原有图形与新图形均绘制，重叠部分做加色处理</td>
+</tr>
+<tr>
+<td>xor</td>
+<td>只绘制不重叠的部分，重叠部分透明化</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>只绘制新图形，原有图形未与新图形重叠的部分透明化</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var ctx = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    //绘制原有图形</span><br><span class="line">    ctx.fillStyle = &apos;#aa405b&apos;</span><br><span class="line">    ctx.fillRect(0,0,100,200)</span><br><span class="line">    //设置组合类型</span><br><span class="line">    ctx.globalCompositeOperation = &apos;xor&apos;</span><br><span class="line">    ctx.beginPath()</span><br><span class="line">    ctx.arc(100,60,30,0,Math.PI*2,false)</span><br><span class="line">    ctx.fillStyle = &apos;#aa5705&apos;</span><br><span class="line">    ctx.fill()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/cv3.png" alt="image"></p>
+<h3 id="混合图像"><a href="#混合图像" class="headerlink" title="混合图像"></a>混合图像</h3><ul>
+<li>概念：利用某种数学公式将两幅图像混合在一起</li>
+<li>设置globalCompositeOperation属性值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>normal</td>
+<td>正常模式</td>
+</tr>
+<tr>
+<td>darken</td>
+<td>变暗模式</td>
+</tr>
+<tr>
+<td>lighten</td>
+<td>变亮模式</td>
+</tr>
+<tr>
+<td>multiply</td>
+<td>正片叠底模式</td>
+</tr>
+<tr>
+<td>screen</td>
+<td>滤色模式</td>
+</tr>
+<tr>
+<td>coor-burn</td>
+<td>颜色加深模式</td>
+</tr>
+<tr>
+<td>color-dodge</td>
+<td>颜色减淡模式</td>
+</tr>
+<tr>
+<td>hard-light</td>
+<td>强光模式</td>
+</tr>
+<tr>
+<td>soft-light</td>
+<td>柔光模式</td>
+</tr>
+<tr>
+<td>overlay</td>
+<td>叠加模式</td>
+</tr>
+<tr>
+<td>difference</td>
+<td>差值模式</td>
+</tr>
+<tr>
+<td>exclusion</td>
+<td>排除模式</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var ctx = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    ctx.globalCompositeOperation = &apos;overlay&apos;</span><br><span class="line">    var img1= new Image()</span><br><span class="line">    img1.src = &apos;1.jpg&apos;</span><br><span class="line">    img1.onload = function () &#123;</span><br><span class="line">        ctx.drawImage(img1, 0, 0, 100, 100)</span><br><span class="line">        var img2 = new Image()</span><br><span class="line">        img2.src = &apos;2.jpeg&apos;</span><br><span class="line">        img2.onload = function () &#123;</span><br><span class="line">            ctx.drawImage(img2, 0, 0, 100, 100)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="绘制文字"><a href="#绘制文字" class="headerlink" title="绘制文字"></a>绘制文字</h2><ul>
+<li>context.fillText(text, x, y, [maxWidth]) 四个参数：要绘制的文字；绘制文字的起点横坐标；绘制文字的七点纵坐标；显示文字的最大宽度（防止文字溢出）</li>
+<li>context.strokeText 参数同上</li>
+<li>在进行绘制之前，可以对要绘制的文字对象设置属性样式<ul>
+<li>font属性：设置文字字体</li>
+<li>textAlign属性：设置文字水平对齐方式，start/end/left/right/center</li>
+<li>textBaseLine属性：设置文字垂直对齐方式，top/hanging/middle/alphabetic/ideographic/bottom。默认值为alphabetic</li>
+</ul>
+</li>
+<li>font属性：font-style/font-variant/font-weight/font-size/line-height/font-family  例如    context.font=”italic small-caps bold 12px arial”;</li>
+</ul>
+<blockquote>
+<p>font-variant:small-caps 代表小型大写字母<br>textAlign start与left效果一样，end与right效果一样，默认是start</p>
+</blockquote>
+<p><img src="/assets/cv2.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var ctx = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;)</span><br><span class="line">    ctx.font = &apos;italic bold 30px sans-serif&apos;</span><br><span class="line">    ctx.textAlign = &apos;left&apos;</span><br><span class="line">    ctx.fillStyle = &apos;#aa457a&apos;</span><br><span class="line">    ctx.textBaseline = &apos;top&apos;</span><br><span class="line">    ctx.fillText(&apos;海贼王&apos;, 0, 20)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>context.measureText(text) 返回一个TextMetrics对象，该对象的width属性表示使用当前字体后text参数中指定的文字的总文字宽度</li>
+</ul>
+<p><img src="/assets/cv1.png" alt="image"></p>
+<h2 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h2><h3 id="保存与恢复状态"><a href="#保存与恢复状态" class="headerlink" title="保存与恢复状态"></a>保存与恢复状态</h3><ul>
+<li>save()方法保存当前的绘画状态，包括坐标原点、变换矩阵以及context的属性值</li>
+<li>restore()方法恢复到上一次保存的状态中</li>
+</ul>
+<h3 id="canvas元素图像转换为data-URL"><a href="#canvas元素图像转换为data-URL" class="headerlink" title="canvas元素图像转换为data URL"></a>canvas元素图像转换为data URL</h3><ul>
+<li>canvas.toDataURL(type) 参数 表示要输出数据的MIME类型</li>
+</ul>
+<h3 id="canvas元素图像转换为Blob对象"><a href="#canvas元素图像转换为Blob对象" class="headerlink" title="canvas元素图像转换为Blob对象"></a>canvas元素图像转换为Blob对象</h3><ul>
+<li><p>canvas.toBlob(callback, [mimeType, [qualityArgument]]) 三个参数：第一个参数是转换成功时所执行的函数；第二个参数可选，表示MIME类型；如果第二个参数是”image/jpeg”或”image/webp”，第三个参数可以指定图像质量，参数值为0-1之间的小数</p>
+</li>
+<li><p>不传第二个参数 默认是png图像</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var canvas = document.getElementById(&apos;canvas&apos;)</span><br><span class="line">    var ctx = canvas.getContext(&apos;2d&apos;)</span><br><span class="line">    var image = new Image()</span><br><span class="line">    image.src = &apos;1.jpg&apos;</span><br><span class="line">    image.onload = function () &#123;</span><br><span class="line">        ctx.drawImage(image, 10, 10, 100, 100)</span><br><span class="line">        var blob = canvas.toBlob(function (blob) &#123;</span><br><span class="line">            var link = document.createElement(&apos;a&apos;)</span><br><span class="line">            link.href = window.URL.createObjectURL(blob)</span><br><span class="line">            link.download = window.URL.createObjectURL(blob)</span><br><span class="line">            link.textContent = &apos;下载&apos;</span><br><span class="line">            document.body.appendChild(link)</span><br><span class="line">        &#125;, &apos;image/jpeg&apos;, 0.9)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="canvas动画"><a href="#canvas动画" class="headerlink" title="canvas动画"></a>canvas动画</h3><ul>
+<li>canvas动画的原理就是一个不断擦除、重绘、擦除、重绘的过程。主要实现的函数时setInterval</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var canvas = document.getElementById(&apos;canvas&apos;)</span><br><span class="line">var ctx = canvas.getContext(&apos;2d&apos;)</span><br><span class="line">var i = 10</span><br><span class="line">ctx.fillStyle = &apos;#aa2e5c&apos;</span><br><span class="line">var timeId = setInterval(function () &#123;</span><br><span class="line">    ctx.clearRect(0, 0, canvas.width, canvas.height)</span><br><span class="line">    ctx.fillRect(i, 10, 20, 20)</span><br><span class="line">    i += 10</span><br><span class="line">    if(i &gt; 400)&#123;</span><br><span class="line">        clearInterval(timeId)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, 20)</span><br></pre></td></tr></table></figure>
+
+<h3 id="解码图像"><a href="#解码图像" class="headerlink" title="解码图像"></a>解码图像</h3><ul>
+<li>如果canvas元素或者image、video对象过大时，浏览器自动进行的解码过程会消耗较大的CPU资源，这样就必须进行手动解码</li>
+<li>createImageBitmap(image, sx, sy, sw, sh).then(function(response)) 第一个参数必须指定，为要转码的img元素、video元素、canvas元素、blob元素、ImageData元素等等；另外四个参数分别为复制区域的水平起始坐标、宽高</li>
+<li>返回值是一个以一个ImageBitmap对象为肯定结果的Promise对象</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/prinklezoro.github.io/tags/HTML/" rel="tag"># HTML</a>
+            
+              <a href="/prinklezoro.github.io/tags/JS/" rel="tag"># JS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/prinklezoro.github.io/2019/09/03/Web组件/" rel="next" title="Web组件">
+                  <i class="fa fa-chevron-left"></i> Web组件
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/prinklezoro.github.io/images/avatar.gif"
+      alt="阿文">
+  <p class="site-author-name" itemprop="name">阿文</p>
+  <div class="site-description motion-element" itemprop="description">自律即自由</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/prinklezoro.github.io/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/prinklezoro.github.io/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/prinklezoro.github.io/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:prinklezoro@gmail.com" title="E-Mail &rarr; mailto:prinklezoro@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas元素的基础属性"><span class="nav-number">1.</span> <span class="nav-text">canvas元素的基础属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用路径"><span class="nav-number">2.</span> <span class="nav-text">使用路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制圆形"><span class="nav-number">2.1.</span> <span class="nav-text">绘制圆形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制直线"><span class="nav-number">2.2.</span> <span class="nav-text">绘制直线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制曲线"><span class="nav-number">2.3.</span> <span class="nav-text">绘制曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制贝塞尔曲线"><span class="nav-number">2.4.</span> <span class="nav-text">绘制贝塞尔曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制二次样条曲线"><span class="nav-number">2.5.</span> <span class="nav-text">绘制二次样条曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Path2D对象绘制路径"><span class="nav-number">2.6.</span> <span class="nav-text">使用Path2D对象绘制路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制渐变图形"><span class="nav-number">3.</span> <span class="nav-text">绘制渐变图形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制线性渐变"><span class="nav-number">3.1.</span> <span class="nav-text">绘制线性渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制径向渐变"><span class="nav-number">3.2.</span> <span class="nav-text">绘制径向渐变</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制变形图片"><span class="nav-number">4.</span> <span class="nav-text">绘制变形图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#坐标变换"><span class="nav-number">4.1.</span> <span class="nav-text">坐标变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#坐标变换研究"><span class="nav-number">4.2.</span> <span class="nav-text">坐标变换研究</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给图形绘制阴影"><span class="nav-number">4.3.</span> <span class="nav-text">给图形绘制阴影</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用图片"><span class="nav-number">5.</span> <span class="nav-text">使用图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制图片"><span class="nav-number">5.1.</span> <span class="nav-text">绘制图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像平铺"><span class="nav-number">5.2.</span> <span class="nav-text">图像平铺</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像裁剪"><span class="nav-number">5.3.</span> <span class="nav-text">图像裁剪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#像素处理"><span class="nav-number">5.4.</span> <span class="nav-text">像素处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形-图像的组合和混合"><span class="nav-number">6.</span> <span class="nav-text">图形 图像的组合和混合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组合图形"><span class="nav-number">6.1.</span> <span class="nav-text">组合图形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混合图像"><span class="nav-number">6.2.</span> <span class="nav-text">混合图像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制文字"><span class="nav-number">7.</span> <span class="nav-text">绘制文字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充知识"><span class="nav-number">8.</span> <span class="nav-text">补充知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保存与恢复状态"><span class="nav-number">8.1.</span> <span class="nav-text">保存与恢复状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas元素图像转换为data-URL"><span class="nav-number">8.2.</span> <span class="nav-text">canvas元素图像转换为data URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas元素图像转换为Blob对象"><span class="nav-number">8.3.</span> <span class="nav-text">canvas元素图像转换为Blob对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas动画"><span class="nav-number">8.4.</span> <span class="nav-text">canvas动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解码图像"><span class="nav-number">8.5.</span> <span class="nav-text">解码图像</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿文</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.7' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js"></script>
+  <script src="/prinklezoro.github.io/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/prinklezoro.github.io/js/utils.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/motion.js?v=7.3.0"></script>
+
+<script src="/prinklezoro.github.io/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/prinklezoro.github.io/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/prinklezoro.github.io/js/scrollspy.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Q6pYWSENGYw0Jy6d4DqtudBA-gzGzoHsz',
+    appKey: 'n4tLHHKWGVWs5vhSFBCtqQim',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
