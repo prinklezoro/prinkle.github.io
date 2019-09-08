@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/prinklezoro.github.io/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/prinklezoro.github.io/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/prinklezoro.github.io/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/prinklezoro.github.io/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/prinklezoro.github.io/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/prinklezoro.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/prinklezoro.github.io/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="盒类型block inline inline-block如何去除行内块元素换行所带来的空白占位符 将父容器的字体大小设置为0 12345&amp;lt;div class=&amp;quot;parent&amp;quot; style=&amp;quot;font-size: 0&amp;quot;&amp;gt;    &amp;lt;div class=&amp;quot;child1&amp;quot; style=&amp;quot;background: #4ca">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="盒相关样式">
+<meta property="og:url" content="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/08/盒相关样式/index.html">
+<meta property="og:site_name" content="Katakuri">
+<meta property="og:description" content="盒类型block inline inline-block如何去除行内块元素换行所带来的空白占位符 将父容器的字体大小设置为0 12345&amp;lt;div class=&amp;quot;parent&amp;quot; style=&amp;quot;font-size: 0&amp;quot;&amp;gt;    &amp;lt;div class=&amp;quot;child1&amp;quot; style=&amp;quot;background: #4ca">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/hxg8.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/hxg7.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/hxg6.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/hxg5.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/hxg4.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/hxg3.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/hxg2.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/hxg1.png">
+<meta property="og:updated_time" content="2019-09-08T14:29:13.986Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="盒相关样式">
+<meta name="twitter:description" content="盒类型block inline inline-block如何去除行内块元素换行所带来的空白占位符 将父容器的字体大小设置为0 12345&amp;lt;div class=&amp;quot;parent&amp;quot; style=&amp;quot;font-size: 0&amp;quot;&amp;gt;    &amp;lt;div class=&amp;quot;child1&amp;quot; style=&amp;quot;background: #4ca">
+<meta name="twitter:image" content="https://prinklezoro.github.io/assets/hxg8.png">
+  <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/08/盒相关样式/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>盒相关样式 | Katakuri</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/prinklezoro.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Katakuri</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/prinklezoro.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/prinklezoro.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/prinklezoro.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/prinklezoro.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/prinklezoro.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-music">
+      
+    
+
+    <a href="/prinklezoro.github.io/music/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>音乐</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/09/08/盒相关样式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿文">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">盒相关样式
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-08 22:23:46 / 修改时间：22:29:13" itemprop="dateCreated datePublished" datetime="2019-09-08T22:23:46+08:00">2019-09-08</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/09/08/盒相关样式/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/09/08/盒相关样式/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="盒类型"><a href="#盒类型" class="headerlink" title="盒类型"></a>盒类型</h2><h3 id="block-inline-inline-block"><a href="#block-inline-inline-block" class="headerlink" title="block inline inline-block"></a>block inline inline-block</h3><h3 id="如何去除行内块元素换行所带来的空白占位符"><a href="#如何去除行内块元素换行所带来的空白占位符" class="headerlink" title="如何去除行内块元素换行所带来的空白占位符"></a>如何去除行内块元素换行所带来的空白占位符</h3><p><img src="/assets/hxg8.png" alt="image"></p><ul>
+<li>将父容器的字体大小设置为0</li>
+</ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;parent&quot; style=&quot;font-size: 0&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;child1&quot; style=&quot;background: #4cae4c;display: inline-block;width: 100px;height: 100px;&quot;&gt;11&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;child2&quot; style=&quot;background: #4cae4c;display: inline-block;width: 100px;height: 100px;&quot;&gt;11&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;child3&quot; style=&quot;background: #4cae4c;display: inline-block;width: 100px;height: 100px;&quot;&gt;11&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+
+<ul>
+<li>给子元素浮动效果</li>
+<li>注释块级元素周边的空白区域</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;parent&quot; style=&quot;font-size: 0&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;child1&quot; style=&quot;background: #4cae4c;display: inline-block;width: 100px;height: 100px;&quot;&gt;11&lt;/div&gt;&lt;!--</span><br><span class="line">    --&gt;&lt;div class=&quot;child2&quot; style=&quot;background: #4cae4c;display: inline-block;width: 100px;height: 100px;&quot;&gt;11&lt;/div&gt;&lt;!--</span><br><span class="line">    --&gt;&lt;div class=&quot;child3&quot; style=&quot;background: #4cae4c;display: inline-block;width: 100px;height: 100px;&quot;&gt;11&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>行内块元素一行显示，不换行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;child1&quot; style=&quot;background: #4cae4c;display: inline-block;width: 100px;height: 100px;&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;child2&quot; style=&quot;background: #4cae4c;display: inline-block;width: 100px;height: 100px;&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;child3&quot; style=&quot;background: #4cae4c;display: inline-block;width: 100px;height: 100px;&quot;&gt;11&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>推荐使用第一种方法</li>
+</ul>
+<h3 id="inline-table类型"><a href="#inline-table类型" class="headerlink" title="inline-table类型"></a>inline-table类型</h3><ul>
+<li>默认table标签时块级元素，当设置inline-table 变成行内元素。也就是变成内联样式和table样式</li>
+<li>当设置为inline-table时，默认对齐方式是居中对齐</li>
+</ul>
+<h3 id="list-item类型"><a href="#list-item类型" class="headerlink" title="list-item类型"></a>list-item类型</h3><ul>
+<li>将元素的类型设定为列表类型来显示，相当于ul ol</li>
+<li>使用list-style将列表标记属性<ul>
+<li>list-style-type 设置标记的类型</li>
+<li>list-style-position 属性值为inside和outside(默认)</li>
+<li>list-style-image 使用图像来替换列表项的标记</li>
+</ul>
+</li>
+</ul>
+<p><img src="/assets/hxg7.png" alt="image"></p>
+<ul>
+<li>list-style-type的属性值</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>none</td>
+<td>无标记</td>
+<td>disc</td>
+<td>默认。标记是实心圆。</td>
+</tr>
+<tr>
+<td>circle</td>
+<td>标记是空心圆</td>
+<td>square</td>
+<td>标记是实心方块</td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>标记是数字</td>
+<td>decimal-leading-zero</td>
+<td>0开头的数字标记</td>
+</tr>
+<tr>
+<td>lower-roman</td>
+<td>小写罗马数字</td>
+<td>upper-roman</td>
+<td>大写罗马数字</td>
+</tr>
+<tr>
+<td>lower-alpha</td>
+<td>小写英文字母</td>
+<td>upper-alpha</td>
+<td>大写英文字母</td>
+</tr>
+<tr>
+<td>lower-greek</td>
+<td>小写希腊字母</td>
+<td>lower-latin</td>
+<td>小写拉丁字母</td>
+</tr>
+<tr>
+<td>upper-latin</td>
+<td>大写拉丁字母</td>
+<td>hebrew</td>
+<td>传统的希伯来编号方式</td>
+</tr>
+<tr>
+<td>armenian</td>
+<td>传统的亚美尼亚编号方式</td>
+<td>georgian</td>
+<td>传统的乔治亚编号方式</td>
+</tr>
+<tr>
+<td>cjk-ideographic</td>
+<td>简单的表意数字</td>
+<td>hiragana</td>
+<td>标记是：a, i, u, e, o, ka, ki, 等</td>
+</tr>
+<tr>
+<td>katakana</td>
+<td>标记是：A, I, U, E, O, KA, KI, 等</td>
+<td>hiragana-iroha</td>
+<td>标记是：i, ro, ha, ni, ho, he, to, 等</td>
+</tr>
+<tr>
+<td>katakana-iroha</td>
+<td>标记是：I, RO, HA, NI, HO, HE, TO, 等</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;div style=&quot;display: list-item;list-style-type: circle;margin-left: 20px&quot;&gt;sha&lt;/div&gt;</span><br><span class="line">    &lt;div style=&quot;display: list-item;list-style-type: circle;margin-left: 20px&quot;&gt;sha&lt;/div&gt;</span><br><span class="line">    &lt;div style=&quot;display: list-item;list-style-type: circle;margin-left: 20px&quot;&gt;sha&lt;/div&gt;</span><br><span class="line">    &lt;div style=&quot;display: list-item;list-style-type: circle;margin-left: 20px&quot;&gt;sha&lt;/div&gt;</span><br><span class="line">    &lt;div style=&quot;display: list-item;list-style-type: circle;margin-left: 20px&quot;&gt;sha&lt;/div&gt;</span><br><span class="line">    &lt;div style=&quot;display: list-item;list-style-type: circle;margin-left: 20px&quot;&gt;sha&lt;/div&gt;</span><br><span class="line">&lt;!--    默认是outside所以要设置margin-left，让标记显示出来--&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="table以及table-cell"><a href="#table以及table-cell" class="headerlink" title="table以及table-cell"></a>table以及table-cell</h3><h4 id="table的特性以及相关属性的设置"><a href="#table的特性以及相关属性的设置" class="headerlink" title="table的特性以及相关属性的设置"></a>table的特性以及相关属性的设置</h4><ul>
+<li>与浮动同级，浮动的元素并不会浮在table标签之上（具体原因找了很久没找出来…）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;left&quot; style=&quot;float: left;height: 100px;width: 200px;background-color: #f0ad4e;opacity: 0.2&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td style=&quot;width: 2000px;height: 100px;background-color: #4cae4c;&quot;&gt;111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/hxg6.png" alt="image"></p>
+<blockquote>
+<p>上图浮动的元素已经设置了透明度，可以看到底下并没有table元素</p>
+</blockquote>
+<ul>
+<li>table-layout属性显示表格单元格、行、列的算法规则<ul>
+<li>fixed：固定表格布局。如果指定了单元格宽度，那么会按照指定的宽度限定没有单元格宽度，与内容无关；如果没有指定单元格宽度，会根据table的总宽度平分到每个单元格</li>
+<li>auto（默认）：自动表格布局。如果指定了单元格宽度，那么当内容不够指定宽度时，宽度就是单元格宽度，如果单元格宽度超过了table宽度，则宽度就是table宽度（也就是说无论单元格宽度设置多大，始终不会超过table宽度，除非内容撑开了table宽度）；如果没有指定单元格宽度，那么表格宽度完全由内容决定</li>
+</ul>
+</li>
+</ul>
+<h4 id="table宽度的研究"><a href="#table宽度的研究" class="headerlink" title="table宽度的研究"></a>table宽度的研究</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;left&quot; style=&quot;float: left;height: 100px;width: 200px;background-color: #f0ad4e;opacity: 0.2&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td style=&quot;height: 100px;width: 2000px;background-color: #4cae4c;&quot;&gt;11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/hxg5.png" alt="image"></p>
+<ul>
+<li>似乎table的最大宽度就是剩余宽度，但远没有这么简单</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;left&quot; style=&quot;float: left;height: 100px;width: 200px;background-color: #f0ad4e;opacity: 0.2&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td style=&quot;height: 100px;width: 2000px;background-color: #4cae4c;&quot;&gt;1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/hxg4.png" alt="image"></p>
+<ul>
+<li>当table内容超过了剩余宽度时，table会另起一行，似乎最大宽度为父元素宽度；但是当我继续加内容，table宽度会无限增长，下面会出现滚动条</li>
+</ul>
+<ul>
+<li><strong>总结</strong>：<ul>
+<li>当table-layout默认时，单元格的内容可以决定table宽度。</li>
+<li>内容不足单元格宽度时，单元格宽度为指定宽度；</li>
+<li>内容超过，单元格宽度为内容撑开的宽度；</li>
+<li>内容不足剩余宽度，table不会另起一行；</li>
+<li>内容超过剩余宽度，table另起一行。相当于行内块元素，但是与浮动元素平级</li>
+</ul>
+</li>
+</ul>
+<h3 id="table-cell"><a href="#table-cell" class="headerlink" title="table-cell"></a>table-cell</h3><ul>
+<li>两个特点：同行等高；宽度自动调节</li>
+<li>css有一个规则，创建匿名表格元素。也就是说当某个元素被设置为table-cell时，当他的父元素，祖父元素没有table-row和table时，会跟随它相邻的table-cell元素一起生成父元素table-row和祖父元素table</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;display=&apos;table-cell&apos;&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div style=&quot;display=&apos;table-cell&apos;&quot;&gt;&lt;/div&gt;</span><br><span class="line">//相当于</span><br><span class="line">&lt;div style=&quot;display=&apos;display: table&apos;&quot;&gt;</span><br><span class="line">    &lt;div style=&quot;display=&apos;table-row&apos;&quot;&gt;</span><br><span class="line">        &lt;div style=&quot;display=&apos;table-cell&apos;&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div style=&quot;display=&apos;table-cell&apos;&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>同行等高</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        * &#123;</span><br><span class="line">            padding: 0;</span><br><span class="line">            margin: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .aaa &#123;</span><br><span class="line">            display: table-cell;</span><br><span class="line">            padding: 10px;</span><br><span class="line">            border: 1px solid #5bc0de;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;aaa&quot; &gt;</span><br><span class="line">    skhskhakshkasukh&lt;br&gt;</span><br><span class="line">    saasujaskluajsssjaslkasjasasassasaassaasassassssssssssssssssssssssssssssssssssssssssssssssssssssssasssssssssssasssssaaaaaaaaaaaaaaaaaaaaaaaaaaasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssssssssssss</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;aaa&quot;&gt;saasas&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/hxg3.png" alt="image"></p>
+<blockquote>
+<p>因为display:table-cell外面会套一层table匿名元素，所有会形成滚动条</p>
+</blockquote>
+<h2 id="盒中容纳不下的内容的显示"><a href="#盒中容纳不下的内容的显示" class="headerlink" title="盒中容纳不下的内容的显示"></a>盒中容纳不下的内容的显示</h2><h3 id="overflow属性"><a href="#overflow属性" class="headerlink" title="overflow属性"></a>overflow属性</h3><ul>
+<li>overflow:auto; overflow:hidden; overflow:srcoll</li>
+<li>overflow-x:hidden; overflow-x:srcoll</li>
+<li>overflow-y:hidden; overflow-y:srcoll</li>
+</ul>
+<h3 id="text-overflow属性"><a href="#text-overflow属性" class="headerlink" title="text-overflow属性"></a>text-overflow属性</h3><ul>
+<li>当内容超出盒子内容时使用该属性，通常与overflow一起用</li>
+<li>text-overflow:ellipse，会在末尾显示省略符号</li>
+<li>text-overflow:clip，修剪文本 默认属性</li>
+<li>text-overflow:string 只有火狐浏览器支持</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=&quot;width: 80px;height: 30px;text-overflow: &apos;&gt;&gt;&apos;;background-color: #4cae4c;overflow: hidden&quot;&gt;akshkhsksahkjhaskuhasukhasukh&lt;/p&gt;</span><br><span class="line">&lt;p style=&quot;width: 80px;height: 30px;text-overflow: ellipsis;background-color: #4cae4c;overflow: hidden&quot;&gt;akshkhsksahkjhaskuhasukhasukh&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/hxg2.png" alt="image"></p>
+<p><img src="/assets/hxg1.png" alt="image"></p>
+<ul>
+<li>一行显示省略号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text-overflow: ellipsis;</span><br><span class="line">overflow: hidden;</span><br><span class="line">white-space: no-wrap</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多行显示省略号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">overflow: hidden;</span><br><span class="line">text-overflow: ellipsis;</span><br><span class="line">display: -webkit-box;</span><br><span class="line">-webkit-line-clamp: 2; //设置行数</span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line">//不要给元素设置高度</span><br></pre></td></tr></table></figure>
+
+<h2 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h2><ul>
+<li>box-shadow: x-shadow y-shadow blur color inset</li>
+<li>x-shadow：水平阴影的位置，允许负值，必须</li>
+<li>y-shadow：垂直阴影的位置，允许负值，必须</li>
+<li>blur：模糊距离。可选</li>
+<li>color：可选，颜色 默认是黑色</li>
+<li>inset 内阴影</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        .box &#123;</span><br><span class="line">            width: 100px;</span><br><span class="line">            height: 100px;</span><br><span class="line">            background-color: red;</span><br><span class="line">            box-shadow: 0px 0px 10px #333 inset;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    1111</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CSS3盒模型"><a href="#CSS3盒模型" class="headerlink" title="CSS3盒模型"></a>CSS3盒模型</h2><ul>
+<li>box-sizing 有两种属性值</li>
+<li>box-sizing：content-box 标准模式下的盒模型，padding和border会改变width和height的值</li>
+<li>box-sizing：border-box 怪异模式下的盒模型，定义padding和border不会改变width和height值</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/prinklezoro.github.io/tags/CSS/" rel="tag"># CSS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/prinklezoro.github.io/2019/09/08/选择器/" rel="next" title="选择器">
+                  <i class="fa fa-chevron-left"></i> 选择器
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/prinklezoro.github.io/images/avatar.gif"
+      alt="阿文">
+  <p class="site-author-name" itemprop="name">阿文</p>
+  <div class="site-description motion-element" itemprop="description">自律即自由</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/prinklezoro.github.io/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/prinklezoro.github.io/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/prinklezoro.github.io/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:prinklezoro@gmail.com" title="E-Mail &rarr; mailto:prinklezoro@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#盒类型"><span class="nav-number">1.</span> <span class="nav-text">盒类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#block-inline-inline-block"><span class="nav-number">1.1.</span> <span class="nav-text">block inline inline-block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何去除行内块元素换行所带来的空白占位符"><span class="nav-number">1.2.</span> <span class="nav-text">如何去除行内块元素换行所带来的空白占位符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inline-table类型"><span class="nav-number">1.3.</span> <span class="nav-text">inline-table类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#list-item类型"><span class="nav-number">1.4.</span> <span class="nav-text">list-item类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#table以及table-cell"><span class="nav-number">1.5.</span> <span class="nav-text">table以及table-cell</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#table的特性以及相关属性的设置"><span class="nav-number">1.5.1.</span> <span class="nav-text">table的特性以及相关属性的设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#table宽度的研究"><span class="nav-number">1.5.2.</span> <span class="nav-text">table宽度的研究</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#table-cell"><span class="nav-number">1.6.</span> <span class="nav-text">table-cell</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#盒中容纳不下的内容的显示"><span class="nav-number">2.</span> <span class="nav-text">盒中容纳不下的内容的显示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#overflow属性"><span class="nav-number">2.1.</span> <span class="nav-text">overflow属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text-overflow属性"><span class="nav-number">2.2.</span> <span class="nav-text">text-overflow属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#box-shadow"><span class="nav-number">3.</span> <span class="nav-text">box-shadow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3盒模型"><span class="nav-number">4.</span> <span class="nav-text">CSS3盒模型</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿文</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.7' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js"></script>
+  <script src="/prinklezoro.github.io/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/prinklezoro.github.io/js/utils.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/motion.js?v=7.3.0"></script>
+
+<script src="/prinklezoro.github.io/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/prinklezoro.github.io/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/prinklezoro.github.io/js/scrollspy.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Q6pYWSENGYw0Jy6d4DqtudBA-gzGzoHsz',
+    appKey: 'n4tLHHKWGVWs5vhSFBCtqQim',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
