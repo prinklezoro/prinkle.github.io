@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/prinklezoro.github.io/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/prinklezoro.github.io/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/prinklezoro.github.io/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/prinklezoro.github.io/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/prinklezoro.github.io/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/prinklezoro.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/prinklezoro.github.io/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="属性选择器 [attr=val] attr为属性，val为属性值，表示具备这个属性和属性值的元素 [attr*=val] attr属性值中包含val的所有元素 [attr^=val] attr属性值中以val开头的所有元素 [attr$=val] attr属性值中以val结尾的所有元素 123456789101112131415161718192021    &amp;lt;style&amp;gt;">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="选择器">
+<meta property="og:url" content="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/08/选择器/index.html">
+<meta property="og:site_name" content="Katakuri">
+<meta property="og:description" content="属性选择器 [attr=val] attr为属性，val为属性值，表示具备这个属性和属性值的元素 [attr*=val] attr属性值中包含val的所有元素 [attr^=val] attr属性值中以val开头的所有元素 [attr$=val] attr属性值中以val结尾的所有元素 123456789101112131415161718192021    &amp;lt;style&amp;gt;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/xz7.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/xz5.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/xz4.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/xz3.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/xzb.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/xz2.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/xz1.png">
+<meta property="og:updated_time" content="2019-09-08T14:21:01.420Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="选择器">
+<meta name="twitter:description" content="属性选择器 [attr=val] attr为属性，val为属性值，表示具备这个属性和属性值的元素 [attr*=val] attr属性值中包含val的所有元素 [attr^=val] attr属性值中以val开头的所有元素 [attr$=val] attr属性值中以val结尾的所有元素 123456789101112131415161718192021    &amp;lt;style&amp;gt;">
+<meta name="twitter:image" content="https://prinklezoro.github.io/assets/xz7.png">
+  <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/08/选择器/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>选择器 | Katakuri</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/prinklezoro.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Katakuri</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/prinklezoro.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/prinklezoro.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/prinklezoro.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/prinklezoro.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/prinklezoro.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-music">
+      
+    
+
+    <a href="/prinklezoro.github.io/music/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>音乐</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/09/08/选择器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿文">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">选择器
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-08 22:13:08 / 修改时间：22:21:01" itemprop="dateCreated datePublished" datetime="2019-09-08T22:13:08+08:00">2019-09-08</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/09/08/选择器/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/09/08/选择器/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><ul>
+<li>[attr=val] attr为属性，val为属性值，表示具备这个属性和属性值的元素</li>
+<li>[attr*=val] attr属性值中包含val的所有元素</li>
+<li>[attr^=val] attr属性值中以val开头的所有元素</li>
+<li>[attr$=val] attr属性值中以val结尾的所有元素</li>
+</ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        [name=section] &#123;</span><br><span class="line">            background: #4cae4c;</span><br><span class="line">        &#125;</span><br><span class="line">        [name*=section] &#123;</span><br><span class="line">            background: #5bc0de;</span><br><span class="line">        &#125;</span><br><span class="line">        [name^=section] &#123;</span><br><span class="line">            background: #f0ad4e;</span><br><span class="line">        &#125;</span><br><span class="line">        [name$=section] &#123;</span><br><span class="line">            background: #bce8f1;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p name=&quot;section&quot;&gt;1&lt;/p&gt;</span><br><span class="line">&lt;p name=&quot;section1&quot;&gt;2&lt;/p&gt;</span><br><span class="line">&lt;p name=&quot;section2&quot;&gt;3&lt;/p&gt;</span><br><span class="line">&lt;p name=&quot;option-section&quot;&gt;4&lt;/p&gt;</span><br><span class="line">&lt;p name=&quot;option-section2&quot;&gt;5&lt;/p&gt;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+<h2 id="结构型伪类选择器"><a href="#结构型伪类选择器" class="headerlink" title="结构型伪类选择器"></a>结构型伪类选择器</h2><h3 id="伪类选择器和伪元素"><a href="#伪类选择器和伪元素" class="headerlink" title="伪类选择器和伪元素"></a>伪类选择器和伪元素</h3><ul>
+<li>a:link a:visited a:hover a:active</li>
+</ul>
+<p><strong>关于a链接伪类顺序的一些思考</strong></p>
+<ul>
+<li>未点击链接时，link一直处于激活状态，当鼠标悬停或点击时，a链接同时处于link和hover（active）状态，如果link放在之后，那么会覆盖hover或者active的样式</li>
+<li>鼠标点击下去时，a链接处于hover和active状态，如果hover放在active之后，会覆盖active的样式，所以hover在active之前</li>
+<li>鼠标点击之后，当鼠标再次点击，如果visited放在hover或者active之后，则再次hover或active时visited会覆盖hover和active样式</li>
+<li>至于link和visited 顺序无所谓</li>
+</ul>
+<ul>
+<li>first-line选择器：用于向某个元素的第一行文字设置样式</li>
+<li>first-letter选择器：用于向某个元素的第一个文字或字母使用样式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        p &#123;</span><br><span class="line">            width: 50px;</span><br><span class="line">        &#125;</span><br><span class="line">        p::first-letter &#123;</span><br><span class="line">            background-color: #4cae4c;</span><br><span class="line">            font-size: 30px;</span><br><span class="line">        &#125;</span><br><span class="line">        p::first-line &#123;</span><br><span class="line">            background-color: #bce8f1;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;one piecessalijaslijialsjalsjnhsaukhnsak&lt;/p&gt;</span><br><span class="line">/* 顺序无所谓::first-letter优先级始终最高 */</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/xz7.png" alt="image"></p>
+<ul>
+<li>before after选择器</li>
+</ul>
+<blockquote>
+<p>::before和:before的相同点和不同点 <br>相同点：意义是等效的；不同点：:before是css2的写法 ::before是css3的写法，:before比::before兼容性更好，但是H5页面中推荐用::before</p>
+</blockquote>
+<ul>
+<li>root选择器：将样式绑定在页面的根元素中 一般是html元素</li>
+</ul>
+<blockquote>
+<p>当给html元素或者:root元素设置样式时，body为内容的宽高；但不设置样式时，body为整个页面</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        html &#123;</span><br><span class="line">            background-color: #f0ad4e;</span><br><span class="line">        &#125;</span><br><span class="line">        body &#123;</span><br><span class="line">            background-color: #5bc0de;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;111&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/xz5.png" alt="image"></p>
+<p><strong>将html样式注释</strong></p>
+<p><img src="/assets/xz4.png" alt="image"></p>
+<ul>
+<li>not选择器：不包含…的元素 例如p::not(.aaa) 不包含aaa类的p元素</li>
+<li>empty选择器：元素内容为空白时的样式</li>
+<li>target选择器：超链接点击锚点跳转到对应模块时的样式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        div:target &#123;</span><br><span class="line">            background-color: #5bc0de;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;a href=&quot;#one&quot;&gt;one&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;#two&quot;&gt;two&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;#three&quot;&gt;three&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;#four&quot;&gt;four&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;one&quot;&gt;</span><br><span class="line">    &lt;h1&gt;111&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;21111111&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;two&quot;&gt;</span><br><span class="line">    &lt;h1&gt;111&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;21111111&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;three&quot;&gt;</span><br><span class="line">    &lt;h1&gt;111&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;21111111&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;four&quot;&gt;</span><br><span class="line">    &lt;h1&gt;111&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;21111111&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/xz3.png" alt="image"></p>
+<ul>
+<li>first-child 第一个元素</li>
+<li>last-child 最后一个元素</li>
+<li>nth-child 第几个元素 nth-child(even)第偶数个元素 nth-child(odd)第奇数个元素</li>
+<li>nth-last-child 从尾开始数，第几个元素</li>
+<li>first-of-type 第一个元素；last-of-type 最后一个元素；nth-of-type 第几个元素；nth-last-of-type 从尾开始数，第几个元素</li>
+</ul>
+<blockquote>
+<p>child跟of-type的区别：child先取第几个元素，然后判断是不是要取的元素，如果不是则无效；of-type先把要取的元素全部列举出来，然后再取第几个元素设置样式</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">/*        div p:first-child &#123;</span><br><span class="line">            background-color: #f0ad4e;  没有效果</span><br><span class="line">        &#125;*/</span><br><span class="line">        div p:first-of-type &#123;</span><br><span class="line">            background-color: #4cae4c;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;h1&gt;222&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;111&lt;/p&gt;</span><br><span class="line">    &lt;h1&gt;222&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;111&lt;/p&gt;</span><br><span class="line">    &lt;h1&gt;222&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;111&lt;/p&gt;</span><br><span class="line">    &lt;h1&gt;222&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;111&lt;/p&gt;</span><br><span class="line">    &lt;h1&gt;222&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;111&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>only-child 当元素内部只有一个元素，而且跟要设置的元素对应时，设置样式</li>
+<li>only-of-type 当元素内部只有一个要设置的元素时，设置样式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">/*        div p:only-child&#123;</span><br><span class="line">            background-color: #4cae4c;  没有效果，因为有两个元素</span><br><span class="line">        &#125;*/</span><br><span class="line">        div p:only-of-type &#123;</span><br><span class="line">            background-color: #5bc0de;</span><br><span class="line">            /*有效果因为只有一个p元素*/</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;h1&gt;277219&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;22sam&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="UI元素状态伪类选择器"><a href="#UI元素状态伪类选择器" class="headerlink" title="UI元素状态伪类选择器"></a>UI元素状态伪类选择器</h2><ul>
+<li>:hover 鼠标移动到元素上，元素的样式</li>
+<li>:active 鼠标移动到元素上按下的样式</li>
+<li>:focus 元素获得焦点时使用的样式 可以设置tabindex获取焦点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        p:focus &#123;</span><br><span class="line">            color: #4cae4c;</span><br><span class="line">        &#125;</span><br><span class="line">        /*p:hover &#123;*/</span><br><span class="line">        /*    color: #bce8f1;*/</span><br><span class="line">        /*&#125;*/</span><br><span class="line">        p:active &#123;</span><br><span class="line">            color: #f0ad4e;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p tabindex=&quot;1&quot;&gt;111&lt;/p&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; tabindex=&quot;2&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>:enabled 元素可用状态时候的样式</li>
+<li>:disabled 元素不可用状态时候的样式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        input:disabled &#123;</span><br><span class="line">            background-color: #bce8f1;</span><br><span class="line">        &#125;</span><br><span class="line">        input:enabled &#123;</span><br><span class="line">            background-color: #1b6d85;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; disabled&gt;</span><br><span class="line">&lt;input type=&quot;text&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>read-only 表示只读状态，设置了readonly属性的；read-write 表示读写状态，没有设置readonly属性的，<strong>设置了disabled的也被视为读写状态</strong></li>
+<li>在火狐浏览器中，需要用-moz-read-only和-moz-read-write</li>
+<li>:checked 指定radio和checkbox处于选取状态时的样式</li>
+<li>:default 指定页面打开时默认处于选择状态时的单选框或复选框样式</li>
+<li>:indeterminate 一组单选框中没有任何一个单选框处于被选中状态的样式</li>
+<li>::selection 用来指定元素处于选中状态时的样式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        p::selection &#123;</span><br><span class="line">            background-color: #333;</span><br><span class="line">            color: #fff;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;ajskjakushkahskuhasku&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/xzb.png" alt="image"></p>
+<ul>
+<li>:invalid 当元素不能通过required或者pattern表单验证时的样式</li>
+<li>:valid 当元素能通过required或者pattern表单验证时的样式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        input:invalid &#123;</span><br><span class="line">            background-color: red;</span><br><span class="line">        &#125;</span><br><span class="line">        input:valid &#123;</span><br><span class="line">            background-color: greenyellow;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; required&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>:required 用来指定允许使用required且已经使用了required的属性的元素样式</li>
+<li>:optional 用来指定允许使用required但是没有使用require属性的元素样式</li>
+<li>:in-range 用来指定输入的数值在指定的min和max之间的元素样式，<strong>没有输入也使用这个样式</strong></li>
+<li>:out-of-range 用来指定输入的数值在指定的min和max外的元素样式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        input:in-range &#123;</span><br><span class="line">            background-color: greenyellow;</span><br><span class="line">        &#125;</span><br><span class="line">        input:out-of-range &#123;</span><br><span class="line">            background-color: red;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;input type=&quot;number&quot; max=&quot;100&quot; min=&quot;10&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="兄弟元素选择器"><a href="#兄弟元素选择器" class="headerlink" title="兄弟元素选择器"></a>兄弟元素选择器</h2><ul>
+<li>&lt;子元素&gt; ~ &lt;子元素之后的所有同级兄弟元素&gt; <strong>之后的元素，之前的不算</strong></li>
+<li>&lt;子元素&gt; + &lt;子元素之后的下一个同级兄弟元素&gt;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/*        div ~ p &#123;</span><br><span class="line">            background-color: #5bc0de;</span><br><span class="line">        &#125;*/</span><br><span class="line">        div + p &#123;</span><br><span class="line">            background-color: #5bc0de;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p&gt;3333&lt;/p&gt;</span><br><span class="line">&lt;p&gt;3333&lt;/p&gt;</span><br><span class="line">&lt;p&gt;3333&lt;/p&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;p&gt;11&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;11&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;p&gt;222&lt;/p&gt;</span><br><span class="line">&lt;p&gt;222&lt;/p&gt;</span><br><span class="line">&lt;p&gt;222&lt;/p&gt;</span><br><span class="line">&lt;p&gt;222&lt;/p&gt;</span><br><span class="line">&lt;p&gt;222&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/xz2.png" alt="image"></p>
+<p><img src="/assets/xz1.png" alt="image"></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/prinklezoro.github.io/tags/CSS/" rel="tag"># CSS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/prinklezoro.github.io/2019/09/06/多媒体相关API/" rel="next" title="多媒体相关API">
+                  <i class="fa fa-chevron-left"></i> 多媒体相关API
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/prinklezoro.github.io/images/avatar.gif"
+      alt="阿文">
+  <p class="site-author-name" itemprop="name">阿文</p>
+  <div class="site-description motion-element" itemprop="description">自律即自由</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/prinklezoro.github.io/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/prinklezoro.github.io/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/prinklezoro.github.io/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:prinklezoro@gmail.com" title="E-Mail &rarr; mailto:prinklezoro@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性选择器"><span class="nav-number">1.</span> <span class="nav-text">属性选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构型伪类选择器"><span class="nav-number">2.</span> <span class="nav-text">结构型伪类选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#伪类选择器和伪元素"><span class="nav-number">2.1.</span> <span class="nav-text">伪类选择器和伪元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI元素状态伪类选择器"><span class="nav-number">3.</span> <span class="nav-text">UI元素状态伪类选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兄弟元素选择器"><span class="nav-number">4.</span> <span class="nav-text">兄弟元素选择器</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿文</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.7' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js"></script>
+  <script src="/prinklezoro.github.io/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/prinklezoro.github.io/js/utils.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/motion.js?v=7.3.0"></script>
+
+<script src="/prinklezoro.github.io/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/prinklezoro.github.io/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/prinklezoro.github.io/js/scrollspy.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Q6pYWSENGYw0Jy6d4DqtudBA-gzGzoHsz',
+    appKey: 'n4tLHHKWGVWs5vhSFBCtqQim',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>

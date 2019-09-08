@@ -237,6 +237,128 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/09/08/选择器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿文">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/prinklezoro.github.io/2019/09/08/选择器/" class="post-title-link" itemprop="url">选择器</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-08 22:13:08 / 修改时间：22:21:01" itemprop="dateCreated datePublished" datetime="2019-09-08T22:13:08+08:00">2019-09-08</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/09/08/选择器/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/09/08/选择器/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><ul>
+<li>[attr=val] attr为属性，val为属性值，表示具备这个属性和属性值的元素</li>
+<li>[attr*=val] attr属性值中包含val的所有元素</li>
+<li>[attr^=val] attr属性值中以val开头的所有元素</li>
+<li>[attr$=val] attr属性值中以val结尾的所有元素</li>
+</ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        [name=section] &#123;</span><br><span class="line">            background: #4cae4c;</span><br><span class="line">        &#125;</span><br><span class="line">        [name*=section] &#123;</span><br><span class="line">            background: #5bc0de;</span><br><span class="line">        &#125;</span><br><span class="line">        [name^=section] &#123;</span><br><span class="line">            background: #f0ad4e;</span><br><span class="line">        &#125;</span><br><span class="line">        [name$=section] &#123;</span><br><span class="line">            background: #bce8f1;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;p name=&quot;section&quot;&gt;1&lt;/p&gt;</span><br><span class="line">&lt;p name=&quot;section1&quot;&gt;2&lt;/p&gt;</span><br><span class="line">&lt;p name=&quot;section2&quot;&gt;3&lt;/p&gt;</span><br><span class="line">&lt;p name=&quot;option-section&quot;&gt;4&lt;/p&gt;</span><br><span class="line">&lt;p name=&quot;option-section2&quot;&gt;5&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/prinklezoro.github.io/2019/09/08/选择器/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/09/06/多媒体相关API/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1252,11 +1374,19 @@
                 
               
 
-              <time title="创建时间：2019-08-22 23:07:45 / 修改时间：23:18:29" itemprop="dateCreated datePublished" datetime="2019-08-22T23:07:45+08:00">2019-08-22</time>
+              <time title="创建时间：2019-08-22 23:07:45" itemprop="dateCreated datePublished" datetime="2019-08-22T23:07:45+08:00">2019-08-22</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-07 21:09:06" itemprop="dateModified" datetime="2019-09-07T21:09:06+08:00">2019-09-07</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -1336,135 +1466,6 @@
   </article>
 
     
-      
-
-  <article class="post" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/08/21/文件API/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阿文">
-      <meta itemprop="description" content="自律即自由">
-      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Katakuri">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/prinklezoro.github.io/2019/08/21/文件API/" class="post-title-link" itemprop="url">文件API</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-21 22:45:25" itemprop="dateCreated datePublished" datetime="2019-08-21T22:45:25+08:00">2019-08-21</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-26 20:29:11" itemprop="dateModified" datetime="2019-08-26T20:29:11+08:00">2019-08-26</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/prinklezoro.github.io/2019/08/21/文件API/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/08/21/文件API/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="FileList对象与File对象"><a href="#FileList对象与File对象" class="headerlink" title="FileList对象与File对象"></a>FileList对象与File对象</h2><ul>
-<li>FileList对象表示用户选择的文件列表</li>
-<li>file表单元素可以上传多个文件，每一个文件都是一个file对象，FileList就是这多个文件的列表</li>
-<li>file有两个属性：name表示文件名字，lastModifiedDate表示文件的最后修改日期</li>
-</ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; multiple size=&quot;80&quot;&gt;</span><br><span class="line">&lt;input type=&quot;button&quot; onclick=&quot;upload()&quot; value=&quot;上传&quot;&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function upload() &#123;</span><br><span class="line">        let files = document.querySelector(&apos;input[type=file]&apos;).files</span><br><span class="line">        for(let i = 0; i &lt; files.length; i++)&#123;</span><br><span class="line">            console.log(files[i].name,files[i].lastModifiedDate)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/prinklezoro.github.io/2019/08/21/文件API/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </section>
 
   
@@ -1505,7 +1506,7 @@
         
           <a href="/prinklezoro.github.io/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1551,7 +1552,9 @@
         
           
         
-        <span class="site-state-item-count">5</span>
+          
+        
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
