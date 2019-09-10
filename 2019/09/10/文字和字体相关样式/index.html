@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/prinklezoro.github.io/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/prinklezoro.github.io/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/prinklezoro.github.io/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/prinklezoro.github.io/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/prinklezoro.github.io/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/prinklezoro.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/prinklezoro.github.io/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="text-shadow text-shadow: length length length color 给字体添加文字阴影.前三个length表示阴影的横方向距离、阴影的纵方向距离、阴影的模糊半径、color阴影的颜色 12345678    &amp;lt;style&amp;gt;        h1 &amp;#123;            text-shadow: 5px 5px 10px #333;">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文字和字体相关样式">
+<meta property="og:url" content="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/10/文字和字体相关样式/index.html">
+<meta property="og:site_name" content="Katakuri">
+<meta property="og:description" content="text-shadow text-shadow: length length length color 给字体添加文字阴影.前三个length表示阴影的横方向距离、阴影的纵方向距离、阴影的模糊半径、color阴影的颜色 12345678    &amp;lt;style&amp;gt;        h1 &amp;#123;            text-shadow: 5px 5px 10px #333;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt15.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt14.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt13.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt12.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt11.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt10.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt9.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt8.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt7png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt6.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt5.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt4.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt3.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt2.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/wzt1.png">
+<meta property="og:updated_time" content="2019-09-10T14:45:16.234Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文字和字体相关样式">
+<meta name="twitter:description" content="text-shadow text-shadow: length length length color 给字体添加文字阴影.前三个length表示阴影的横方向距离、阴影的纵方向距离、阴影的模糊半径、color阴影的颜色 12345678    &amp;lt;style&amp;gt;        h1 &amp;#123;            text-shadow: 5px 5px 10px #333;">
+<meta name="twitter:image" content="https://prinklezoro.github.io/assets/wzt15.png">
+  <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/10/文字和字体相关样式/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>文字和字体相关样式 | Katakuri</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/prinklezoro.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Katakuri</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/prinklezoro.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/prinklezoro.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/prinklezoro.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/prinklezoro.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/prinklezoro.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-music">
+      
+    
+
+    <a href="/prinklezoro.github.io/music/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>音乐</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/09/10/文字和字体相关样式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿文">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">文字和字体相关样式
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-10 22:37:34 / 修改时间：22:45:16" itemprop="dateCreated datePublished" datetime="2019-09-10T22:37:34+08:00">2019-09-10</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/09/10/文字和字体相关样式/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/09/10/文字和字体相关样式/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="text-shadow"><a href="#text-shadow" class="headerlink" title="text-shadow"></a>text-shadow</h2><ul>
+<li>text-shadow: length length length color 给字体添加文字阴影.前三个length表示阴影的横方向距离、阴影的纵方向距离、阴影的模糊半径、color阴影的颜色</li>
+</ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        h1 &#123;</span><br><span class="line">            text-shadow: 5px 5px 10px #333;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;安利好塞挥挥手&lt;/h1&gt;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+<ul>
+<li>前两个参数可以指定负值</li>
+<li>在谷歌、火狐、欧朋浏览器中可以给text-shadow指定多个文字阴影</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        h1 &#123;</span><br><span class="line">            text-shadow: 5px 5px 10px #333, 10px 10px 5px #f0ad4e, 20px 20px 10px #4cae4c;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;安利好塞挥挥手&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/wzt15.png" alt="image"></p>
+<h2 id="css3换行相关属性"><a href="#css3换行相关属性" class="headerlink" title="css3换行相关属性"></a>css3换行相关属性</h2><h3 id="浏览器默认的换行规则"><a href="#浏览器默认的换行规则" class="headerlink" title="浏览器默认的换行规则"></a>浏览器默认的换行规则</h3><ul>
+<li>浏览器本身都具有让文本自动换行的功能。对于中文文字，浏览器可以在任何一个中文字符换行；对于西方文字，浏览器会在半角空格或连字符的地方换行，不会断开一个单词换行。</li>
+<li>当含有标点符号的时候，标点符号不会出现在行首</li>
+<li>nbsp;和<br>都可以正常发挥作用，连续的空格被缩减为1个，换行符无效</li>
+<li>长度超过一行的单词会超过边界</li>
+</ul>
+<p><img src="/assets/wzt14.png" alt="image"></p>
+<h3 id="white-space"><a href="#white-space" class="headerlink" title="white-space"></a>white-space</h3><ul>
+<li>控制空白符的显示 还能控制是否换行，五个值 normal/nowrap/pre/pre-wrap/pre-line</li>
+<li>white-space: no-wrap 强制一行显示，只有<br>能换行</li>
+</ul>
+<p><img src="/assets/wzt13.png" alt="image"></p>
+<ul>
+<li>white-space: pre 空格和换行符全部被保留，但是自动换行没了</li>
+</ul>
+<p><img src="/assets/wzt12.png" alt="image"></p>
+<ul>
+<li>white-space: pre-wrap 保留空格和换行符，且可以自动换行</li>
+</ul>
+<p><img src="/assets/wzt11.png" alt="image"></p>
+<ul>
+<li>white-space: pre-line 空格被合并，但是换行符可以发挥作用，自动换行也有</li>
+</ul>
+<p><img src="/assets/wzt10.png" alt="image"></p>
+<h3 id="word-break"><a href="#word-break" class="headerlink" title="word-break"></a>word-break</h3><ul>
+<li>控制单词如何被拆分换行的，三个值 normal | break-all | keep-all</li>
+<li>keep-all：只有空格连字符-或任何标点符号可以触发换行，所有单词或连续的中文文字都不能拆分换行</li>
+</ul>
+<p><img src="/assets/wzt9.png" alt="image"></p>
+<ul>
+<li>break-all：所有单词碰到边界一律触发换行</li>
+</ul>
+<p><img src="/assets/wzt8.png" alt="image"></p>
+<h3 id="word-wrap-overflow-wrap"><a href="#word-wrap-overflow-wrap" class="headerlink" title="word-wrap(overflow-wrap)"></a>word-wrap(overflow-wrap)</h3><ul>
+<li>控制单词如何被拆分换行的，word-break的补充，两个值 normal | break-word</li>
+<li>break-word：只有当一个单词一整行都显示不下时，才会拆分换行该单词</li>
+</ul>
+<p><img src="/assets/wzt7png" alt="image"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>属性值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>white-space</td>
+<td>控制空白字符的显示</td>
+<td>normal / nowrap / pre / pre-wrap / pre-line</td>
+</tr>
+<tr>
+<td>word-break</td>
+<td>控制单词如何被拆分换行</td>
+<td>normal / break-all / keep-all</td>
+</tr>
+<tr>
+<td>word-wrap（overflow-wrap）</td>
+<td>控制长度超过一行的单词是否被拆分换行，是word-break的补充</td>
+<td>normal / break-word</td>
+</tr>
+</tbody></table>
+<h2 id="use-select属性"><a href="#use-select属性" class="headerlink" title="use-select属性"></a>use-select属性</h2><ul>
+<li>用于指定用户是否可通过拖拽鼠标来选取元素文字。</li>
+<li>三个属性：none（禁止选取）；text（可以选取）；all：只能选取全部文字，点击就选取全部文字</li>
+</ul>
+<h2 id="服务器端字体——-font-face"><a href="#服务器端字体——-font-face" class="headerlink" title="服务器端字体——@font-face"></a>服务器端字体——@font-face</h2><h3 id="使用-font-face"><a href="#使用-font-face" class="headerlink" title="使用@font-face"></a>使用@font-face</h3><ul>
+<li>可以利用@font-face来定义服务器端字体或者字体图标</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@font-face &#123;</span><br><span class="line">    font-family: myFont;</span><br><span class="line">    src: url(&apos;地址&apos;) format(&apos;类型&apos;);</span><br><span class="line">    font-weight: normal</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>font-family后面的属性值可以随意定义，往后在该项目中，这个引用字体的名字就是myFont</li>
+<li>src url() 用来指定服务器端字体文件所在的路径；format() 用来指定该字体文件的类型</li>
+<li>format：字体的格式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>format属性</th>
+<th>对应的字体文件格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>truetype</td>
+<td>常见的字体格式，对应文件为.ttf</td>
+</tr>
+<tr>
+<td>opentype</td>
+<td>对应文件.otf</td>
+</tr>
+<tr>
+<td>woff</td>
+<td>对应文件 .woff  truetype和opentype的压缩版</td>
+</tr>
+<tr>
+<td>embedded-opentype</td>
+<td>IE专用格式</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>为了解决兼容性问题，可以使用多个url+format属性值，用逗号隔开</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@font-face &#123;</span><br><span class="line">    font-family: ‘YourWebFontName’;</span><br><span class="line">    src: url(‘YourWebFontName.eot’); /* IE9 Compat Modes */</span><br><span class="line">    src: url(‘YourWebFontName.eot?#iefix’) format(‘embedded-opentype’), /* IE6-IE8 */</span><br><span class="line">    url(‘YourWebFontName.woff’) format(‘woff’), /* Modern Browsers */</span><br><span class="line">    url(‘YourWebFontName.ttf’) format(‘truetype’), /* Safari, Android, iOS */</span><br><span class="line">    url(‘YourWebFontName.svg#YourWebFontName’) format(‘svg’); /* Legacy iOS */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        @font-face &#123;</span><br><span class="line">            font-family: myFont;</span><br><span class="line">            src: url(&quot;钟齐吴嘉睿手写字.TTF&quot;) format(&apos;embedded-opentype&apos;);</span><br><span class="line">            font-weight: normal;</span><br><span class="line">        &#125;</span><br><span class="line">        h1 &#123;</span><br><span class="line">            font-family: myFont;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;海贼王&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/wzt6.png" alt="image"></p>
+<ul>
+<li>使用服务器字体时，就不会再为样式定义font-style或font-weight了，否则会失效</li>
+<li>如果一定要使用font-style或font-weight，则必须在font-face中定义对应的样式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@font-face &#123;</span><br><span class="line">    font-family: myFont;</span><br><span class="line">    src: url(&quot;钟齐吴嘉睿手写字1.TTF&quot;) format(&apos;embedded-opentype&apos;);</span><br><span class="line">    font-style: italic;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">@font-face &#123;</span><br><span class="line">    font-family: myFont;</span><br><span class="line">    src: url(&quot;钟齐吴嘉睿手写字2.TTF&quot;) format(&apos;embedded-opentype&apos;);</span><br><span class="line">    font-weight: bold;</span><br><span class="line">&#125;</span><br><span class="line">@font-face &#123;</span><br><span class="line">    font-family: myFont;</span><br><span class="line">    src: url(&quot;钟齐吴嘉睿手写字3.TTF&quot;) format(&apos;embedded-opentype&apos;);</span><br><span class="line">    font-weight: normal;</span><br><span class="line">&#125;</span><br><span class="line">h1 &#123;</span><br><span class="line">    font-family: myFont;</span><br><span class="line">    font-style: italic;</span><br><span class="line">    font-weight: bold;  /* 应用第一个声明字体 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="显示客户端本地字体"><a href="#显示客户端本地字体" class="headerlink" title="显示客户端本地字体"></a>显示客户端本地字体</h3><ul>
+<li>src: local(‘名字’)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        @font-face &#123;</span><br><span class="line">            font-family: Arial;</span><br><span class="line">            src: local(&apos;Arial&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        h1.aaa&#123;</span><br><span class="line">            font-family: Arial;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1 class=&quot;aaa&quot;&gt;aaa&lt;/h1&gt;</span><br><span class="line">&lt;h1&gt;aaa&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用字体图标"><a href="#使用字体图标" class="headerlink" title="使用字体图标"></a>使用字体图标</h2><ul>
+<li>推荐一个网站，可以使用网站上已有的字体图标，也可以自己上传svg图片生成字体图标 <a href="https://icomoon.io/" target="_blank" rel="noopener">https://icomoon.io/</a></li>
+</ul>
+<h3 id="icomoon网站生成字体图标使用方法"><a href="#icomoon网站生成字体图标使用方法" class="headerlink" title="icomoon网站生成字体图标使用方法"></a>icomoon网站生成字体图标使用方法</h3><ul>
+<li>点击icomoon app</li>
+</ul>
+<p><img src="/assets/wzt5.png" alt="image"></p>
+<ul>
+<li>选择你想要的字体图标，或者点击import icons 上传你电脑上的svg图标文件。选择好了，点击 generate font</li>
+</ul>
+<p><img src="/assets/wzt4.png" alt="image"></p>
+<h6 id="点击-download-即可下载对应的字体文件压缩包"><a href="#点击-download-即可下载对应的字体文件压缩包" class="headerlink" title="- 点击 download 即可下载对应的字体文件压缩包"></a>- 点击 download 即可下载对应的字体文件压缩包</h6><p><img src="/assets/wzt3.png" alt="image"></p>
+<ul>
+<li>复制font文件夹和style.css样式文件到项目目录 style.css可以改名字</li>
+</ul>
+<p><img src="/assets/wzt2.png" alt="image"></p>
+<ul>
+<li>引入style.css文件，在元素上面加上对应的类名就能应用对应的字体图标</li>
+</ul>
+<p><img src="/assets/wzt1.png" alt="image"></p>
+<h2 id="font-size-adjust"><a href="#font-size-adjust" class="headerlink" title="font-size-adjust"></a>font-size-adjust</h2><ul>
+<li>该属性只有火狐浏览器支持</li>
+<li>font-size-adjust设置的是字体自带的aspect值，计算公式为x-height值除以该字体的font-size，x-height表示这个字体书写出来的小写字母x的高度：例如font-size为100px的x-height为50px，则aspect为0.5</li>
+<li>常见西方字体的参照表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>字体种类</th>
+<th>aspect</th>
+<th>字体种类</th>
+<th>aspect</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Verdada</td>
+<td>0.58</td>
+<td>Times New Roman</td>
+<td>0.46</td>
+</tr>
+<tr>
+<td>Comic Sans MS</td>
+<td>0.54</td>
+<td>Gill Sans</td>
+<td>0.46</td>
+</tr>
+<tr>
+<td>Trebuchet MS</td>
+<td>0.53</td>
+<td>Bernhard Modern</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>Georgia</td>
+<td>0.5</td>
+<td>Caflisch Script Web</td>
+<td>0.37</td>
+</tr>
+<tr>
+<td>Myriad Web</td>
+<td>0.48</td>
+<td>Fjemish Script</td>
+<td>0.28</td>
+</tr>
+<tr>
+<td>Minion Web</td>
+<td>0.47</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ul>
+<li>相同大小字体下，每种文字的高度都不一致，可能会使页面布局混乱，这样就需要调整aspect值来达到一致高度</li>
+<li>要想保持高度一致，则x-height必须一致，那么字体值1 * aspect1 = 字体值2 * aspect2 必须成立</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#div2 &#123;</span><br><span class="line">    font-size: 14px;</span><br><span class="line">    font-family: &quot;Comic Sans MS&quot;;</span><br><span class="line">    font-size-adjust: 0.52;</span><br><span class="line">&#125;</span><br><span class="line">#div3 &#123;</span><br><span class="line">    font-size: 16px;</span><br><span class="line">    font-family: &quot;Times New Roman&quot;;</span><br><span class="line">    font-size-adjust: 0.46;</span><br><span class="line">&#125;</span><br><span class="line">/*14 * 0.52 = 16 * 0.46*/</span><br></pre></td></tr></table></figure>
+
+<h2 id="rem定义字体大小"><a href="#rem定义字体大小" class="headerlink" title="rem定义字体大小"></a>rem定义字体大小</h2><ul>
+<li>根据根元素（一般是html）的字体大小，计算出实际的大小。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/prinklezoro.github.io/tags/CSS/" rel="tag"># CSS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/prinklezoro.github.io/2019/09/08/盒相关样式/" rel="next" title="盒相关样式">
+                  <i class="fa fa-chevron-left"></i> 盒相关样式
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/prinklezoro.github.io/images/avatar.gif"
+      alt="阿文">
+  <p class="site-author-name" itemprop="name">阿文</p>
+  <div class="site-description motion-element" itemprop="description">自律即自由</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/prinklezoro.github.io/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/prinklezoro.github.io/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/prinklezoro.github.io/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:prinklezoro@gmail.com" title="E-Mail &rarr; mailto:prinklezoro@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#text-shadow"><span class="nav-number">1.</span> <span class="nav-text">text-shadow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#css3换行相关属性"><span class="nav-number">2.</span> <span class="nav-text">css3换行相关属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器默认的换行规则"><span class="nav-number">2.1.</span> <span class="nav-text">浏览器默认的换行规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#white-space"><span class="nav-number">2.2.</span> <span class="nav-text">white-space</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#word-break"><span class="nav-number">2.3.</span> <span class="nav-text">word-break</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#word-wrap-overflow-wrap"><span class="nav-number">2.4.</span> <span class="nav-text">word-wrap(overflow-wrap)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.5.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#use-select属性"><span class="nav-number">3.</span> <span class="nav-text">use-select属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器端字体——-font-face"><span class="nav-number">4.</span> <span class="nav-text">服务器端字体——@font-face</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-font-face"><span class="nav-number">4.1.</span> <span class="nav-text">使用@font-face</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示客户端本地字体"><span class="nav-number">4.2.</span> <span class="nav-text">显示客户端本地字体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用字体图标"><span class="nav-number">5.</span> <span class="nav-text">使用字体图标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#icomoon网站生成字体图标使用方法"><span class="nav-number">5.1.</span> <span class="nav-text">icomoon网站生成字体图标使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#点击-download-即可下载对应的字体文件压缩包"><span class="nav-number">5.1.0.0.1.</span> <span class="nav-text">- 点击 download 即可下载对应的字体文件压缩包</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font-size-adjust"><span class="nav-number">6.</span> <span class="nav-text">font-size-adjust</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rem定义字体大小"><span class="nav-number">7.</span> <span class="nav-text">rem定义字体大小</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿文</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.7' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js"></script>
+  <script src="/prinklezoro.github.io/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/prinklezoro.github.io/js/utils.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/motion.js?v=7.3.0"></script>
+
+<script src="/prinklezoro.github.io/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/prinklezoro.github.io/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/prinklezoro.github.io/js/scrollspy.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Q6pYWSENGYw0Jy6d4DqtudBA-gzGzoHsz',
+    appKey: 'n4tLHHKWGVWs5vhSFBCtqQim',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
