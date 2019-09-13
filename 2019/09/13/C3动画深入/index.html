@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/prinklezoro.github.io/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/prinklezoro.github.io/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/prinklezoro.github.io/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/prinklezoro.github.io/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/prinklezoro.github.io/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/prinklezoro.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/prinklezoro.github.io/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="animation-fill-mode animation-fill-mode能控制动画执行前与执行之后的样式。一个带有延迟（animation-delay）,并且按照正常方向（animation-direction: normal）执行的动画。动画可以分为三个阶段：动画等待、动画进行、动画结束。只有在动画进行，才会应用@keyframes声明的动画；而在动画等待或结束，对元素样式不会有任何影响">
+<meta name="keywords" content="CSS,JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C3动画深入">
+<meta property="og:url" content="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/13/C3动画深入/index.html">
+<meta property="og:site_name" content="Katakuri">
+<meta property="og:description" content="animation-fill-mode animation-fill-mode能控制动画执行前与执行之后的样式。一个带有延迟（animation-delay）,并且按照正常方向（animation-direction: normal）执行的动画。动画可以分为三个阶段：动画等待、动画进行、动画结束。只有在动画进行，才会应用@keyframes声明的动画；而在动画等待或结束，对元素样式不会有任何影响">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/animation-fill-mode-1.gif">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/animation-fill-mode-2.gif">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/3.gif">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/4.gif">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/5.gif">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/6.gif">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/3.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/2.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/1.png">
+<meta property="og:updated_time" content="2019-09-13T00:46:11.293Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C3动画深入">
+<meta name="twitter:description" content="animation-fill-mode animation-fill-mode能控制动画执行前与执行之后的样式。一个带有延迟（animation-delay）,并且按照正常方向（animation-direction: normal）执行的动画。动画可以分为三个阶段：动画等待、动画进行、动画结束。只有在动画进行，才会应用@keyframes声明的动画；而在动画等待或结束，对元素样式不会有任何影响">
+<meta name="twitter:image" content="https://prinklezoro.github.io/assets/animation-fill-mode-1.gif">
+  <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/13/C3动画深入/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>C3动画深入 | Katakuri</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/prinklezoro.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Katakuri</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/prinklezoro.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/prinklezoro.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/prinklezoro.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/prinklezoro.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/prinklezoro.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-music">
+      
+    
+
+    <a href="/prinklezoro.github.io/music/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>音乐</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/09/13/C3动画深入/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿文">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">C3动画深入
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-13 08:40:15 / 修改时间：08:46:11" itemprop="dateCreated datePublished" datetime="2019-09-13T08:40:15+08:00">2019-09-13</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/09/13/C3动画深入/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/09/13/C3动画深入/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="animation-fill-mode"><a href="#animation-fill-mode" class="headerlink" title="animation-fill-mode"></a>animation-fill-mode</h2><ul>
+<li>animation-fill-mode能控制动画执行前与执行之后的样式。一个带有延迟（animation-delay）,并且按照正常方向（animation-direction: normal）执行的动画。动画可以分为三个阶段：动画等待、动画进行、动画结束。只有在动画进行，才会应用@keyframes声明的动画；而在动画等待或结束，对元素样式不会有任何影响</li>
+<li>animation-fill-mode 可以接受none、forwards、backwards或者both四个值中的一个值，下面一一解释</li>
+</ul><a id="more"></a>
+<h3 id="none"><a href="#none" class="headerlink" title="none"></a>none</h3><ul>
+<li>none是默认值，表示动画不会对动画等待和动画完成的样式产生改变</li>
+</ul>
+<p><img src="/assets/animation-fill-mode-1.gif" alt="animation-fill-mode-1"></p>
+<h3 id="forwards"><a href="#forwards" class="headerlink" title="forwards"></a>forwards</h3><ul>
+<li>元素结束的样式将被设置成动画的最后一帧的样式</li>
+</ul>
+<p><img src="/assets/animation-fill-mode-2.gif" alt="animation-fill-mode-2"></p>
+<h3 id="backwards"><a href="#backwards" class="headerlink" title="backwards"></a>backwards</h3><ul>
+<li>元素等待期间的样式将被设置成动画第一帧的样式</li>
+<li>下面举个例子：定义动画的第一帧与元素开始时不一样的背景颜色；给元素一个等待动画时间，animation-delay</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#box &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background-color: #f5f5f5;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes anim &#123;</span><br><span class="line">    0% &#123;</span><br><span class="line">        background-color: #d43f3a;</span><br><span class="line">    &#125;</span><br><span class="line">    100% &#123;</span><br><span class="line">        background-color: #5cde47;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">#box:hover &#123;</span><br><span class="line">    animation: anim 2s ease 2s backwards;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/3.gif" alt="image"></p>
+<ul>
+<li>可以看到 当鼠标一放上去，元素立即进入动画等待阶段，背景变成第一帧的颜色</li>
+</ul>
+<h3 id="both"><a href="#both" class="headerlink" title="both"></a>both</h3><ul>
+<li>既有backwards 也有 forwards</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#box &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background-color: #f5f5f5;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes anim &#123;</span><br><span class="line">    0% &#123;</span><br><span class="line">        background-color: #d43f3a;</span><br><span class="line">    &#125;</span><br><span class="line">    100% &#123;</span><br><span class="line">        background-color: #5cde47;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">#box:hover &#123;</span><br><span class="line">    animation: anim 2s ease 2s both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/4.gif" alt="image"></p>
+<ul>
+<li>当鼠标放上面时，元素进入等待动画阶段，背景变成红色；然后动画结束后，元素保持动画结束状态，元素一直保持着绿色背景；当鼠标移开元素后，元素动画被移除，元素恢复原本颜色</li>
+</ul>
+<blockquote>
+<p>所以要想消除animation-fill-mode的效果，只能移除动画样式</p>
+</blockquote>
+<h2 id="动画API"><a href="#动画API" class="headerlink" title="动画API"></a>动画API</h2><ul>
+<li>animate()函数 play() puase() 这里不提，都很简单。下面重点研究一下finish()、cancel()、reserve()，还有设置速率</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;box_btn&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;播放动画&quot; onclick=&quot;play()&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;暂停动画&quot; onclick=&quot;pause()&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;动画加速&quot; onclick=&quot;add()&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;动画减速&quot; onclick=&quot;reduce()&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;动画回放&quot; onclick=&quot;reserve()&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;动画完成&quot; onclick=&quot;finish()&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;动画取消&quot; onclick=&quot;cancel()&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    let animate = document.getElementById(&apos;box&apos;).animate([</span><br><span class="line">        &#123;</span><br><span class="line">            transform: &apos;translate(0px, 0px)&apos;,</span><br><span class="line">            backgroundColor: &apos;#bce8f1&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            transform: &apos;translate(100px, 200px)&apos;,</span><br><span class="line">            backgroundColor: &apos;#aa4f1f&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            transform: &apos;translate(400px, 100px)&apos;,</span><br><span class="line">            backgroundColor: &apos;#1846aa&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    ], &#123;</span><br><span class="line">        easing: &apos;ease&apos;,</span><br><span class="line">        // iterations: Infinity,</span><br><span class="line">        duration: 2000</span><br><span class="line">    &#125;)</span><br><span class="line">    animate.pause()</span><br><span class="line">    function play() &#123;</span><br><span class="line">        animate.play()</span><br><span class="line">    &#125;</span><br><span class="line">    function pause() &#123;</span><br><span class="line">        animate.pause()</span><br><span class="line">    &#125;</span><br><span class="line">    function add() &#123;</span><br><span class="line">        animate.playbackRate *= 1.1</span><br><span class="line">    &#125;</span><br><span class="line">    function reduce() &#123;</span><br><span class="line">        animate.playbackRate *= 0.9</span><br><span class="line">    &#125;</span><br><span class="line">    function reserve() &#123;</span><br><span class="line">        animate.reverse()</span><br><span class="line">        console.log(animate.playbackRate)</span><br><span class="line">    &#125;</span><br><span class="line">    function finish() &#123;</span><br><span class="line">        animate.finish()</span><br><span class="line">    &#125;</span><br><span class="line">    function sss() &#123;</span><br><span class="line">        animate.playbackRate = -1</span><br><span class="line">        animate.play()</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="reserve"><a href="#reserve" class="headerlink" title="reserve()"></a>reserve()</h3><ul>
+<li>打开页面，首先点击回放动画按钮。 看效果图</li>
+</ul>
+<p><img src="/assets/5.gif" alt="image"></p>
+<ul>
+<li>可以看出，在未播放的动画上面点击回放动画按钮，动画将会反方向执行。此时动画速率为-1</li>
+</ul>
+<p><img src="/assets/6.gif" alt="image"></p>
+<ul>
+<li>再点击一次回放动画按钮，看效果图。此时动画正方向执行动画，动画速率为1</li>
+<li>把动画次数设置为无限次，此时刷新页面点击回放动画，发现报错</li>
+</ul>
+<p><img src="/assets/3.png" alt="image"></p>
+<ul>
+<li>大概的意思是，无限播放的动画没有结束，所以无法播放反转动画</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>reserve函数的意思就是交替设置动画播放速率第一次点击是-1，第二次点击是1，循环切换。相当于</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 2n+1次点击</span><br><span class="line">animate.playbackRate = -1</span><br><span class="line">animate.play()</span><br><span class="line">// 2n次点击</span><br><span class="line">animate.playbackRate = 1</span><br><span class="line">animate.pause()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>当动画从未播放时，将播放速率置为-1表示从结束向开始反向播放动画。无限动画没有结束，所有会报错</li>
+<li>当动画已经播放一段时间，将播放速率为-1表示从当前位置倒回开始</li>
+</ul>
+<blockquote>
+<p>不要把reserve看做动画回放，会理不清的。只要知道切换播放速率就行了</p>
+</blockquote>
+<h3 id="finish-和cancel"><a href="#finish-和cancel" class="headerlink" title="finish()和cancel()"></a>finish()和cancel()</h3><ul>
+<li>当动画被设置成无限次，点击动画完成按钮，浏览器报错。因为无限次数动画没有结束状态，不可能完成。</li>
+<li>当动画不设置成无限次，点击动画完成按钮和动画取消按钮，发现都没有效果</li>
+<li>MDN上说明：finish()表示把动画置于结束状态；cancel()表示取消动画，并回复初始化状态。这让我想起来上面讲过的一个属性animation-fill-mode，转换为Web Animation 的属性就是fill</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    easing: &apos;ease&apos;,</span><br><span class="line">    // iterations: Infinity,</span><br><span class="line">    duration: 2000,</span><br><span class="line">    fill: &quot;both&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这样就有效果了，点击finish按钮，动画变为结束状态</li>
+</ul>
+<p><img src="/assets/2.png" alt="image"></p>
+<ul>
+<li>然后点击取消动画，元素变为初始化状态（注意：不是动画等待状态）</li>
+</ul>
+<p><img src="/assets/1.png" alt="image"></p>
+<h3 id="onfinsh事件和oncancel事件"><a href="#onfinsh事件和oncancel事件" class="headerlink" title="onfinsh事件和oncancel事件"></a>onfinsh事件和oncancel事件</h3><ul>
+<li>不只是调用finish()函数，才会触发onfinish事件；当动画播放结束之后就会触发</li>
+<li>oncancel事件只有当cancel()函数被调用才会触发</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/prinklezoro.github.io/tags/CSS/" rel="tag"># CSS</a>
+            
+              <a href="/prinklezoro.github.io/tags/JS/" rel="tag"># JS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/prinklezoro.github.io/2019/09/13/C3动画/" rel="next" title="C3动画">
+                  <i class="fa fa-chevron-left"></i> C3动画
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/prinklezoro.github.io/images/avatar.gif"
+      alt="阿文">
+  <p class="site-author-name" itemprop="name">阿文</p>
+  <div class="site-description motion-element" itemprop="description">自律即自由</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/prinklezoro.github.io/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/prinklezoro.github.io/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/prinklezoro.github.io/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:prinklezoro@gmail.com" title="E-Mail &rarr; mailto:prinklezoro@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#animation-fill-mode"><span class="nav-number">1.</span> <span class="nav-text">animation-fill-mode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#none"><span class="nav-number">1.1.</span> <span class="nav-text">none</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forwards"><span class="nav-number">1.2.</span> <span class="nav-text">forwards</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#backwards"><span class="nav-number">1.3.</span> <span class="nav-text">backwards</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#both"><span class="nav-number">1.4.</span> <span class="nav-text">both</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画API"><span class="nav-number">2.</span> <span class="nav-text">动画API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reserve"><span class="nav-number">2.1.</span> <span class="nav-text">reserve()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.2.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finish-和cancel"><span class="nav-number">2.3.</span> <span class="nav-text">finish()和cancel()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onfinsh事件和oncancel事件"><span class="nav-number">2.4.</span> <span class="nav-text">onfinsh事件和oncancel事件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿文</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.7' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js"></script>
+  <script src="/prinklezoro.github.io/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/prinklezoro.github.io/js/utils.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/motion.js?v=7.3.0"></script>
+
+<script src="/prinklezoro.github.io/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/prinklezoro.github.io/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/prinklezoro.github.io/js/scrollspy.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Q6pYWSENGYw0Jy6d4DqtudBA-gzGzoHsz',
+    appKey: 'n4tLHHKWGVWs5vhSFBCtqQim',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
