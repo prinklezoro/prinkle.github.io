@@ -63,12 +63,14 @@
 <meta property="og:site_name" content="Katakuri">
 <meta property="og:description" content="Transitions 功能基本使用 通过将元素的某个属性从一个属性值在指定的时间内平滑过渡到另一个属性值来实现动画功能 transition: property duration timing-function  property代表对哪个属性进行平滑过渡；duration表示在多久时间内完成属性值的平滑过渡；timing-function表示过渡的曲线 分开写分别为 transition-pr">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://prinklezoro.github.io/assets/dh.png">
-<meta property="og:updated_time" content="2019-09-13T00:33:24.462Z">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/dh1.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/1.gif">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/2.gif">
+<meta property="og:updated_time" content="2019-09-13T00:38:29.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C3动画">
 <meta name="twitter:description" content="Transitions 功能基本使用 通过将元素的某个属性从一个属性值在指定的时间内平滑过渡到另一个属性值来实现动画功能 transition: property duration timing-function  property代表对哪个属性进行平滑过渡；duration表示在多久时间内完成属性值的平滑过渡；timing-function表示过渡的曲线 分开写分别为 transition-pr">
-<meta name="twitter:image" content="https://prinklezoro.github.io/assets/dh.png">
+<meta name="twitter:image" content="https://prinklezoro.github.io/assets/dh1.png">
   <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/13/C3动画/">
 
 
@@ -270,7 +272,7 @@
                 
               
 
-              <time title="创建时间：2019-09-13 08:30:22 / 修改时间：08:33:24" itemprop="dateCreated datePublished" datetime="2019-09-13T08:30:22+08:00">2019-09-13</time>
+              <time title="创建时间：2019-09-13 08:30:22 / 修改时间：08:38:29" itemprop="dateCreated datePublished" datetime="2019-09-13T08:30:22+08:00">2019-09-13</time>
             </span>
           
             
@@ -344,7 +346,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    background-color: #5bc0de;</span><br><span class="line">&#125;</span><br><span class="line">.box:hover &#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    transition: width 1s cubic-bezier(.17,.67,.78,.35) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/assets/dh.png" alt="image"></p>
+<p><img src="/assets/dh1.png" alt="image"></p>
 <h3 id="多个属性值同时过渡"><a href="#多个属性值同时过渡" class="headerlink" title="多个属性值同时过渡"></a>多个属性值同时过渡</h3><ul>
 <li>分别写每个属性值的过渡样式，用逗号隔开</li>
 <li>所有属性一起写，直接用all代表全部属性</li>
@@ -390,11 +392,11 @@
 <h3 id="animation-direction的几个参数研究"><a href="#animation-direction的几个参数研究" class="headerlink" title="animation-direction的几个参数研究"></a>animation-direction的几个参数研究</h3><ul>
 <li>normal 这个不用说，动画结束后，返回初试状态，算一次动画（count）</li>
 </ul>
-<p>![image](/assets/Honeycam 2019-09-11 21-32-14.gif)</p>
+<p><img src="/assets/1.gif" alt="image"></p>
 <ul>
 <li>alternate 交替更改动画的执行方向，开始–结束–开始，算两次动画（count）</li>
 </ul>
-<p>![image](/assets/Honeycam 2019-09-11 21-36-02.gif)</p>
+<p><img src="/assets/2.gif" alt="image"></p>
 <ul>
 <li>reserve 反方向执行动画 结束-开始 算一次动画（count）</li>
 <li>alternate-reserve 反方向交替更改动画执行方向，结束–开始–结束，算两次动画</li>
