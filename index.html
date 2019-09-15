@@ -237,6 +237,127 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/09/15/多栏布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿文">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/prinklezoro.github.io/2019/09/15/多栏布局/" class="post-title-link" itemprop="url">多栏布局</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-15 22:37:58 / 修改时间：22:46:05" itemprop="dateCreated datePublished" datetime="2019-09-15T22:37:58+08:00">2019-09-15</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/09/15/多栏布局/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/09/15/多栏布局/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="多栏布局"><a href="#多栏布局" class="headerlink" title="多栏布局"></a>多栏布局</h2><ul>
+<li>父元素使用 column-count: 列数。将元素的内容分为两列或多列。</li>
+<li>column-count有兼容性问题，要多写-webkit-column-count 和 -moz-column-count</li>
+<li>列的宽度始终保持不变</li>
+</ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        * &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .box &#123;</span><br><span class="line">            width: 40em;</span><br><span class="line">            -webkit-column-count: 2;</span><br><span class="line">            -moz-column-count: 2;</span><br><span class="line">            column-count: 2;</span><br><span class="line">            /*height: 100px;*/</span><br><span class="line">        &#125;</span><br><span class="line">        img &#123;</span><br><span class="line">            display: block;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;p&gt;较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/prinklezoro.github.io/2019/09/15/多栏布局/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/09/13/C3动画深入/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1343,129 +1464,6 @@
   </article>
 
     
-      
-
-  <article class="post" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/09/01/通信API/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阿文">
-      <meta itemprop="description" content="自律即自由">
-      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Katakuri">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/prinklezoro.github.io/2019/09/01/通信API/" class="post-title-link" itemprop="url">通信API</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-01 22:53:45 / 修改时间：22:55:53" itemprop="dateCreated datePublished" datetime="2019-09-01T22:53:45+08:00">2019-09-01</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/prinklezoro.github.io/2019/09/01/通信API/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/09/01/通信API/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="跨文档消息传输"><a href="#跨文档消息传输" class="headerlink" title="跨文档消息传输"></a>跨文档消息传输</h2><ul>
-<li>HTML5提供了网页文档之间互相接收和发送消息的功能。使用这个功能，只要获取到网页所在窗口的对象，不仅同源，跨域也能实现通信</li>
-<li>接收从其他窗口传来的消息：window.addEventListener(‘message’, fn, false)</li>
-<li>向其他窗口发送消息：otherWindow.postMessage(message, targetUrl, [ports])。otherWindow为要发送窗口的window对象的引用，可以通过window.open返回该对象，也可以通过window.frames[index]。第一个参数为消息文本（字符串）；第二个参数为要发送的url地址 *表示所有地址；第三个参数表示传入的端口号</li>
-<li>window.frames数组获取页面中所有iframe标签所在的window对象的集合</li>
-<li>也可以使用iframeDom.contentWindow来获取响应的window对象</li>
-</ul>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/prinklezoro.github.io/2019/09/01/通信API/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </section>
 
   
@@ -1506,7 +1504,7 @@
         
           <a href="/prinklezoro.github.io/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/prinklezoro.github.io/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/prinklezoro.github.io/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/prinklezoro.github.io/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/prinklezoro.github.io/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/prinklezoro.github.io/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/prinklezoro.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/prinklezoro.github.io/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="多栏布局 父元素使用 column-count: 列数。将元素的内容分为两列或多列。 column-count有兼容性问题，要多写-webkit-column-count 和 -moz-column-count 列的宽度始终保持不变 12345678910111213141516171819202122    &amp;lt;style&amp;gt;        * &amp;#123;            mar">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多栏布局">
+<meta property="og:url" content="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/15/多栏布局/index.html">
+<meta property="og:site_name" content="Katakuri">
+<meta property="og:description" content="多栏布局 父元素使用 column-count: 列数。将元素的内容分为两列或多列。 column-count有兼容性问题，要多写-webkit-column-count 和 -moz-column-count 列的宽度始终保持不变 12345678910111213141516171819202122    &amp;lt;style&amp;gt;        * &amp;#123;            mar">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/16.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/15.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/14.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/13.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/12.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/11.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/10.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/9.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/8.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/7.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/6.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/5.png">
+<meta property="og:image" content="https://prinklezoro.github.io/assets/4.png">
+<meta property="og:updated_time" content="2019-09-15T14:46:05.716Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多栏布局">
+<meta name="twitter:description" content="多栏布局 父元素使用 column-count: 列数。将元素的内容分为两列或多列。 column-count有兼容性问题，要多写-webkit-column-count 和 -moz-column-count 列的宽度始终保持不变 12345678910111213141516171819202122    &amp;lt;style&amp;gt;        * &amp;#123;            mar">
+<meta name="twitter:image" content="https://prinklezoro.github.io/assets/16.png">
+  <link rel="canonical" href="https://prinklezoro.github.io/prinklezoro.github.io/2019/09/15/多栏布局/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>多栏布局 | Katakuri</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/prinklezoro.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Katakuri</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/prinklezoro.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/prinklezoro.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/prinklezoro.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/prinklezoro.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/prinklezoro.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-music">
+      
+    
+
+    <a href="/prinklezoro.github.io/music/" rel="section"><i class="menu-item-icon fa fa-fw fa-music"></i> <br>音乐</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://prinklezoro.github.io/prinklezoro.github.io/prinklezoro.github.io/2019/09/15/多栏布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿文">
+      <meta itemprop="description" content="自律即自由">
+      <meta itemprop="image" content="/prinklezoro.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Katakuri">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">多栏布局
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-15 22:37:58 / 修改时间：22:46:05" itemprop="dateCreated datePublished" datetime="2019-09-15T22:37:58+08:00">2019-09-15</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/" itemprop="url" rel="index"><span itemprop="name">编程</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/prinklezoro.github.io/categories/编程/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/prinklezoro.github.io/2019/09/15/多栏布局/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/prinklezoro.github.io/2019/09/15/多栏布局/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="多栏布局"><a href="#多栏布局" class="headerlink" title="多栏布局"></a>多栏布局</h2><ul>
+<li>父元素使用 column-count: 列数。将元素的内容分为两列或多列。</li>
+<li>column-count有兼容性问题，要多写-webkit-column-count 和 -moz-column-count</li>
+<li>列的宽度始终保持不变</li>
+</ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        * &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .box &#123;</span><br><span class="line">            width: 40em;</span><br><span class="line">            -webkit-column-count: 2;</span><br><span class="line">            -moz-column-count: 2;</span><br><span class="line">            column-count: 2;</span><br><span class="line">            /*height: 100px;*/</span><br><span class="line">        &#125;</span><br><span class="line">        img &#123;</span><br><span class="line">            display: block;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;p&gt;较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+<p><img src="/assets/16.png" alt="image"></p>
+<ul>
+<li>column-width 给每一列设定宽度。也要写成兼容模式</li>
+<li>colum-gap 设置多栏之间的间隔距离</li>
+<li>column-rule 多栏之间增加一条间隔线，设置其样式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        * &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .box &#123;</span><br><span class="line">            /*width: 40em;*/</span><br><span class="line">            -webkit-column-count: 2;</span><br><span class="line">            -moz-column-count: 2;</span><br><span class="line">            column-count: 2;</span><br><span class="line">            -webkit-column-width: 20em;</span><br><span class="line">            -moz-column-width: 20em;</span><br><span class="line">            column-width: 20em;</span><br><span class="line">            -webkit-column-gap: 2em;</span><br><span class="line">            -moz-column-gap: 2em;</span><br><span class="line">            column-gap: 2em;</span><br><span class="line">            column-rule: 1px solid red;</span><br><span class="line">            -webkit-column-rule: 1px solid red;</span><br><span class="line">            -moz-column-rule: 1px solid red;</span><br><span class="line">        &#125;</span><br><span class="line">        img &#123;</span><br><span class="line">            display: block;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;p&gt;较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/15.png" alt="image"></p>
+<ul>
+<li>很奇怪？ 为什么column-width没有起效果？然后我们把box盒子设置一个宽度试试</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">     width: 40em;</span><br><span class="line">    -webkit-column-count: 2;</span><br><span class="line">    -moz-column-count: 2;</span><br><span class="line">    column-count: 2;</span><br><span class="line">    -webkit-column-width: 20em;</span><br><span class="line">    -moz-column-width: 20em;</span><br><span class="line">    column-width: 20em;</span><br><span class="line">    -webkit-column-gap: 2em;</span><br><span class="line">    -moz-column-gap: 2em;</span><br><span class="line">    column-gap: 2em;</span><br><span class="line">    column-rule: 1px solid red;</span><br><span class="line">    -webkit-column-rule: 1px solid red;</span><br><span class="line">    -moz-column-rule: 1px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/14.png" alt="image"></p>
+<ul>
+<li>更奇怪？ 为什么分列没有了。然后我们试着在F12里面微调宽度，发现宽度到42em时，突然分列了，之后宽度再加大，分列越来越宽</li>
+<li><strong>总结：column-width只是控制列的最小宽度。如果盒子宽度容纳不下所有列宽加间隔宽，那么分列就会消失；如果盒子宽度大于所有列宽加间隔宽，重新为列分配宽度，保证完全充满盒子。</strong></li>
+</ul>
+<h3 id="对多栏布局的几点疑问探讨"><a href="#对多栏布局的几点疑问探讨" class="headerlink" title="对多栏布局的几点疑问探讨"></a>对多栏布局的几点疑问探讨</h3><ul>
+<li>如果盒子里面的图片宽高超过了列宽，效果如何？</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">        .box &#123;</span><br><span class="line">            width: 42em;</span><br><span class="line">            -webkit-column-count: 2;</span><br><span class="line">            -moz-column-count: 2;</span><br><span class="line">            column-count: 2;</span><br><span class="line">            -webkit-column-width: 20em;</span><br><span class="line">            -moz-column-width: 20em;</span><br><span class="line">            column-width: 20em;</span><br><span class="line">            -webkit-column-gap: 2em;</span><br><span class="line">            -moz-column-gap: 2em;</span><br><span class="line">            column-gap: 2em;</span><br><span class="line">            column-rule: 1px solid red;</span><br><span class="line">            -webkit-column-rule: 1px solid red;</span><br><span class="line">            -moz-column-rule: 1px solid red;</span><br><span class="line">        &#125;</span><br><span class="line">        img &#123;</span><br><span class="line">            display: block;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;20160819090657150.png&quot; alt=&quot;&quot; style=&quot;width: 30em&quot;&gt;</span><br><span class="line">    &lt;p&gt;较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字较长的示例文字&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/13.png" alt="image"></p>
+<ul>
+<li>如果是两张图片呢？</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;20160819090657150.png&quot; alt=&quot;&quot; style=&quot;width: 30em&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;20160819090657150.png&quot; alt=&quot;&quot; style=&quot;width: 30em&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/12.png" alt="image"></p>
+<ul>
+<li><p><strong>可以看出：如果元素超过了列宽，会溢出，但是中间的间隔线还是原来的位置，其他列的元素还是在原本应该在的位置。也就是说，实现了多栏布局的元素都是脱离了文档流的元素</strong></p>
+</li>
+<li><p><strong>并且右边的列元素会覆盖左边的列元素</strong></p>
+</li>
+<li><p>没有设置宽高的文字元素，怎么排列？</p>
+</li>
+<li><p>两个p元素，一个文字少一个文字多</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">        .box &#123;</span><br><span class="line">            width: 20em;</span><br><span class="line">            -webkit-column-count: 2;</span><br><span class="line">            -moz-column-count: 2;</span><br><span class="line">            column-count: 2;</span><br><span class="line">            -webkit-column-gap: 2em;</span><br><span class="line">            -moz-column-gap: 2em;</span><br><span class="line">            column-gap: 2em;</span><br><span class="line">        &#125;</span><br><span class="line">        p &#123;</span><br><span class="line">            text-indent: 1em;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;p&gt;示例文字示例文字示例文字示例文字示例文字示例文字示例&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;示例文字示例文字示例文字示例文字示例文字示例文字示例示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/11.png" alt="image"></p>
+<ul>
+<li>可以看出，文字并不会跟随元素。文字会根据内容的多少自适应调节高度。那么如果设置了高度呢?</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">    width: 20em;</span><br><span class="line">    -webkit-column-count: 2;</span><br><span class="line">    -moz-column-count: 2;</span><br><span class="line">    column-count: 2;</span><br><span class="line">    -webkit-column-gap: 2em;</span><br><span class="line">    -moz-column-gap: 2em;</span><br><span class="line">    column-gap: 2em;</span><br><span class="line">    height: 200px;</span><br><span class="line">    column-rule: 1px solid red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/10.png" alt="image"></p>
+<ul>
+<li>可以看出，装不下去的文字会再起一行，形成n+m列布局</li>
+<li><strong>总结：对于没有设置高度的多栏布局盒子，里面的文字不会跟随其包裹的元素，会自适应调节高度，并尽可能充满每一列；对于设置高度的多栏布局盒子，如果里面文字填满并溢出了（每一列都满了，装不下文字了），文字会再另起一列，形成n+m列布局</strong></li>
+</ul>
+<h3 id="多栏布局的其他属性"><a href="#多栏布局的其他属性" class="headerlink" title="多栏布局的其他属性"></a>多栏布局的其他属性</h3><ul>
+<li>column-fill 设置是否应该平衡列</li>
+<li>如果列未设置为 balance 属性值，则按顺序填充；一些列可能最终部分填充，或者根本没有内容。如果他们是 balance 的，浏览器（或任何其他使用代理）将尽最大努力，使他们的高度尽可能接近相等。它应该尽量减少柱高度的变化，以及可能影响柱高度的其他属性</li>
+</ul>
+<p><img src="/assets/9.png" alt="image"></p>
+<h3 id="多栏布局应用"><a href="#多栏布局应用" class="headerlink" title="多栏布局应用"></a>多栏布局应用</h3><ul>
+<li>瀑布流布局</li>
+</ul>
+<p><img src="/assets/8.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        * &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">            box-sizing: border-box;</span><br><span class="line">        &#125;</span><br><span class="line">        .box &#123;</span><br><span class="line">            width: 720px;</span><br><span class="line">            border: 1px solid #ddd;</span><br><span class="line">            column-count: 2;</span><br><span class="line">            column-gap: 10px;</span><br><span class="line">            margin: 10px auto;</span><br><span class="line">            padding: 10px;</span><br><span class="line">        &#125;</span><br><span class="line">        img &#123;</span><br><span class="line">            width: 345px;</span><br><span class="line">            margin-bottom: 10px;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;ia_100000120.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;ia_100000123.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;ia_100000126.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;ia_100000129.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;ia_100000132.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;ia_100000135.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;ia_100000138.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;ia_100000141.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/7.png" alt="image"></p>
+<h3 id="思考：多栏布局的高度怎么定"><a href="#思考：多栏布局的高度怎么定" class="headerlink" title="思考：多栏布局的高度怎么定"></a>思考：多栏布局的高度怎么定</h3><ul>
+<li>如上面的代码，我设置column-fill的值，发现两个参数并没有发生变化…</li>
+<li>由此我想到，column-fill: balance是不是只对已经定义高度的父元素有效果。下面放代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">    &lt;style&gt;</span><br><span class="line">        * &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .box &#123;</span><br><span class="line">            width: 20em;</span><br><span class="line">            column-count: 2;</span><br><span class="line">            column-gap: 2em;</span><br><span class="line">            column-fill: balance;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;p&gt;示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字示例文字&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/6.png" alt="image"></p>
+<ul>
+<li>并不能产生效果，下面给box定义高度</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">    width: 20em;</span><br><span class="line">    column-count: 2;</span><br><span class="line">    column-gap: 2em;</span><br><span class="line">    column-fill: auto;</span><br><span class="line">    height: 202px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/5.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">    width: 20em;</span><br><span class="line">    column-count: 2;</span><br><span class="line">    column-gap: 2em;</span><br><span class="line">    column-fill: balance;</span><br><span class="line">    height: 202px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/assets/4.png" alt="image"></p>
+<ul>
+<li><strong>在定义高度的多栏布局元素上，auto按顺序填满，而balance则是保证每一列都差不多的高度；在没有定义高度的多栏布局元素上，column-fill的默认值其实是balance，即选择一个适合的高度，保证每一列的内容都差不多高度</strong></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/prinklezoro.github.io/tags/CSS/" rel="tag"># CSS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/prinklezoro.github.io/2019/09/13/C3动画深入/" rel="next" title="C3动画深入">
+                  <i class="fa fa-chevron-left"></i> C3动画深入
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/prinklezoro.github.io/images/avatar.gif"
+      alt="阿文">
+  <p class="site-author-name" itemprop="name">阿文</p>
+  <div class="site-description motion-element" itemprop="description">自律即自由</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/prinklezoro.github.io/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/prinklezoro.github.io/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/prinklezoro.github.io/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:prinklezoro@gmail.com" title="E-Mail &rarr; mailto:prinklezoro@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#多栏布局"><span class="nav-number">1.</span> <span class="nav-text">多栏布局</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对多栏布局的几点疑问探讨"><span class="nav-number">1.1.</span> <span class="nav-text">对多栏布局的几点疑问探讨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多栏布局的其他属性"><span class="nav-number">1.2.</span> <span class="nav-text">多栏布局的其他属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多栏布局应用"><span class="nav-number">1.3.</span> <span class="nav-text">多栏布局应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考：多栏布局的高度怎么定"><span class="nav-number">1.4.</span> <span class="nav-text">思考：多栏布局的高度怎么定</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿文</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.7' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@latest/canvas-nest.min.js"></script>
+  <script src="/prinklezoro.github.io/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/prinklezoro.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/prinklezoro.github.io/js/utils.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/motion.js?v=7.3.0"></script>
+
+<script src="/prinklezoro.github.io/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+<script src="/prinklezoro.github.io/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/prinklezoro.github.io/js/scrollspy.js?v=7.3.0"></script><script src="/prinklezoro.github.io/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'Q6pYWSENGYw0Jy6d4DqtudBA-gzGzoHsz',
+    appKey: 'n4tLHHKWGVWs5vhSFBCtqQim',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
